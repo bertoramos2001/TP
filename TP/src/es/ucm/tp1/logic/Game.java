@@ -19,10 +19,6 @@ public class Game {
 	public int getRoadWidth() {
 		return 3;
 	}
-	
-	public String getGameStatus() {
-		return "";
-	}
 
 	public String positionToString(int j, int i) {
 		return "";
