@@ -2,9 +2,9 @@ package es.ucm.tp1.logic;
 
 public class Coin {
 	private int x, y;
-	private Game game; //TODO: no se si esta bien, deberia ser referencia a game
+	private Game game; 
 	
-	public Coin() {
-		
+	public Coin(Game game) {
+		this.game = game;
 	}
 }

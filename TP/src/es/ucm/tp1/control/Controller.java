@@ -48,7 +48,20 @@ public class Controller {
 
 	public void run() {
 		// TODO fill your code
-		printGame();
+		boolean doExit = false;
+		while (!doExit) {
+			printGame();
+			String line = scanner.nextLine();
+			if (line.equals("e")) {
+				doExit = true;
+			}
+			if (line.equals("n") || line.equals("")) {
+				game.moveForward();
+			}
+		}
+		//printGame();
+		game.update();
+		System.out.println("Game over");
 	}
 
 }

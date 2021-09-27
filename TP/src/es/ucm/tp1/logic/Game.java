@@ -7,13 +7,13 @@ public class Game {
 	private Player player;
 	private Obstacle obstacle;
 	private Coin coin;
+	private Level level;
 	
 
 	public Game(long seed, Level level) {
 		// TODO 	
 		player = new Player();
-		obstacle = new Obstacle();
-		coin = new Coin();
+		this.level = level;
 	}
 	
 	public void update() {
@@ -22,9 +22,10 @@ public class Game {
 	
 	public void toggleTest() {
 		// TODO 
+		level = Level.TEST;
 	}
 	
-	public int getVisibility() {
+	public int getVisibility() { 
 		//TODO: hacer función
 		return 8;
 	}
@@ -33,8 +34,15 @@ public class Game {
 		//TODO: hacer función
 		return 3;
 	}
+	
+	public void moveForward() {
+		player.moveForward();
+	}
 
 	public String positionToString(int j, int i) {
-		return "";
+		if (player.playerIsInPosition(i, j)) 
+		 return ">";
+		else
+			return "";
 	}
 }

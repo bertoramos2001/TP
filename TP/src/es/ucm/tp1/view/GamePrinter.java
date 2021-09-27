@@ -62,7 +62,11 @@ public class GamePrinter {
 	private String getInfo() {
 
 		// TODO add your code
-		return "";
+		String info = String.format("Distance: %d \nCoins: %d \nCicle: %d \nTotal obstacles: %d \nTotal coins: %d", game.getVisibility(), game.getVisibility(), game.getVisibility(), game.getVisibility(), game.getVisibility());
+//		if (game.level != TEST) {
+//			
+//		}
+		return info;
 	}
 
 	
