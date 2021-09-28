@@ -48,20 +48,56 @@ public class Controller {
 
 	public void run() {
 		// TODO fill your code
+		printGame();
 		boolean doExit = false;
 		while (!doExit) {
-			printGame();
+			System.out.print(PROMPT);
 			String line = scanner.nextLine();
-			if (line.equals("e")) {
+			switch (line.toLowerCase()) {
+			case "e":
+			case "exit":
+				System.out.println("[GAME OVER] Player leaves the game");
 				doExit = true;
-			}
-			if (line.equals("n") || line.equals("")) {
+				break;
+			case "n":
+			case "none":
+			case "":
 				game.moveForward();
+				printGame();
+				break;
+			case "q":
+				game.moveUp();
+				printGame();
+				break;
+			case "a":
+				game.moveDown();
+				printGame();
+				break;
+			case "h":
+			case "help":
+				for (int i = 0; i < HELP.length; i++) {
+					System.out.println(HELP[i]);
+				}
+				break;
+			case "i":
+			case "info":
+				System.out.println("Available objects:");
+				game.getObjectsInfo();
+				break;
+			case "r":
+			case "reset":
+				//TODO programar el reset
+				break;
+			case "t":
+			case "test":
+				game.toggleTest();
+				break;
+			default:
+				System.out.println("[ERROR] " + UNKNOWN_COMMAND_MSG);
+				break;
 			}
 		}
-		//printGame();
 		game.update();
-		System.out.println("Game over");
 	}
 
 }

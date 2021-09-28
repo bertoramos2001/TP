@@ -3,6 +3,7 @@ package es.ucm.tp1.logic;
 public class Player {
 	private int x, y, numCoins; //TODO: faltan atributos
 	private Game game;
+	public final static String INFO = "[Car] the racing car";
 	
 	public Player(Game game) {
 		this.game = game;
@@ -14,11 +15,11 @@ public class Player {
 		y += 1;
 	}
 	
-	public void moveUpwards() {
+	public void moveUp() {
 		
 	}
 	
-	public void moveDownwards() {
+	public void moveDown() {
 		
 	}
 	

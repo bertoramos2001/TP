@@ -5,8 +5,8 @@ import es.ucm.tp1.control.Level;
 public class Game {
 	
 	private Player player;
-//	private Obstacle obstacle; //aqui iran definidos las listas de monedas y obstaculos, que contendrán los objetos de monedas y obstáculos
-//	private Coin coin;
+	private Obstacle obstacle; //aqui iran definidos las listas de monedas y obstaculos, que contendrán los objetos de monedas y obstáculos
+	private Coin coin;
 	private Level level;
 	
 
@@ -38,11 +38,25 @@ public class Game {
 	public void moveForward() {
 		player.moveForward();
 	}
+	
+	public void moveUp() {
+		player.moveUp();
+	}
+	
+	public void moveDown() {
+		player.moveDown();
+	}
 
 	public String positionToString(int j, int i) {
 		if (player.playerIsInPosition(i, j)) 
 		 return ">";
 		else
 			return "";
+	}
+
+	public void getObjectsInfo() {
+		System.out.println(player.INFO);
+		System.out.println(coin.INFO);
+		System.out.println(obstacle.INFO);
 	}
 }
