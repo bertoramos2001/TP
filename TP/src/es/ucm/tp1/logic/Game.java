@@ -5,14 +5,14 @@ import es.ucm.tp1.control.Level;
 public class Game {
 	
 	private Player player;
-	private Obstacle obstacle;
-	private Coin coin;
+//	private Obstacle obstacle; //aqui iran definidos las listas de monedas y obstaculos, que contendrán los objetos de monedas y obstáculos
+//	private Coin coin;
 	private Level level;
 	
 
 	public Game(long seed, Level level) {
 		// TODO 	
-		player = new Player();
+		player = new Player(this);
 		this.level = level;
 	}
 	

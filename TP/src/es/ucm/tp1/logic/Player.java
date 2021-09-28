@@ -2,8 +2,10 @@ package es.ucm.tp1.logic;
 
 public class Player {
 	private int x, y, numCoins; //TODO: faltan atributos
+	private Game game;
 	
-	public Player() {
+	public Player(Game game) {
+		this.game = game;
 		x = 1;
 		y = 1;
 	}
