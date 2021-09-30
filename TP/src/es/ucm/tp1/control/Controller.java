@@ -47,6 +47,8 @@ public class Controller {
 	}
 
 	public void run() {
+		
+		long startTime = System.currentTimeMillis();
 		// TODO fill your code
 		printGame();
 		boolean doExit = false;
@@ -63,14 +65,17 @@ public class Controller {
 			case "none":
 			case "":
 				game.moveForward();
+				System.out.println("Time elapsed: " + ((double)System.currentTimeMillis() - startTime) / 1000);
 				printGame();
 				break;
 			case "q":
 				game.moveUp();
+				System.out.println("Time elapsed: " + ((double)System.currentTimeMillis() - startTime) / 1000);
 				printGame();
 				break;
 			case "a":
 				game.moveDown();
+				System.out.println("Time elapsed: " + ((double)System.currentTimeMillis() - startTime) / 1000);
 				printGame();
 				break;
 			case "h":
@@ -86,10 +91,12 @@ public class Controller {
 				break;
 			case "r":
 			case "reset":
-				//TODO programar el reset
+				//TODO programar el reset	
+				System.out.println("Time elapsed: " + ((double)System.currentTimeMillis() - startTime) / 1000);
 				break;
 			case "t":
 			case "test":
+				System.out.println("Time elapsed: " + ((double)System.currentTimeMillis() - startTime) / 1000);
 				game.toggleTest();
 				break;
 			default:

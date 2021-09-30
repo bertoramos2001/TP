@@ -3,7 +3,6 @@ package es.ucm.tp1.view;
 import es.ucm.tp1.logic.Game;
 import es.ucm.tp1.utils.*;
 
-
 public class GamePrinter {
 
 	private static final String SPACE = " ";
@@ -24,60 +23,54 @@ public class GamePrinter {
 
 	private String margin;
 
-
 	private static final String CRASH_MSG = String.format("Player crashed!%n");
 
 	private static final String WIN_MSG = String.format("Player wins!%n");
 
-	private static final String DO_EXIT_MSG = "Player leaves the game"; 
-	
-	private static final String GAME_OVER_MSG = "[GAME OVER] "; 
-	
-	public String newLine; 
+	private static final String DO_EXIT_MSG = "Player leaves the game";
+
+	private static final String GAME_OVER_MSG = "[GAME OVER] ";
+
+	public String newLine;
 
 	protected Game game;
-	
 
 	public GamePrinter(Game game) {
 		this.game = game;
-		
 
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
 
-		String roadBorder = ROAD_BORDER_PATTERN + StringUtils.repeat(ROAD_BORDER_PATTERN, (CELL_SIZE + 1) *  game.getVisibility());
+		String roadBorder = ROAD_BORDER_PATTERN
+				+ StringUtils.repeat(ROAD_BORDER_PATTERN, (CELL_SIZE + 1) * game.getVisibility());
 		indentedRoadBorder = String.format("%n%s%s%n", margin, roadBorder);
 
 		String laneDelimiter = StringUtils.repeat(LANE_DELIMITER_PATTERN, CELL_SIZE);
-		String lanesSeparator = SPACE + StringUtils.repeat(laneDelimiter + SPACE,  game.getVisibility() - 1) + laneDelimiter + SPACE;
+		String lanesSeparator = SPACE + StringUtils.repeat(laneDelimiter + SPACE, game.getVisibility() - 1)
+				+ laneDelimiter + SPACE;
 
 		indentedLlanesSeparator = String.format("%n%s%s%n", margin, lanesSeparator);
-		newLine =  System.getProperty("line.separator");
-		
+		newLine = System.getProperty("line.separator");
 
-		newLine =  System.getProperty("line.separator");
+		newLine = System.getProperty("line.separator");
 	}
-	
-
 
 	private String getInfo() {
-
-		// TODO add your code
-		String info = String.format("Distance: %d \nCoins: %d \nCicle: %d \nTotal obstacles: %d \nTotal coins: %d", game.getVisibility(), game.getVisibility(), game.getVisibility(), game.getVisibility(), game.getVisibility());
-//		if (game.level != TEST) {
-//			
-//		}
+		
+		String info = String.format("Distance: %d \nCoins: %d \nCicle: %d \nTotal obstacles: %d \nTotal coins: %d",
+				game.getVisibility(), game.getVisibility(), game.getVisibility(), game.getVisibility(),
+				game.getVisibility());
+		
 		return info;
 	}
 
-	
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 
 		// Game Status
-		
+
 		str.append(getInfo());
-		
+
 		// Paint game
 
 		str.append(indentedRoadBorder);
@@ -86,11 +79,10 @@ public class GamePrinter {
 
 		for (int y = 0; y < game.getRoadWidth(); y++) {
 			str.append(this.margin).append(verticalDelimiter);
-			for (int x = 0; x < game.getVisibility(); x++) {
-				str.append(StringUtils.centre(game.positionToString(x, y), CELL_SIZE))
-						.append(verticalDelimiter);
+			for (int x = game.getPosition(); x < game.getVisibility(); x++) {
+				str.append(StringUtils.centre(game.positionToString(x, y), CELL_SIZE)).append(verticalDelimiter);
 			}
-			if (y <  game.getRoadWidth() - 1) {
+			if (y < game.getRoadWidth() - 1) {
 				str.append(this.indentedLlanesSeparator);
 			}
 		}
@@ -99,13 +91,12 @@ public class GamePrinter {
 		return str.toString();
 	}
 
-	
-	public String endMessage(){
-		
+	public String endMessage() {
+
 		String s = GAME_OVER_MSG;
-		
+
 		// TODO your code here
-		
+
 		return s;
 	}
 }

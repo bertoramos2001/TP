@@ -1,10 +1,12 @@
 package es.ucm.tp1.control;
 
+import java.util.Random;
+
 public enum Level {
 
 	TEST(10, 3, 8, 0.5, 0), EASY(30, 3, 8, 0.5, 0.5), HARD(100, 5, 6, 0.7, 0.3);
 
-	private int length;
+	public int length;
 
 	private int width;
 
@@ -13,6 +15,8 @@ public enum Level {
 	private double coinFrequency;
 
 	private double obstacleFrequency;
+
+	public static Random ran = new Random();
 
 	private Level(int length, int width, int visibility, double obstacleFrequency, double coinFrequency) {
 		this.length = length;
@@ -23,6 +27,19 @@ public enum Level {
 	}
 
 	// TODO fill your code
+
+	public int getRandomLane() {
+		int x = ran.nextInt(3);
+		return x;
+	}
+
+	public double coinFrequency() {
+		return this.coinFrequency;
+	}
+
+	public double obstacleFrequency() {
+		return this.obstacleFrequency;
+	}
 
 	public static Level valueOfIgnoreCase(String inputString) {
 		for (Level level : Level.values()) {
