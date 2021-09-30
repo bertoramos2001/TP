@@ -6,7 +6,7 @@ public enum Level {
 
 	TEST(10, 3, 8, 0.5, 0), EASY(30, 3, 8, 0.5, 0.5), HARD(100, 5, 6, 0.7, 0.3);
 
-	public int length;
+	private int length;
 
 	private int width;
 
@@ -61,5 +61,13 @@ public enum Level {
 			levelCount++;
 		}
 		return buffer.toString();
+	}
+	
+	public int getRoadWidth() {
+		return width;
+	}
+	
+	public int getRoadLength() {
+		return length;
 	}
 }

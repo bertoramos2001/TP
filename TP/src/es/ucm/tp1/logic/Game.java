@@ -5,17 +5,22 @@ import es.ucm.tp1.control.Level;
 public class Game {
 
 	private Player player;
-	private Obstacle obstacle; // aqui iran definidos las listas de monedas y obstaculos, que contendrán los
-								// objetos de monedas y obstáculos
-	private Coin coin;
+	private Obstacle obstacle; //No sé si obstacle y coin hay que importarlas aqui (los tengo para el info)
+	private Coin coin;		   //No sé si obstacle y coin hay que importarlas aqui (los tengo para el info)
 	private Level level;
+	private CoinList coinList;
+	private ObstacleList obstacleList;
 
 	public Game(long seed, Level level) {
 		// TODO
 		player = new Player(this);
 		this.level = level;
-		int roadLength = level.length;
+		obstacleList = new ObstacleList(level.getRoadWidth());
+		coinList = new CoinList(level.getRoadWidth());
+		
+		int roadLength = level.getRoadLength();
 
+		//TODO las funciones de try to add obstacle son funciones privadas porque son auxiliares
 		
 //		 for (int x = getVisibility() / 2; x < roadLength; x++) {
 //		 tryToAddObstacle(this, x, level.getRandomLane(), level.obstacleFrequency());
@@ -62,8 +67,8 @@ public class Game {
 		player.moveDown();
 	}
 
-	public String positionToString(int j, int i) {
-		if (player.playerIsInPosition(i, j))
+	public String positionToString(int x, int y) {
+		if (player.playerIsInPosition(x, y))
 			return ">";
 		else
 			return "";

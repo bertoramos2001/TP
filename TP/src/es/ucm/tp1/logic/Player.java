@@ -12,7 +12,7 @@ public class Player {
 	}
 
 	public void moveForward() {
-		y += 1;
+		x += 1;
 	}
 
 	public void moveUp() {
@@ -27,8 +27,8 @@ public class Player {
 		y += 1;
 	}
 
-	public boolean playerIsInPosition(int i, int j) {
-		return x == i && y == j;
+	public boolean playerIsInPosition(int x, int y) {
+		return this.x == x && this.y == y;
 	}
 
 	public int getPosition() {
