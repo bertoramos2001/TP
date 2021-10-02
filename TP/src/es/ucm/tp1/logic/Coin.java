@@ -4,6 +4,7 @@ public class Coin {
 	private int x, y;
 	private Game game;
 	public final static String INFO = "[Coin] gives 1 coin to the player";
+	private final String COIN_SYMBOL = "¢";
 
 	public Coin(Game game, int x, int y) {
 		this.game = game;
@@ -24,6 +25,11 @@ public class Coin {
 		
 		Coin coin = (Coin) obj;
 		return ((x == coin.x) && (y == coin.y));
+	}
+	
+	@Override
+	public String toString() {
+		return COIN_SYMBOL;
 	}
 	
 	public int getX() {

@@ -35,5 +35,9 @@ public class CoinList {
 		}
 		return null;
 	}
+	
+	public int getTotalCoins() {
+		return numCoins;
+	}
 
 }

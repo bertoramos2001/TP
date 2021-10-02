@@ -4,6 +4,7 @@ public class Obstacle {
 	private int x, y;
 	private Game game;
 	public final static String INFO = "[Obstacle] hits car";
+	private final String OBSTACLE_SYMBOL = "░";
 
 	public Obstacle(Game game, int x, int y) {
 		this.game = game;
@@ -24,6 +25,11 @@ public class Obstacle {
 		
 		Obstacle obstacle = (Obstacle) obj;
 		return ((x == obstacle.x) && (y == obstacle.y));
+	}
+	
+	@Override
+	public String toString() {
+		return OBSTACLE_SYMBOL;
 	}
 	
 	public int getX() {

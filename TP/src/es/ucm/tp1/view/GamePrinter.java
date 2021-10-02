@@ -57,8 +57,8 @@ public class GamePrinter {
 	private String getInfo() {
 		
 		String info = String.format("Distance: %d \nCoins: %d \nCicle: %d \nTotal obstacles: %d \nTotal coins: %d",
-				game.getVisibility(), game.getVisibility(), game.getVisibility(), game.getVisibility(),
-				game.getVisibility());
+				game.getVisibility(), game.getActualCoins(), game.getVisibility(), game.getTotalCoins(),
+				game.getTotalObstacles());
 		
 		return info;
 	}
@@ -96,6 +96,7 @@ public class GamePrinter {
 		String s = GAME_OVER_MSG;
 
 		// TODO your code here
+		//poner que si gana, mensaje de victoria, y si pierde, mensaje de derrota
 
 		return s;
 	}

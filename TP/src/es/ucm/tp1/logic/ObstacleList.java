@@ -35,4 +35,8 @@ public class ObstacleList {
 		}
 		return null;
 	}
+	
+	public int getTotalObstacles() {
+		return numObstacles;
+	}
 }
