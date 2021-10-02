@@ -16,8 +16,6 @@ public enum Level {
 
 	private double obstacleFrequency;
 
-	public static Random ran = new Random();
-
 	private Level(int length, int width, int visibility, double obstacleFrequency, double coinFrequency) {
 		this.length = length;
 		this.width = width;
@@ -27,11 +25,6 @@ public enum Level {
 	}
 
 	// TODO fill your code
-
-	public int getRandomLane() {
-		int x = ran.nextInt(3);
-		return x;
-	}
 
 	public double coinFrequency() {
 		return this.coinFrequency;

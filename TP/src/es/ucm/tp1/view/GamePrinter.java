@@ -57,8 +57,8 @@ public class GamePrinter {
 	private String getInfo() {
 		
 		String info = String.format("Distance: %d \nCoins: %d \nCicle: %d \nTotal obstacles: %d \nTotal coins: %d",
-				game.getVisibility(), game.getActualCoins(), game.getVisibility(), game.getTotalCoins(),
-				game.getTotalObstacles());
+				game.getVisibility(), game.getActualCoins(), game.getVisibility(), game.getTotalObstacles(),
+				game.getTotalCoins());
 		
 		return info;
 	}

@@ -1,5 +1,7 @@
 package es.ucm.tp1.logic;
 
+import java.util.Random;
+
 import es.ucm.tp1.control.Level;
 
 public class Game {
@@ -8,37 +10,49 @@ public class Game {
 	private Level level;
 	private CoinList coinList;
 	private ObstacleList obstacleList;
-	private Coin coin;
-	private Obstacle obstacle;
+	private Random rand;
 
 	public Game(long seed, Level level) {
-		// TODO
 		player = new Player(this);
 		this.level = level;
-		obstacleList = new ObstacleList(level.getRoadWidth());
-		coinList = new CoinList(level.getRoadWidth());
+		obstacleList = new ObstacleList(level.getRoadLength());
+		coinList = new CoinList(level.getRoadLength());
+		rand = new Random(seed);
+		//esto son adiciones de monedas y obstaculos hardcodeadas
+//		coinList.add(new Coin(this, 2, 2));
+//		obstacleList.add(new Obstacle(this, 3,2));
+		
 		
 		int roadLength = level.getRoadLength();
-		
-		
-		coinList.add(new Coin(this, 2, 2));
-		obstacleList.add(new Obstacle(this, 3,2));
-
-		//TODO las funciones de try to add obstacle son funciones privadas porque son auxiliares
-		
-//		 for (int x = getVisibility() / 2; x < roadLength; x++) {
-//		 tryToAddObstacle(this, x, level.getRandomLane(), level.obstacleFrequency());
-//		 tryToAddCoin(this, x, level.getRandomLane(), level.coinFrequency()); }
+		for (int x = getVisibility() / 2; x < roadLength; x++) {
+			tryToAddObstacle(this, x, getRandomLane(), level.obstacleFrequency());
+			tryToAddCoin(this, x, getRandomLane(), level.coinFrequency()); 
+		}
 		 
 	}
 
-	// private void tryToAddObstacle(Game game, int x, int randomLane, double
-	// obstacleFrequency) {}
-
-	// private void tryToAddCoin(Game game, int x, int randomLane, double
-	// coinFrequency) {}
-
-	// public boolean Random.nextDouble(){}
+	private void tryToAddObstacle(Game game, int x, int randomLane, double obstacleFrequency) {
+		if (rand.nextDouble() < obstacleFrequency) {
+			Obstacle obs = new Obstacle(game, x, randomLane);
+			obstacleList.add(obs);
+		}
+	}
+	
+	private void tryToAddCoin(Game game, int x, int randomLane, double coinFrequency) {
+		//si el double random es menor que la frecuencia y no hay ningún obstáculo, añadiremos la moneda
+		if ((rand.nextDouble() < coinFrequency) && (obstacleList.getObstacleInPosition(x, randomLane) == null)) {
+			Coin coin = new Coin(game, x, randomLane);
+			coinList.add(coin);
+		}
+	}
+	
+	public int getRandomLane() {
+		return (int) (getRandomNumber() * getRoadWidth());
+	}
+	
+	public Double getRandomNumber() {
+		return rand.nextDouble(); 
+	}
 
 	public void update() {
 		// TODO
@@ -75,11 +89,11 @@ public class Game {
 		if (player.playerIsInPosition(x, y))
 			return player.toString();
 		
-		coin = coinList.getCoinInPosition(x, y);
+		Coin coin = coinList.getCoinInPosition(x, y);
 		if (coin != null)
 			return coin.toString();
 		
-		obstacle = obstacleList.getObstacleInPosition(x, y);
+		Obstacle obstacle = obstacleList.getObstacleInPosition(x, y);
 		if (obstacle != null)
 			return obstacle.toString();
 		
