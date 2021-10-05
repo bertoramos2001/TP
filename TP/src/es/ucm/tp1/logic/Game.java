@@ -11,24 +11,29 @@ public class Game {
 	private CoinList coinList;
 	private ObstacleList obstacleList;
 	private Random rand;
+	private double startTime;
+	private boolean modoTest;
 
 	public Game(long seed, Level level) {
+		
 		player = new Player(this);
 		this.level = level;
 		obstacleList = new ObstacleList(level.getRoadLength());
 		coinList = new CoinList(level.getRoadLength());
 		rand = new Random(seed);
-		//esto son adiciones de monedas y obstaculos hardcodeadas
-//		coinList.add(new Coin(this, 2, 2));
-//		obstacleList.add(new Obstacle(this, 3,2));
+		startTime = 0;
+		modoTest = false;
 		
-		
+		AddObjects();
+				 
+	}
+	
+	private void AddObjects() {
 		int roadLength = level.getRoadLength();
 		for (int x = getVisibility() / 2; x < roadLength; x++) {
 			tryToAddObstacle(this, x, getRandomLane(), level.obstacleFrequency());
 			tryToAddCoin(this, x, getRandomLane(), level.coinFrequency()); 
 		}
-		 
 	}
 
 	private void tryToAddObstacle(Game game, int x, int randomLane, double obstacleFrequency) {
@@ -46,6 +51,22 @@ public class Game {
 		}
 	}
 	
+	public void testModeON(){
+		this.modoTest = true;
+	}
+	
+	public boolean testMode(){
+		return this.modoTest;
+	}
+	
+	public void startTimer(){
+		this.startTime = System.currentTimeMillis();
+	}
+	
+	public double getTime(){
+		return this.startTime;
+	}
+
 	public int getRandomLane() {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
@@ -56,21 +77,28 @@ public class Game {
 
 	public void update() {
 		// TODO
+		Coin coin = coinList.getCoinInPosition(player.getPositionX(), player.getPositionY());
+		if ((coin != null) && (coin.getX() == player.getPositionX()) && (coin.getY() == player.getPositionY())) {
+			player.addCoin();
+		}
 	}
 
+	public void restart() {
+		player.resetPosition();
+		player.deletePlayerCoins();
+	}
+	
 	public void toggleTest() {
-		// TODO
-		level = Level.TEST;
+		testModeON();
+		coinList.deleteCoinList();
 	}
 
 	public int getVisibility() {
-		// TODO: hacer función
-		return 8;
+		return level.getRoadVisibility() + player.getPositionX();
 	}
 
 	public int getRoadWidth() {
-		// TODO: hacer función
-		return 3;
+		return level.getRoadWidth();
 	}
 
 	public void moveForward() {
@@ -108,7 +136,7 @@ public class Game {
 	}
 
 	public int getPosition() {
-		return player.getPosition();
+		return player.getPositionX();
 	}
 
 	public int getActualCoins() {

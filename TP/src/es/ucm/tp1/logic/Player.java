@@ -1,14 +1,14 @@
 package es.ucm.tp1.logic;
 
 public class Player {
-	private int x, y, actualCoins; // TODO: faltan atributos
+	private int x, y, actualCoins;
 	private Game game;
 	public final static String INFO = "[Car] the racing car";
 	private final String PLAYER_SYMBOL = ">";
 
 	public Player(Game game) {
 		this.game = game;
-		x = 1;
+		x = 0;
 		y = 1;
 		actualCoins = 0;
 	}
@@ -18,17 +18,22 @@ public class Player {
 	}
 
 	public void moveUp() {
-		if (x > 0)
-			x -= 1;
-		y += 1;
+		if (y > 0)
+			y -= 1;
+		x += 1;
 	}
 
 	public void moveDown() {
-		if (x < 2)
-			x += 1;
-		y += 1;
+		if (y < 2)
+			y += 1;
+		x += 1;
 	}
 
+	public void resetPosition() {
+		x = 0;
+		y = 1;
+	}
+	
 	public boolean playerIsInPosition(int x, int y) {
 		return this.x == x && this.y == y;
 	}
@@ -38,11 +43,24 @@ public class Player {
 		return PLAYER_SYMBOL;
 	}
 
-	public int getPosition() {
+	public int getPositionX() {
+		return this.x;
+	}
+	
+	public int getPositionY() {
 		return this.y;
 	}
 	
 	public int getActualCoins() {
 		return actualCoins;
+	}
+	
+	public int addCoin(){
+		actualCoins += 1;
+		return actualCoins;	
+	}
+	
+	public void deletePlayerCoins() {
+		actualCoins = 0;
 	}
 }

@@ -34,7 +34,7 @@ public class Controller {
 	public Controller(Game game, Scanner scanner) {
 		this.game = game;
 		this.scanner = scanner;
-		this.printer = new GamePrinter(game);
+		this.printer = new GamePrinter(game);		
 	}
 
 	public void printGame() {
@@ -46,10 +46,8 @@ public class Controller {
 		System.out.println(printer.endMessage());
 	}
 
-	public void run() {
-		
-		long startTime = System.currentTimeMillis();
-		// TODO fill your code
+	public void run() {	
+		game.startTimer();
 		printGame();
 		boolean doExit = false;
 		while (!doExit) {
@@ -65,14 +63,17 @@ public class Controller {
 			case "none":
 			case "":
 				game.moveForward();
+				game.update();
 				printGame();
 				break;
 			case "q":
 				game.moveUp();
+				game.update();
 				printGame();
 				break;
 			case "a":
 				game.moveDown();
+				game.update();
 				printGame();
 				break;
 			case "h":
@@ -88,18 +89,21 @@ public class Controller {
 				break;
 			case "r":
 			case "reset":
-				//TODO programar el reset	
+				game.restart();
+				game.startTimer();
+				printGame();
 				break;
 			case "t":
 			case "test":
-				game.toggleTest();
+				game.testModeON();
+				printGame();
 				break;
 			default:
 				System.out.println("[ERROR] " + UNKNOWN_COMMAND_MSG);
 				break;
 			}
 		}
-		game.update();
+		//game.update();
 	}
 
 }

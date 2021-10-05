@@ -52,6 +52,8 @@ public class GamePrinter {
 		newLine = System.getProperty("line.separator");
 
 		newLine = System.getProperty("line.separator");
+		
+	
 	}
 
 	private String getInfo() {
@@ -62,15 +64,22 @@ public class GamePrinter {
 		
 		return info;
 	}
+	
+	private String getTimeInfo() {
+		String info = String.format("\nTime: %f", ((double)System.currentTimeMillis() - game.getTime()) / 1000);	
+		return info;
+	}
 
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 
 		// Game Status
-
 		str.append(getInfo());
-
+		
+		if(!game.testMode())
+			str.append(getTimeInfo());
+		
 		// Paint game
 
 		str.append(indentedRoadBorder);

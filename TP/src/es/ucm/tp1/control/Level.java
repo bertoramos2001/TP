@@ -63,4 +63,8 @@ public enum Level {
 	public int getRoadLength() {
 		return length;
 	}
+	
+	public int getRoadVisibility() {
+		return visibility;
+	}
 }

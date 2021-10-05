@@ -14,6 +14,12 @@ public class CoinList {
 		numCoins += 1;
 	}
 	
+	public void deleteCoinList() {
+		for(int i = 0; i < numCoins; i++)
+		coins[i] = null;
+		numCoins = 0;
+	}
+	
 	public void remove(Coin c) {
 		 Coin aux[] = new Coin[coins.length];
 		 int i = 0;
