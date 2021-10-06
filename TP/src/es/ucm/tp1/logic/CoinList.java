@@ -24,7 +24,7 @@ public class CoinList {
 		 Coin aux[] = new Coin[coins.length];
 		 int i = 0;
 		 for (Coin actualCoin : coins) {
-			 if ( actualCoin != c) {
+			 if ((actualCoin != c) && (actualCoin != null)) {
 				 aux[i] = actualCoin;
 				 i += 1;
 			 }

@@ -10,6 +10,10 @@ public class Controller {
 	private static final String PROMPT = "Command > ";
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
+	
+	private final int NUM_USER_EXIT = 1;
+	private final int NUM_USER_WIN = 2;
+	private final int NUM_USER_CRASH = 3;
 
 	/* @formatter:off */
 	private static final String[] HELP = new String[] {
@@ -42,8 +46,8 @@ public class Controller {
 	}
 	
 
-	public void printEndMessage() {
-		System.out.println(printer.endMessage());
+	public void printEndMessage(int numError) {
+		System.out.println(printer.endMessage(numError));
 	}
 
 	public void run() {	
@@ -51,29 +55,27 @@ public class Controller {
 		printGame();
 		boolean doExit = false;
 		while (!doExit) {
+			game.addCicle();
 			System.out.print(PROMPT);
 			String line = scanner.nextLine();
 			switch (line.toLowerCase()) {
 			case "e":
 			case "exit":
-				System.out.println("[GAME OVER] Player leaves the game");
+				printEndMessage(NUM_USER_EXIT);
 				doExit = true;
 				break;
 			case "n":
 			case "none":
 			case "":
 				game.moveForward();
-				game.update();
 				printGame();
 				break;
 			case "q":
 				game.moveUp();
-				game.update();
 				printGame();
 				break;
 			case "a":
 				game.moveDown();
-				game.update();
 				printGame();
 				break;
 			case "h":
@@ -102,8 +104,14 @@ public class Controller {
 				System.out.println("[ERROR] " + UNKNOWN_COMMAND_MSG);
 				break;
 			}
+			if (game.getPosition() == game.getRoadLength() + 1) {
+				printEndMessage(NUM_USER_WIN);
+				doExit = true;
+			} else if (!game.getPlayerAlive()) {
+				printEndMessage(NUM_USER_CRASH);
+				doExit = true;
+			}
 		}
-		//game.update();
 	}
 
 }

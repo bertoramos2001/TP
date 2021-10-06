@@ -4,29 +4,48 @@ public class Player {
 	private int x, y, actualCoins;
 	private Game game;
 	public final static String INFO = "[Car] the racing car";
-	private final String PLAYER_SYMBOL = ">";
+	private final String ALIVE_PLAYER_SYMBOL = ">";
+	private final String DEAD_PLAYER_SYMBOL = "@";
+	private boolean alive;
 
 	public Player(Game game) {
 		this.game = game;
 		x = 0;
 		y = 1;
 		actualCoins = 0;
+		alive = true;
+	}
+	
+	private void doCollisions() {
+		Coin coin = game.getCoinInPosition(x, y);
+		if (coin != null) {
+			addCoin();
+			game.removeCoin(coin);
+		}
+		
+		Obstacle obs = game.getObstacleInPosition(x, y);
+		if (obs != null) {
+			alive = false;
+		}
 	}
 
 	public void moveForward() {
 		x += 1;
+		doCollisions();
 	}
 
 	public void moveUp() {
 		if (y > 0)
 			y -= 1;
 		x += 1;
+		doCollisions();
 	}
 
 	public void moveDown() {
 		if (y < 2)
 			y += 1;
 		x += 1;
+		doCollisions();
 	}
 
 	public void resetPosition() {
@@ -40,7 +59,9 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return PLAYER_SYMBOL;
+		if (alive)
+			return ALIVE_PLAYER_SYMBOL;
+		return DEAD_PLAYER_SYMBOL;
 	}
 
 	public int getPositionX() {
@@ -55,12 +76,15 @@ public class Player {
 		return actualCoins;
 	}
 	
-	public int addCoin(){
+	public void addCoin(){
 		actualCoins += 1;
-		return actualCoins;	
 	}
 	
 	public void deletePlayerCoins() {
 		actualCoins = 0;
+	}
+	
+	public boolean getAlive() {
+		return alive;
 	}
 }

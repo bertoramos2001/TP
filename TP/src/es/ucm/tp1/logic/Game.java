@@ -13,6 +13,8 @@ public class Game {
 	private Random rand;
 	private double startTime;
 	private boolean modoTest;
+	private final String VERTICAL_DELIMITER = "|";
+	private int cicleNum;
 
 	public Game(long seed, Level level) {
 		
@@ -23,6 +25,7 @@ public class Game {
 		rand = new Random(seed);
 		startTime = 0;
 		modoTest = false;
+		cicleNum = 0;
 		
 		AddObjects();
 				 
@@ -50,7 +53,7 @@ public class Game {
 			coinList.add(coin);
 		}
 	}
-	
+	//Métodos para gestionar modo test
 	public void testModeON(){
 		this.modoTest = true;
 	}
@@ -59,6 +62,11 @@ public class Game {
 		return this.modoTest;
 	}
 	
+	public void toggleTest() {
+		testModeON();
+		coinList.deleteCoinList();
+	}
+	//Métodos para random y tiempo actual
 	public void startTimer(){
 		this.startTime = System.currentTimeMillis();
 	}
@@ -77,22 +85,14 @@ public class Game {
 
 	public void update() {
 		// TODO
-		Coin coin = coinList.getCoinInPosition(player.getPositionX(), player.getPositionY());
-		if ((coin != null) && (coin.getX() == player.getPositionX()) && (coin.getY() == player.getPositionY())) {
-			player.addCoin();
-		}
+		
 	}
 
 	public void restart() {
 		player.resetPosition();
-		player.deletePlayerCoins();
+		//player.deletePlayerCoins();
 	}
-	
-	public void toggleTest() {
-		testModeON();
-		coinList.deleteCoinList();
-	}
-
+	//Métodos para obtener parámetros del nivel
 	public int getVisibility() {
 		return level.getRoadVisibility() + player.getPositionX();
 	}
@@ -100,7 +100,23 @@ public class Game {
 	public int getRoadWidth() {
 		return level.getRoadWidth();
 	}
-
+	
+	public int getRoadLength() {
+		return level.getRoadLength();
+	}
+	
+	public int getDistanceToEnd() {
+		return getRoadLength() - getPosition();
+	}
+	
+	public int getCicle() {
+		return cicleNum;
+	}
+	
+	public void addCicle() {
+		cicleNum += 1;
+	}
+	//Métodos para mover jugador
 	public void moveForward() {
 		player.moveForward();
 	}
@@ -112,7 +128,7 @@ public class Game {
 	public void moveDown() {
 		player.moveDown();
 	}
-
+	//Métodos para obtener información de objetos
 	public String positionToString(int x, int y) {
 		if (player.playerIsInPosition(x, y))
 			return player.toString();
@@ -125,16 +141,19 @@ public class Game {
 		if (obstacle != null)
 			return obstacle.toString();
 		
+		if (x == getRoadLength()) 
+			return VERTICAL_DELIMITER;
+		
 		return "";
 		
 	}
-
+	
 	public void getObjectsInfo() {
 		System.out.println(Player.INFO);
 		System.out.println(Coin.INFO);
 		System.out.println(Obstacle.INFO);
 	}
-
+	
 	public int getPosition() {
 		return player.getPositionX();
 	}
@@ -149,5 +168,21 @@ public class Game {
 	
 	public int getTotalObstacles() {
 		return obstacleList.getTotalObstacles();
+	}
+	
+	public Coin getCoinInPosition(int x, int y) {
+		return coinList.getCoinInPosition(x, y);
+	}
+	
+	public Obstacle getObstacleInPosition(int x, int y) {
+		return obstacleList.getObstacleInPosition(x, y);
+	}
+	
+	public boolean getPlayerAlive() {
+		return player.getAlive();
+	}
+	
+	public void removeCoin(Coin coin) {
+		coinList.remove(coin);
 	}
 }
