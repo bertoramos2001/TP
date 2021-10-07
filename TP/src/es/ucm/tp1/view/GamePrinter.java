@@ -8,7 +8,7 @@ public class GamePrinter {
 	private static final String SPACE = " ";
 
 	private static final String VERTICAL_DELIMITER = "|";
-
+	
 	private static final String ROAD_BORDER_PATTERN = "═";
 
 	private static final String LANE_DELIMITER_PATTERN = "─";
@@ -58,15 +58,15 @@ public class GamePrinter {
 
 	private String getInfo() {
 		
-		String info = String.format("Distance: %d \nCoins: %d \nCicle: %d \nTotal obstacles: %d \nTotal coins: %d",
-				game.getDistanceToEnd(), game.getActualCoins(), game.getCicle(), game.getTotalObstacles(),
+		String info = String.format("Distance: %d\nCoins: %d\nCycle: %d\nTotal obstacles: %d\nTotal coins: %d",
+				game.getDistanceToEnd(), game.getActualCoins(), game.getCycle(), game.getTotalObstacles(),
 				game.getTotalCoins());
 		
 		return info;
 	}
 	
 	private String getTimeInfo() {
-		String info = String.format("\nTime: %f", ((double)System.currentTimeMillis() - game.getTime()) / 1000);	
+		String info = String.format("\nElapsed Time: %.2f s", ((double)System.currentTimeMillis() - game.getTime()) / 1000);	
 		return info;
 	}
 

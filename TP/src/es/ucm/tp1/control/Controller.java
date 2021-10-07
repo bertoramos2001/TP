@@ -8,6 +8,7 @@ import es.ucm.tp1.view.GamePrinter;
 public class Controller {
 
 	private static final String PROMPT = "Command > ";
+	private static final String DEBUG_MSG = "[DEBUG] Executing: ";
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 	
@@ -19,7 +20,7 @@ public class Controller {
 	private static final String[] HELP = new String[] {
 		"Available commands:",
 		"[h]elp: show this help",
-		"[i]nfo: prints gameobjet info",
+		"[i]nfo: prints gameobject info",
 		"[n]one | []: update",
 		"[q]: go up",
 		"[a]: go down",
@@ -55,9 +56,10 @@ public class Controller {
 		printGame();
 		boolean doExit = false;
 		while (!doExit) {
-			game.addCicle();
-			System.out.print(PROMPT);
+			System.out.println(PROMPT);
+			System.out.print(DEBUG_MSG);
 			String line = scanner.nextLine();
+			System.out.print(line + "\n");
 			switch (line.toLowerCase()) {
 			case "e":
 			case "exit":
@@ -67,15 +69,15 @@ public class Controller {
 			case "n":
 			case "none":
 			case "":
-				game.moveForward();
+				game.update("n");
 				printGame();
 				break;
 			case "q":
-				game.moveUp();
+				game.update("q");
 				printGame();
 				break;
 			case "a":
-				game.moveDown();
+				game.update("a");
 				printGame();
 				break;
 			case "h":
@@ -101,7 +103,7 @@ public class Controller {
 				printGame();
 				break;
 			default:
-				System.out.println("[ERROR] " + UNKNOWN_COMMAND_MSG);
+				System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG + "\n");
 				break;
 			}
 			if (game.getPosition() == game.getRoadLength() + 1) {
@@ -111,6 +113,7 @@ public class Controller {
 				printEndMessage(NUM_USER_CRASH);
 				doExit = true;
 			}
+			game.addCycle();
 		}
 	}
 

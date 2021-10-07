@@ -24,8 +24,6 @@ public enum Level {
 		this.coinFrequency = coinFrequency;
 	}
 
-	// TODO fill your code
-
 	public double coinFrequency() {
 		return this.coinFrequency;
 	}

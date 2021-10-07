@@ -11,8 +11,8 @@ public class Player {
 	public Player(Game game) {
 		this.game = game;
 		x = 0;
-		y = 1;
-		actualCoins = 0;
+		y = game.getRoadWidth() / 2;
+		actualCoins = 5;
 		alive = true;
 	}
 	
@@ -42,7 +42,7 @@ public class Player {
 	}
 
 	public void moveDown() {
-		if (y < 2)
+		if (y < game.getRoadWidth() - 1)
 			y += 1;
 		x += 1;
 		doCollisions();

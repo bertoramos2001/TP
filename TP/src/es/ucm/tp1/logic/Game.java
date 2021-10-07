@@ -2,6 +2,7 @@ package es.ucm.tp1.logic;
 
 import java.util.Random;
 
+import es.ucm.tp1.control.Controller;
 import es.ucm.tp1.control.Level;
 
 public class Game {
@@ -13,13 +14,16 @@ public class Game {
 	private Random rand;
 	private double startTime;
 	private boolean modoTest;
-	private final String VERTICAL_DELIMITER = "|";
+	private final String FINISH_LINE = "¦";
+	private final String MOVE_FORWARD_COM = "n";
+	private final String MOVE_UP_COM = "q";
+	private final String MOVE_DOWN_COM = "a";
 	private int cicleNum;
 
 	public Game(long seed, Level level) {
 		
-		player = new Player(this);
 		this.level = level;
+		player = new Player(this);
 		obstacleList = new ObstacleList(level.getRoadLength());
 		coinList = new CoinList(level.getRoadLength());
 		rand = new Random(seed);
@@ -83,11 +87,6 @@ public class Game {
 		return rand.nextDouble(); 
 	}
 
-	public void update() {
-		// TODO
-		
-	}
-
 	public void restart() {
 		player.resetPosition();
 		//player.deletePlayerCoins();
@@ -109,14 +108,23 @@ public class Game {
 		return getRoadLength() - getPosition();
 	}
 	
-	public int getCicle() {
+	public int getCycle() {
 		return cicleNum;
 	}
 	
-	public void addCicle() {
+	public void addCycle() {
 		cicleNum += 1;
 	}
 	//Métodos para mover jugador
+	public void update(String com) {
+		if (com == MOVE_FORWARD_COM) {
+			moveForward();
+		} else if (com == MOVE_UP_COM) {
+			moveUp();
+		} else if (com == MOVE_DOWN_COM) {
+			moveDown();
+		}
+	}
 	public void moveForward() {
 		player.moveForward();
 	}
@@ -142,7 +150,7 @@ public class Game {
 			return obstacle.toString();
 		
 		if (x == getRoadLength()) 
-			return VERTICAL_DELIMITER;
+			return FINISH_LINE;
 		
 		return "";
 		
