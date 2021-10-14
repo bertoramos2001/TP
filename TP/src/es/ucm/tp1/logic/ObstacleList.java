@@ -2,7 +2,7 @@ package es.ucm.tp1.logic;
 
 public class ObstacleList {
 	private Obstacle obstacles[];
-	private int numObstacles;
+	private static int numObstacles;
 
 	public ObstacleList(int arrLength) {
 		obstacles = new Obstacle[arrLength];
