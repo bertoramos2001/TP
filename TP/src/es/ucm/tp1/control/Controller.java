@@ -63,20 +63,24 @@ public class Controller {
 			switch (line.toLowerCase()) {
 			case "e":
 			case "exit":
+				game.addCycle();
 				printEndMessage(NUM_USER_EXIT);
 				doExit = true;
 				break;
 			case "n":
 			case "none":
 			case "":
+				game.addCycle();
 				game.update("n");
 				printGame();
 				break;
 			case "q":
+				game.addCycle();
 				game.update("q");
 				printGame();
 				break;
 			case "a":
+				game.addCycle();
 				game.update("a");
 				printGame();
 				break;
@@ -113,7 +117,6 @@ public class Controller {
 				printEndMessage(NUM_USER_CRASH);
 				doExit = true;
 			}
-			game.addCycle();
 		}
 	}
 

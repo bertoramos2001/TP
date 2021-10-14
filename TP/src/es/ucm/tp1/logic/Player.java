@@ -7,12 +7,13 @@ public class Player {
 	private final String ALIVE_PLAYER_SYMBOL = ">";
 	private final String DEAD_PLAYER_SYMBOL = "@";
 	private boolean alive;
+	private final int INITIAL_COINS = 5;
 
 	public Player(Game game) {
 		this.game = game;
 		x = 0;
 		y = game.getRoadWidth() / 2;
-		actualCoins = 5;
+		actualCoins = INITIAL_COINS;
 		alive = true;
 	}
 	

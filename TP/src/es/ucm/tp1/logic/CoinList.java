@@ -2,7 +2,7 @@ package es.ucm.tp1.logic;
 
 public class CoinList {
 	private Coin coins[];
-	private int numCoins;
+	private static int numCoins;
 
 	public CoinList(int arrLength) {
 		coins = new Coin[arrLength];
