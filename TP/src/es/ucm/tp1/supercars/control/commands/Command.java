@@ -23,6 +23,7 @@ public abstract class Command {
 		Command command = null;
 		// TODO Add your code
 		System.out.format("[ERROR]: %s%n%n", UNKNOWN_COMMAND_MSG);
+		return command;
 	}
 
 	private final String name;
