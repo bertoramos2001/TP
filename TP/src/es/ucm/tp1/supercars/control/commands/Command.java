@@ -2,13 +2,11 @@ package es.ucm.tp1.supercars.control.commands;
 
 import java.util.Arrays;
 
-import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.Game;
 
 public abstract class Command {
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
-
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
 
 	/* @formatter:off */
@@ -16,10 +14,16 @@ public abstract class Command {
 		new HelpCommand(),
 		new InfoCommand(),
 		new UpdateCommand(),
+		new MoveUpCommand(),
+		new MoveDownCommand(),
+		new ResetCommand(),
+		new TestCommand(),
+		new ExitCommand()
 	};
 	/* @formatter:on */
 
-	public static Command getCommand(String[] commandWords, Level level) {
+	//TODO: Esta función tenía dos parámetros; el array de string y el level, pero al llamarlo en el controller, no se usaba level (si finalmente se usara, habria que hacer import del elvel tambien)
+	public static Command getCommand(String[] commandWords) {
 		Command command = null;
 		// TODO Add your code
 		System.out.format("[ERROR]: %s%n%n", UNKNOWN_COMMAND_MSG);
@@ -27,11 +31,8 @@ public abstract class Command {
 	}
 
 	private final String name;
-
 	private final String shortcut;
-
 	private final String details;
-
 	private final String help;
 
 	public Command(String name, String shortcut, String details, String help) {

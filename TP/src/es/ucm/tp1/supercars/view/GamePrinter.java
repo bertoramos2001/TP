@@ -1,5 +1,10 @@
 package es.ucm.tp1.supercars.view;
 
-public class GamePrinter {
+import es.ucm.tp1.supercars.logic.Game;
 
+public class GamePrinter {
+	
+	public GamePrinter(Game game) {
+		
+	}
 }

@@ -6,9 +6,7 @@ import es.ucm.tp1.supercars.logic.Game;
 public abstract class GameObject implements Collider {
 
 	protected int x, y;
-
 	protected Game game;
-
 	protected String symbol;
 
 	public GameObject(Game game, int x, int y) {

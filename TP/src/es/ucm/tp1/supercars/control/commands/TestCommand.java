@@ -1,16 +1,14 @@
 package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.logic.Game;
-import es.ucm.tp1.supercars.utils.StringUtils;
 
-public class HelpCommand extends Command {
+public class TestCommand extends Command {
+	private static final String NAME = "test";
+	private static final String DETAILS = "[t]est";
+	private static final String SHORTCUT = "t";
+	private static final String HELP = "enables test mode";
 
-	private static final String NAME = "help";
-	private static final String DETAILS = "[h]elp";
-	private static final String SHORTCUT = "h";
-	private static final String HELP = "show this help";
-
-	public HelpCommand() {
+	public TestCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 

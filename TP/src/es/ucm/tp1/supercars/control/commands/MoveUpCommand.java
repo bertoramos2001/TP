@@ -2,14 +2,14 @@ package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.logic.Game;
 
-public class UpdateCommand extends Command {
+public class MoveUpCommand extends Command {
 
-	private static final String NAME = "update";
-	private static final String DETAILS = "[n]one | []";
-	private static final String SHORTCUT = "n";
-	private static final String HELP = "update";
+	private static final String NAME = "up";
+	private static final String DETAILS = "[q]";
+	private static final String SHORTCUT = "q";
+	private static final String HELP = "go up";
 
-	public UpdateCommand() {
+	public MoveUpCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 
