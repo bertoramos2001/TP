@@ -1,6 +1,7 @@
 package es.ucm.tp1.supercars.logic;
 
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
+import es.ucm.tp1.supercars.logic.gameobjects.Player;
 
 public class Game {
 	
@@ -26,20 +27,9 @@ public class Game {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	//TODO ESTO ESTÁ MAL, DEBERIA HABER UN SOLO TRY TO ADD OBJECT INDIFERENTEMENTE DEL TIPO DE OBJETO
-	public void tryToAddObject(Obstacle obstacle, double obstacleFrequency) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void tryToAddObject(Coin coin, double coinFrequency) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void tryToAddObject (GameObject o, double frequency) {
-		
+		//TODO: hacer codigo
 	}
 
 	public boolean isFinished() {
@@ -48,8 +38,7 @@ public class Game {
 	}
 
 	public GameObject getObjectInPosition(int x, int y) {
-		// TODO Auto-generated method stub
-		return null;
+		return gameObjectContainer.getObjectInPosition(x, y);
 	}
 
 	public String positionToString(int x, int y) {

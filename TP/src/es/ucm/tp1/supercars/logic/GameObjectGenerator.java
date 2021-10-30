@@ -1,6 +1,8 @@
 package es.ucm.tp1.supercars.logic;
 
 import es.ucm.tp1.supercars.control.Level;
+import es.ucm.tp1.supercars.logic.gameobjects.Coin;
+import es.ucm.tp1.supercars.logic.gameobjects.Obstacle;
 
 // TODO add your imports
 

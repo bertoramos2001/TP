@@ -10,4 +10,9 @@ public class GameObjectContainer {
 	public GameObjectContainer() {
 		gameObjects = new ArrayList<GameObject>();
 	}
+
+	public GameObject getObjectInPosition(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

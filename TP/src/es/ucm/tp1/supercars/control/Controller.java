@@ -11,7 +11,6 @@ public class Controller {
 	private static final String PROMPT = "Command > ";
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 	
-	
 	private Game game;
 	private GamePrinter printer;
 	private Scanner scanner;

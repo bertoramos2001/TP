@@ -1,12 +1,11 @@
 package es.ucm.tp1.supercars.logic;
 
+import es.ucm.tp1.supercars.logic.gameobjects.Player;
 
 public interface Collider {
 
 	boolean doCollision();
 
-	default boolean receiveCollision(Player player) {
-		return false;
-	}
+	boolean receiveCollision(Player player);
 
 }
