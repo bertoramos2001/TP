@@ -110,4 +110,8 @@ public Game(long seed, Level level) {
 	public double getInitialTime() {
 		return this.initialTime;
 	}
+	
+	public void toggleTest() {
+		//TODO: FALTA IMPLEMENTARLO, ACTIVA EL MODO TEST
+	}
 }
