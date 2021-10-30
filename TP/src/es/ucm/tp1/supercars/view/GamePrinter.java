@@ -54,7 +54,7 @@ public class GamePrinter {
 	}
 	
 	private String getTimeInfo() {
-		String info = String.format("\nElapsed Time: %.2f s", ((double)System.currentTimeMillis() - game.getTime()) / 1000);	
+		String info = String.format("\nElapsed Time: %.2f s", ((double)System.currentTimeMillis() - game.getInitialTime()) / 1000);	
 		return info;
 	}
 	

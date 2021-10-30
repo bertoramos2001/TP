@@ -6,7 +6,9 @@ import es.ucm.tp1.supercars.logic.Game;
 public class Player extends GameObject {
 	
 	private Game game;
-	private int x, y;
+	private int x, y, actualCoins;
+	private final int INITIAL_COINS = 5;
+	boolean alive;
 	
 	public Player (Game game, int x, int y) {
 		super(game, x, y);
@@ -14,6 +16,7 @@ public class Player extends GameObject {
 		this.game = game;
 		this.x = x;
 		this.y = y;
+		actualCoins = INITIAL_COINS;
 	}
 
 	@Override
@@ -49,5 +52,14 @@ public class Player extends GameObject {
 	public void onDelete() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int getPositionX() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public int getActualCoins() {
+		return actualCoins;
 	}
 }
