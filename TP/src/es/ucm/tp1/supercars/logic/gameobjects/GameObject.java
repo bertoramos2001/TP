@@ -40,9 +40,7 @@ public abstract class GameObject implements Collider {
 		return y;
 	}
 
-	public boolean isAlive() {
-		return true;
-	}
+	public abstract boolean isAlive();
 
 	public abstract void onEnter();
 

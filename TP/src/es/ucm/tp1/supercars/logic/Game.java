@@ -70,7 +70,9 @@ public Game(long seed, Level level) {
 	}
 	
 	public void tryToAddObject (GameObject o, double frequency) {
-		//TODO: FALTA IMPLEMENTARLO
+		if ((getRandomNumber() < frequency) && (getObjectInPosition(o.getX(), o.getY()) == null)) {
+			gameObjectContainer.add(o);
+		}
 	}
 	
 	//MÉTODOS PARA OBTENER INFORMACIÓN Y MANEJAR OBJETOS

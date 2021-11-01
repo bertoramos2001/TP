@@ -8,7 +8,7 @@ public class Player extends GameObject {
 	private Game game;
 	private int x, y, actualCoins;
 	private final int INITIAL_COINS = 5;
-	boolean alive;
+	private boolean alive = true;
 	
 	public Player (Game game, int x, int y) {
 		super(game, x, y);
@@ -44,8 +44,8 @@ public class Player extends GameObject {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		x += 1;
+		doCollision();
 	}
 
 	@Override
@@ -55,11 +55,23 @@ public class Player extends GameObject {
 	}
 
 	public int getPositionX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.x;
 	}
 	
 	public int getActualCoins() {
 		return actualCoins;
+	}
+	
+	public void addCoin() {
+		actualCoins += 1;
+	}
+	
+	public void setDead() {
+		alive = false;
+	}
+
+	@Override
+	public boolean isAlive() {
+		return alive;
 	}
 }

@@ -15,4 +15,21 @@ public class GameObjectContainer {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public void add(GameObject o) {
+		gameObjects.add(o);
+	}
+	
+	public void deleteDead() {
+		ArrayList<GameObject> aux = new ArrayList<GameObject>();
+		
+		for (GameObject o : gameObjects) {
+			if (o.isAlive()) {
+				aux.add(o);
+			} else {
+				o.onDelete();
+			}
+		}
+		gameObjects = aux;
+	}
 }

@@ -4,30 +4,31 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class Obstacle extends GameObject {
 	
+	private static int numObstacles;
+	
 	public Obstacle (Game game, int x, int lane) {
 		super(game, x, lane);
 	}
 
 	public static void reset() {
-		// TODO Auto-generated method stub
+		numObstacles = 0;
 		
 	}
 
 	@Override
 	public boolean doCollision() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
 	public boolean receiveCollision(Player player) {
-		// TODO Auto-generated method stub
+		player.setDead();
 		return false;
 	}
 
 	@Override
 	public void onEnter() {
-		// TODO Auto-generated method stub
+		numObstacles++;
 		
 	}
 
@@ -41,5 +42,11 @@ public class Obstacle extends GameObject {
 	public void onDelete() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean isAlive() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 }

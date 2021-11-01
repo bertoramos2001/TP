@@ -4,30 +4,34 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class Coin extends GameObject {
 	
+	private static int numCoins;
+	private boolean alive = true;
+	
 	public Coin (Game game, int x, int lane) {
 		super(game, x, lane);
 	}
 
 	public static void reset() {
-		// TODO Auto-generated method stub
+		numCoins = 0;
 		
 	}
 
 	@Override
 	public boolean doCollision() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
 	public boolean receiveCollision(Player player) {
-		// TODO Auto-generated method stub
-		return false;
+		player.addCoin();
+		this.alive = false;
+		
+		return true;
 	}
 
 	@Override
 	public void onEnter() {
-		// TODO Auto-generated method stub
+		numCoins++;
 		
 	}
 
@@ -39,7 +43,12 @@ public class Coin extends GameObject {
 
 	@Override
 	public void onDelete() {
-		// TODO Auto-generated method stub
+		numCoins--;
 		
+	}
+
+	@Override
+	public boolean isAlive() {
+		return alive;
 	}
 }
