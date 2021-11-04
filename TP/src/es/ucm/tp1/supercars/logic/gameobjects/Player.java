@@ -20,6 +20,7 @@ public class Player extends GameObject {
 		actualCoins = INITIAL_COINS;
 	}
 
+	//MÉTODOS QUE GESTIONAN LAS COLISIONES
 	@Override
 	public boolean doCollision() {
 		Collider other = game.getObjectInPosition(x, y);
@@ -33,14 +34,30 @@ public class Player extends GameObject {
 	
 	@Override
 	public boolean receiveCollision(Player player) {
-		// TODO Auto-generated method stub
 		return false;
 	}
-
+	//MÉTODOS QUE GESTIONAN LOS EVENTOS
 	@Override
 	public void onEnter() {
-		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void onDelete() {
+	}
+	
+	//MÉTODOS QUE GESTIONAN EL MOVIMIENTO DEL JUGADOR
+	public void moveDown() {
+		if (y < game.getRoadWidth() - 1)
+			y += 1;
 		
+		update();
+	}
+	
+	public void moveUp() {
+		if (y > 0)
+			y -= 1;
+		
+		update();
 	}
 
 	@Override
@@ -48,13 +65,8 @@ public class Player extends GameObject {
 		x += 1;
 		doCollision();
 	}
-
-	@Override
-	public void onDelete() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
+	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL PLAYER
 	public int getPositionX() {
 		return this.x;
 	}
@@ -63,16 +75,17 @@ public class Player extends GameObject {
 		return actualCoins;
 	}
 	
+	@Override
+	public boolean isAlive() {
+		return alive;
+	}
+	
+	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL PLAYER
 	public void addCoin() {
 		actualCoins += 1;
 	}
 	
 	public void setDead() {
 		alive = false;
-	}
-
-	@Override
-	public boolean isAlive() {
-		return alive;
 	}
 }

@@ -4,7 +4,7 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class UpdateCommand extends Command {
 
-	private static final String NAME = "update";
+	private static final String NAME = "none";
 	private static final String DETAILS = "[n]one | []";
 	private static final String SHORTCUT = "n";
 	private static final String HELP = "update";

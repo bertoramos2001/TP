@@ -14,12 +14,7 @@ public class ExitCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		StringBuilder buffer = new StringBuilder("Available commands:");
-
-		// TODO Add your code
-
-		System.out.println(buffer.toString());
-
+		game.gameOver();
 		return false;
 	}
 }

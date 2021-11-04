@@ -12,12 +12,8 @@ public class Coin extends GameObject {
 	public Coin (Game game, int x, int lane) {
 		super(game, x, lane);
 	}
-
-	public static void reset() {
-		numCoins = 0;
-		
-	}
-
+	
+	//MÉTODOS QUE GESTIONAN LAS COLISIONES
 	@Override
 	public boolean doCollision() {
 		return false;
@@ -30,25 +26,22 @@ public class Coin extends GameObject {
 		
 		return true;
 	}
-
+	//MÉTODOS QUE GESTIONAN LOS EVENTOS
 	@Override
 	public void onEnter() {
 		numCoins++;
-		
 	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void onDelete() {
 		numCoins--;
 		
 	}
-
+	//MÉTODOS QUE GESTIONAN EL MOVIMIENTO DEL JUGADOR (en este caso nada)
+	@Override
+	public void update() {
+	}
+	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL COIN
 	@Override
 	public boolean isAlive() {
 		return alive;
@@ -56,5 +49,10 @@ public class Coin extends GameObject {
 
 	public static int getTotalCoins() {
 		return numCoins;
+	}
+	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL COIN
+	public static void reset() {
+		numCoins = 0;
+		
 	}
 }

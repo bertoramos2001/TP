@@ -10,15 +10,15 @@ public abstract class Command {
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
 
 	/* @formatter:off */
-	private static final Command[] AVAILABLE_COMMANDS = {
-		new HelpCommand(),
-		new InfoCommand(),
-		new UpdateCommand(),
-		new MoveUpCommand(),
-		new MoveDownCommand(),
-		new ResetCommand(),
-		new TestCommand(),
-		new ExitCommand()
+	protected static final Command[] AVAILABLE_COMMANDS = {
+			new HelpCommand(),
+			new InfoCommand(),
+			new UpdateCommand(),
+			new MoveUpCommand(),
+			new MoveDownCommand(),
+			new ExitCommand(),
+			new ResetCommand(),
+			new TestCommand()
 	};
 	/* @formatter:on */
 
@@ -60,6 +60,8 @@ public abstract class Command {
 		return null;
 	}
 
-	// TODO Add your code
+	public String helpText(){
+		return details +": "+ help +"\n";
+	}
 
 }

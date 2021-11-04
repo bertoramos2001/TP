@@ -94,6 +94,16 @@ public Game(long seed, Level level) {
 	public void update() {
 		player.update();
 	}
+	
+	public void movePlayerDown() {
+		player.moveDown();
+		
+	}
+	
+	public void movePlayerUp() {
+		player.moveUp();
+		
+	}
 
 	
 	//MÉTODOS QUE MANEJAN INFORMACIÓN DEL JUEGO
@@ -110,6 +120,10 @@ public Game(long seed, Level level) {
 	}
 	
 	public void toggleTest() {
-		//TODO: FALTA IMPLEMENTARLO, ACTIVA EL MODO TEST
+		modoTest = !modoTest;
+	}
+
+	public void gameOver() {
+		gameFinished = true;
 	}
 }

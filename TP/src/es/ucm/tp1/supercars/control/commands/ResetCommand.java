@@ -22,4 +22,12 @@ public class ResetCommand extends Command {
 
 		return false;
 	}
+	
+	@Override
+	protected Command parse(String[] commandWords) {
+		if (commandWords.length == 3) {
+			//TODO sin acabar
+		}
+		return super.parse(commandWords);
+	}
 }

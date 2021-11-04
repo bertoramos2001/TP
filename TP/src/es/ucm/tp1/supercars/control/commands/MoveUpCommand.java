@@ -15,7 +15,7 @@ public class MoveUpCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO add your code
+		game.movePlayerUp();
 		return true;
 	}
 
