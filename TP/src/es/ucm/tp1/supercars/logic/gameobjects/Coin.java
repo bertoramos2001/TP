@@ -4,7 +4,9 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class Coin extends GameObject {
 	
+	
 	private static int numCoins;
+	public static final String INFO = "[Coin] gives 1 coin to the player\n";
 	private boolean alive = true;
 	
 	public Coin (Game game, int x, int lane) {
@@ -50,5 +52,9 @@ public class Coin extends GameObject {
 	@Override
 	public boolean isAlive() {
 		return alive;
+	}
+
+	public static int getTotalCoins() {
+		return numCoins;
 	}
 }

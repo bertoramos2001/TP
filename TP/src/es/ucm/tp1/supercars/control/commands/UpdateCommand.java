@@ -15,7 +15,7 @@ public class UpdateCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO add your code
+		game.update();
 		return true;
 	}
 

@@ -17,8 +17,8 @@ public class InfoCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		System.out.print("Available objects:");
-		// TODO add your code
+		System.out.println("Available objects:");
+		System.out.println(GamePrinter.getGameObjectsInfo());
 		return false;
 	}
 

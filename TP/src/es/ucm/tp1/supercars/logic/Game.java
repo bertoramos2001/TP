@@ -24,7 +24,9 @@ public Game(long seed, Level level) {
 		initialTime = 0;
 		modoTest = false;
 		gameFinished = false;
-		cycleNum = 0;	 
+		cycleNum = 0;
+		
+		GameObjectGenerator.generateGameObjects(this, level);
 	}
 
 	//MÉTODOS PARA OBTENER INFORMACIÓN DEL NIVEL
@@ -81,22 +83,16 @@ public Game(long seed, Level level) {
 		return null;
 	}
 	
-	public int getTotalCoins() {
-		// TODO FALTA IMPLEMENTARLO CON EL CONTAINER
-		return 0;
-	}
-	
 	public int getActualCoins() {
 		return player.getActualCoins();
 	}
 	
-	public int getTotalObstacles() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
 	public GameObject getObjectInPosition(int x, int y) {
 		return gameObjectContainer.getObjectInPosition(x, y);
+	}
+	
+	public void update() {
+		player.update();
 	}
 
 	

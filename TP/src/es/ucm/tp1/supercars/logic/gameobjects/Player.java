@@ -9,6 +9,7 @@ public class Player extends GameObject {
 	private int x, y, actualCoins;
 	private final int INITIAL_COINS = 5;
 	private boolean alive = true;
+	public static final String INFO = "[Car] the racing car\n";
 	
 	public Player (Game game, int x, int y) {
 		super(game, x, y);

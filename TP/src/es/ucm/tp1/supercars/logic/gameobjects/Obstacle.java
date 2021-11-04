@@ -5,6 +5,7 @@ import es.ucm.tp1.supercars.logic.Game;
 public class Obstacle extends GameObject {
 	
 	private static int numObstacles;
+	public static final String INFO = "[Obstacle] hits car\n";
 	
 	public Obstacle (Game game, int x, int lane) {
 		super(game, x, lane);
@@ -48,5 +49,9 @@ public class Obstacle extends GameObject {
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public static int getTotalObstacles() {
+		return numObstacles;
 	}
 }

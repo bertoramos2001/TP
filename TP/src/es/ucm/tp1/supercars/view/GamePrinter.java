@@ -1,6 +1,9 @@
 package es.ucm.tp1.supercars.view;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.logic.gameobjects.Coin;
+import es.ucm.tp1.supercars.logic.gameobjects.Obstacle;
+import es.ucm.tp1.supercars.logic.gameobjects.Player;
 import es.ucm.tp1.supercars.utils.*;
 
 public class GamePrinter {
@@ -45,10 +48,10 @@ public class GamePrinter {
 		newLine = System.getProperty("line.separator");
 	}
 	
-	private String getInfo() {
+	private String getGameInfo() {
 		
 		String info = String.format("Distance: %d\nCoins: %d\nCycle: %d\nTotal obstacles: %d\nTotal coins: %d",
-				game.getDistanceToEnd(), game.getActualCoins(), game.getCycle(), game.getTotalObstacles(),game.getTotalCoins());
+				game.getDistanceToEnd(), game.getActualCoins(), game.getCycle(), Obstacle.getTotalObstacles(),Coin.getTotalCoins());
 		
 		return info;
 	}
@@ -63,7 +66,7 @@ public class GamePrinter {
 		StringBuilder str = new StringBuilder();
 		String verticalDelimiter = SPACE;
 
-		str.append(getInfo());
+		str.append(getGameInfo());
 		
 		if(!game.testMode())
 			str.append(getTimeInfo());
@@ -82,5 +85,14 @@ public class GamePrinter {
 		str.append(this.indentedRoadBorder);
 
 		return str.toString();
+	}
+	
+	public static String getGameObjectsInfo() {
+		StringBuilder b = new StringBuilder();
+		b.append(Obstacle.INFO);
+		b.append(Coin.INFO);
+		b.append(Player.INFO);
+		
+		return b.toString();
 	}
 }

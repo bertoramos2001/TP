@@ -45,7 +45,7 @@ public abstract class Command {
 	public abstract boolean execute(Game game);
 
 	protected boolean matchCommandName(String name) {
-		return this.shortcut.equalsIgnoreCase(name) || this.name.equalsIgnoreCase(name);
+		return this.shortcut.equalsIgnoreCase(shortcut) || this.name.equalsIgnoreCase(name);
 	}
 
 	protected Command parse(String[] words) {
