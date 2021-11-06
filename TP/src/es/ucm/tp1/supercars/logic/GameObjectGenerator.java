@@ -16,13 +16,8 @@ public class GameObjectGenerator {
 		}
 	}
 
-	public static void reset(Level level) {
-		// TODO add your code
+	public static void reset() {
 		Obstacle.reset();
 		Coin.reset();
-	}
-
-	public static void generateRuntimeObjects(Game game) {
-		// TODO add your code
 	}
 }

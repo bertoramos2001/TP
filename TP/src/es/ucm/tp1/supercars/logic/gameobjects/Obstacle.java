@@ -6,6 +6,7 @@ public class Obstacle extends GameObject {
 	
 	private static int numObstacles;
 	public static final String INFO = "[Obstacle] hits car\n";
+	private final String OBSTACLE_SYMBOL = "░";
 	
 	public Obstacle (Game game, int x, int lane) {
 		super(game, x, lane);
@@ -35,7 +36,7 @@ public class Obstacle extends GameObject {
 	@Override
 	public void update() {
 	}
-	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL COIN
+	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL OBSTACLE
 	@Override
 	public boolean isAlive() {
 		// TODO Auto-generated method stub
@@ -45,7 +46,12 @@ public class Obstacle extends GameObject {
 	public static int getTotalObstacles() {
 		return numObstacles;
 	}
-	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL COIN
+	
+	@Override
+	protected String getSymbol() {
+		return OBSTACLE_SYMBOL;
+	}
+	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL obstacle
 	public static void reset() {
 		numObstacles = 0;
 	}

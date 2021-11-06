@@ -7,6 +7,7 @@ public class Coin extends GameObject {
 	
 	private static int numCoins;
 	public static final String INFO = "[Coin] gives 1 coin to the player\n";
+	private final String COIN_SYMBOL = "¢";
 	private boolean alive = true;
 	
 	public Coin (Game game, int x, int lane) {
@@ -49,6 +50,10 @@ public class Coin extends GameObject {
 
 	public static int getTotalCoins() {
 		return numCoins;
+	}
+	@Override
+	protected String getSymbol() {
+		return COIN_SYMBOL;
 	}
 	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL COIN
 	public static void reset() {

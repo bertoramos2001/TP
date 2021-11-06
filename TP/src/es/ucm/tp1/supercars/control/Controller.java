@@ -27,6 +27,9 @@ public class Controller {
 		System.out.println(printer);
 	}
 	
+	public void printEndMessage() {
+		System.out.println(printer.endMessage());
+	}
 	
 	public void run() {
 		while (!game.isFinished()){
@@ -48,5 +51,6 @@ public class Controller {
 				System.out.println("[ERROR]: "+ UNKNOWN_COMMAND_MSG);
 			}
 		}
+		printEndMessage();
 	}
 }

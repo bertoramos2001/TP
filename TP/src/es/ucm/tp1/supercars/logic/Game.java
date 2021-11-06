@@ -12,21 +12,33 @@ public class Game {
 	private GameObjectContainer gameObjectContainer;
 	private Random rand;
 	private Level level;
+	private long seed;
 	private double initialTime;
 	private boolean modoTest, gameFinished;
 	private int cycleNum;
+	private final String FINISH_LINE = "¦";
 	
-public Game(long seed, Level level) {
-		
-		this.level = level;
+	public Game(long seed, Level level) {
+		setGameParams(seed, level);
 		player = new Player(this, 0, getRoadWidth() / 2);
+		initialize();
+	}
+	
+	public void initialize() {
 		rand = new Random(seed);
 		initialTime = 0;
 		modoTest = false;
 		gameFinished = false;
 		cycleNum = 0;
+		player.initialize(0, level.getRoadWidth() / 2);
+		gameObjectContainer = new GameObjectContainer();
 		
 		GameObjectGenerator.generateGameObjects(this, level);
+	}
+	
+	public void setGameParams(long seed, Level level) {
+		this.seed = seed;
+		this.level = level;
 	}
 
 	//MÉTODOS PARA OBTENER INFORMACIÓN DEL NIVEL
@@ -79,8 +91,17 @@ public Game(long seed, Level level) {
 	
 	//MÉTODOS PARA OBTENER INFORMACIÓN Y MANEJAR OBJETOS
 	public String positionToString(int x, int y) {
-		// TODO FALTA IMPLEMENTARLO
-		return null;
+		GameObject obj = getObjectInPosition(x, y);
+		
+		if (player.isInPosition(x, y)) {
+			return player.toString();
+		} else if (obj != null) {
+			return obj.toString();
+		} else if (getRoadLength() == x) {
+			return FINISH_LINE;
+		}
+		
+		return "";
 	}
 	
 	public int getActualCoins() {
@@ -103,6 +124,15 @@ public Game(long seed, Level level) {
 	public void movePlayerUp() {
 		player.moveUp();
 		
+	}
+	
+	public boolean getPlayerIsAlive() {
+		return player.isAlive();
+	}
+	
+	public boolean playerWon() {
+		return player.getX() == getRoadLength();
+		//TODO: ver si esto está bien
 	}
 
 	

@@ -31,7 +31,10 @@ public class GamePrinter {
 
 	public GamePrinter(Game game) {
 		this.game = game;
-
+		setRoad(game);
+	}
+	
+	private void setRoad(Game game) {
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
 
 		String roadBorder = ROAD_BORDER_PATTERN
@@ -65,6 +68,8 @@ public class GamePrinter {
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		String verticalDelimiter = SPACE;
+		
+		setRoad(game);
 
 		str.append(getGameInfo());
 		
@@ -94,5 +99,18 @@ public class GamePrinter {
 		b.append(Player.INFO);
 		
 		return b.toString();
+	}
+	
+	public String endMessage() {
+		String s = GAME_OVER_MSG;
+		
+		if (game.playerWon()) {
+			s += WIN_MSG;
+		} else if (!game.getPlayerIsAlive()) {
+			s += CRASH_MSG;
+		} else {
+			s += DO_EXIT_MSG;
+		}
+		return s;
 	}
 }

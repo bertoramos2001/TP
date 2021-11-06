@@ -16,7 +16,7 @@ public class HelpCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		StringBuilder buffer = new StringBuilder("Available commands:");
+		StringBuilder buffer = new StringBuilder("Available commands:\n");
 		
 		for (int i = 0; i < AVAILABLE_COMMANDS.length; i++) {
 			buffer.append(AVAILABLE_COMMANDS[i].helpText());

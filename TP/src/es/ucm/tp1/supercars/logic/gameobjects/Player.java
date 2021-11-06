@@ -10,11 +10,17 @@ public class Player extends GameObject {
 	private final int INITIAL_COINS = 5;
 	private boolean alive = true;
 	public static final String INFO = "[Car] the racing car\n";
+	private final String ALIVE_PLAYER_SYMBOL = ">";
+	private final String DEAD_PLAYER_SYMBOL = "@";
 	
 	public Player (Game game, int x, int y) {
 		super(game, x, y);
 		
 		this.game = game;
+		initialize(x, y);
+	}
+	
+	public void initialize(int x, int y) {
 		this.x = x;
 		this.y = y;
 		actualCoins = INITIAL_COINS;
@@ -78,6 +84,14 @@ public class Player extends GameObject {
 	@Override
 	public boolean isAlive() {
 		return alive;
+	}
+	
+	@Override
+	protected String getSymbol() {
+		if (alive) {
+			return ALIVE_PLAYER_SYMBOL;
+		}
+		return DEAD_PLAYER_SYMBOL;
 	}
 	
 	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL PLAYER

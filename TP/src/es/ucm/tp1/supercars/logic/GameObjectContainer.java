@@ -12,7 +12,11 @@ public class GameObjectContainer {
 	}
 
 	public GameObject getObjectInPosition(int x, int y) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < gameObjects.size(); i++) {
+			if (gameObjects.get(i).getX() == x && gameObjects.get(i).getY() == y) {
+				return gameObjects.get(i);
+			}
+		}
 		return null;
 	}
 

@@ -1,33 +1,49 @@
 package es.ucm.tp1.supercars.control.commands;
 
+import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.logic.GameObjectGenerator;
 
 public class ResetCommand extends Command {
 	private static final String NAME = "reset";
 	private static final String DETAILS = "[r]eset";
 	private static final String SHORTCUT = "r";
 	private static final String HELP = "reset game";
+	
+	private Long newSeed;
+	private Level newLevel;
 
 	public ResetCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
+		newSeed = null;
+		newLevel = null;
 	}
 
 	@Override
 	public boolean execute(Game game) {
-		StringBuilder buffer = new StringBuilder("Available commands:");
-
-		// TODO Add your code
-
-		System.out.println(buffer.toString());
-
-		return false;
+		if ((newLevel != null) || (newSeed != null)) {
+			game.setGameParams(newSeed, newLevel);
+		}
+		
+		GameObjectGenerator.reset();
+		game.initialize();
+		
+		return true;
 	}
 	
 	@Override
-	protected Command parse(String[] commandWords) {
-		if (commandWords.length == 3) {
-			//TODO sin acabar
+	protected Command parse(String[] words) {
+		if (words.length == 3) {
+			if (matchCommandName(words[0])) {
+				newLevel = Level.valueOfIgnoreCase(words[1]);
+				newSeed = Long.parseLong(words[2]);
+				
+				return this;
+			} else {
+				return null;
+			}
+		} else {
+			return super.parse(words);
 		}
-		return super.parse(commandWords);
 	}
 }
