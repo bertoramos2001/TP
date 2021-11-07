@@ -9,7 +9,7 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class SuperCars {
 
-	private static final String VERSION = "1.0";
+	private static final String VERSION = "2.0";
 	private static final String USAGE_MSG = "Usage: Super cars <level> [<seed>]";
 	private static final String WELCOME_MSG = String.format("Super cars %s\n\n", VERSION);
 	private static final String LEVEL_INFO_MSG = "Level must be one of: " + Level.all(", ");

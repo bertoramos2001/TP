@@ -47,7 +47,7 @@ public class Game {
 	}
 
 	public int getVisibility() {
-		return level.getRoadVisibility() + getPlayerPositionX();
+		return level.getRoadVisibility();
 	}
 
 	public int getRoadLength() {
