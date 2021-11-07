@@ -10,13 +10,17 @@ public abstract class GameObject implements Collider {
 	protected String symbol;
 
 	public GameObject(Game game, int x, int y) {
-		this.x = x;
-		this.y = y;
+		setPosition(x, y);
 		this.game = game;
 	}
 
 	protected String getSymbol() {
 		return symbol;
+	}
+	
+	protected void setPosition(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 	@Override

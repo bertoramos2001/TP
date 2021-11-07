@@ -69,6 +69,7 @@ public class Player extends GameObject {
 	@Override
 	public void update() {
 		x += 1;
+		setPosition(x, y);
 		doCollision();
 	}
 	
@@ -84,6 +85,10 @@ public class Player extends GameObject {
 	@Override
 	public boolean isAlive() {
 		return alive;
+	}
+	@Override
+	public String toString() {
+		return getSymbol();
 	}
 	
 	@Override

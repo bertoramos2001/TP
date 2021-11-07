@@ -132,7 +132,6 @@ public class Game {
 	
 	public boolean playerWon() {
 		return player.getX() == getRoadLength();
-		//TODO: ver si esto está bien
 	}
 
 	

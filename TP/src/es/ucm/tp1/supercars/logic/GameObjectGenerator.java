@@ -4,8 +4,6 @@ import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.gameobjects.Coin;
 import es.ucm.tp1.supercars.logic.gameobjects.Obstacle;
 
-// TODO add your imports
-
 public class GameObjectGenerator {
 
 	public static void generateGameObjects(Game game, Level level) {

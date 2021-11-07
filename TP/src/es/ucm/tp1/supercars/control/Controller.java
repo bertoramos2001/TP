@@ -9,7 +9,6 @@ import es.ucm.tp1.supercars.view.GamePrinter;
 public class Controller {
 	
 	private static final String PROMPT = "Command > ";
-	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 	
 	private Game game;
 	private GamePrinter printer;
@@ -32,6 +31,7 @@ public class Controller {
 	}
 	
 	public void run() {
+		game.startTimer();
 		while (!game.isFinished()){
 			
 			if (refreshDisplay) {
@@ -47,9 +47,7 @@ public class Controller {
 			
 			if (command != null) {
 				refreshDisplay = command.execute(game);
-			} else {
-				System.out.println("[ERROR]: "+ UNKNOWN_COMMAND_MSG);
-			}
+			} 
 		}
 		printEndMessage();
 	}

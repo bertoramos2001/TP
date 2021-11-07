@@ -39,7 +39,6 @@ public class Obstacle extends GameObject {
 	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL OBSTACLE
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -51,7 +50,7 @@ public class Obstacle extends GameObject {
 	protected String getSymbol() {
 		return OBSTACLE_SYMBOL;
 	}
-	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL obstacle
+	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL OBSTACLE
 	public static void reset() {
 		numObstacles = 0;
 	}
