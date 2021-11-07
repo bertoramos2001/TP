@@ -1,5 +1,7 @@
 package es.ucm.tp1.supercars.view;
 
+import java.util.Locale;
+
 import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.logic.gameobjects.Coin;
 import es.ucm.tp1.supercars.logic.gameobjects.Obstacle;
@@ -60,7 +62,7 @@ public class GamePrinter {
 	}
 	
 	private String getTimeInfo() {
-		String info = String.format("\nElapsed Time: %.2f s", ((double)System.currentTimeMillis() - game.getInitialTime()) / 1000);	
+		String info = String.format(Locale.FRANCE, "\nElapsed Time: %.2f s", ((double)System.currentTimeMillis() - game.getInitialTime()) / 1000);	
 		return info;
 	}
 	

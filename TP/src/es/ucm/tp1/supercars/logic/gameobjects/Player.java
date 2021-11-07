@@ -15,7 +15,6 @@ public class Player extends GameObject {
 	
 	public Player (Game game, int x, int y) {
 		super(game, x, y);
-		
 		this.game = game;
 		initialize(x, y);
 	}
@@ -23,6 +22,7 @@ public class Player extends GameObject {
 	public void initialize(int x, int y) {
 		this.x = x;
 		this.y = y;
+		setPosition(x, y);
 		actualCoins = INITIAL_COINS;
 	}
 

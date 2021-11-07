@@ -22,6 +22,7 @@ public class GameObjectContainer {
 
 	public void add(GameObject o) {
 		gameObjects.add(o);
+		o.onEnter();
 	}
 	
 	public void deleteDead() {
@@ -32,6 +33,7 @@ public class GameObjectContainer {
 				aux.add(o);
 			} else {
 				o.onDelete();
+				System.out.println("ESTO NUNCA SE PINTA");
 			}
 		}
 		gameObjects = aux;

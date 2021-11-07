@@ -114,6 +114,7 @@ public class Game {
 	
 	public void update() {
 		player.update();
+		addCycle();
 	}
 	
 	public void movePlayerDown() {
@@ -131,21 +132,25 @@ public class Game {
 	}
 	
 	public boolean playerWon() {
-		return player.getX() == getRoadLength();
+		return player.getX() == getRoadLength() + 1;
+	}
+	
+	public void deleteDeadObjects() {
+		gameObjectContainer.deleteDead();
 	}
 
 	
 	//MÉTODOS QUE MANEJAN INFORMACIÓN DEL JUEGO
 	public boolean isFinished() {
-		return this.gameFinished;
+		return gameFinished;
 	}
 	
 	public boolean testMode() {
-		return this.modoTest;
+		return modoTest;
 	}
 	
 	public double getInitialTime() {
-		return this.initialTime;
+		return initialTime;
 	}
 	
 	public void toggleTest() {

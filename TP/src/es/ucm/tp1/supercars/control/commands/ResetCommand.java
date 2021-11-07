@@ -27,6 +27,7 @@ public class ResetCommand extends Command {
 		
 		GameObjectGenerator.reset();
 		game.initialize();
+		game.startTimer();
 		
 		return true;
 	}

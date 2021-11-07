@@ -32,12 +32,8 @@ public class Controller {
 	
 	public void run() {
 		game.startTimer();
+		printGame();
 		while (!game.isFinished()){
-			
-			if (refreshDisplay) {
-				printGame();
-			}
-			
 			refreshDisplay = false;
 			System.out.println(PROMPT);
 			String s = scanner.nextLine();
@@ -47,8 +43,15 @@ public class Controller {
 			
 			if (command != null) {
 				refreshDisplay = command.execute(game);
-			} 
+			}
+			game.deleteDeadObjects();
+			if (refreshDisplay) {
+				printGame();
+			}
+			if (!game.getPlayerIsAlive() || game.playerWon()) {
+				game.gameOver();
+				printEndMessage();
+			}
 		}
-		printEndMessage();
 	}
 }
