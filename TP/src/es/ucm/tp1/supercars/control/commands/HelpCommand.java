@@ -22,7 +22,7 @@ public class HelpCommand extends Command {
 			buffer.append(AVAILABLE_COMMANDS[i].helpText());
 		}
 		
-		System.out.println(buffer.toString());
+		System.out.print(buffer.toString());
 
 		return false;
 	}

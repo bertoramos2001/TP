@@ -22,8 +22,8 @@ public class GamePrinter {
 	private String indentedLlanesSeparator;
 	private String margin;
 
-	private static final String CRASH_MSG = String.format("Player crashed!%n");
-	private static final String WIN_MSG = String.format("Player wins!%n");
+	private static final String CRASH_MSG = "Player crashed!";
+	private static final String WIN_MSG = "Player wins!";
 	private static final String DO_EXIT_MSG = "Player leaves the game";
 	private static final String GAME_OVER_MSG = "[GAME OVER] ";
 
@@ -96,23 +96,24 @@ public class GamePrinter {
 	
 	public static String getGameObjectsInfo() {
 		StringBuilder b = new StringBuilder();
-		b.append(Obstacle.INFO);
-		b.append(Coin.INFO);
 		b.append(Player.INFO);
+		b.append(Coin.INFO);
+		b.append(Obstacle.INFO);
 		
 		return b.toString();
 	}
 	
 	public String endMessage() {
-		String s = GAME_OVER_MSG;
+		StringBuilder s = new StringBuilder();
+		s.append(GAME_OVER_MSG);
 		
 		if (game.playerWon()) {
-			s += WIN_MSG;
+			s.append(WIN_MSG);
 		} else if (!game.getPlayerIsAlive()) {
-			s += CRASH_MSG;
+			s.append(CRASH_MSG);
 		} else {
-			s += DO_EXIT_MSG;
+			s.append(DO_EXIT_MSG);
 		}
-		return s;
+		return s.toString();
 	}
 }

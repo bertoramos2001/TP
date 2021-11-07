@@ -50,8 +50,8 @@ public class Controller {
 			}
 			if (!game.getPlayerIsAlive() || game.playerWon()) {
 				game.gameOver();
-				printEndMessage();
 			}
 		}
+		printEndMessage();
 	}
 }

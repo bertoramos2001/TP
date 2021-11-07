@@ -47,7 +47,7 @@ public abstract class Command {
 		}
 		
 		if (!encontrado) {
-			System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG);
+			System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG + "\n");
 		}
 		return command;
 	}
