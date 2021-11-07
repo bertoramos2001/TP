@@ -114,7 +114,6 @@ public class Game {
 	
 	public void update() {
 		player.update();
-		addCycle();
 	}
 	
 	public void movePlayerDown() {

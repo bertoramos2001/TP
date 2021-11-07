@@ -33,7 +33,6 @@ public class GameObjectContainer {
 				aux.add(o);
 			} else {
 				o.onDelete();
-				System.out.println("ESTO NUNCA SE PINTA");
 			}
 		}
 		gameObjects = aux;

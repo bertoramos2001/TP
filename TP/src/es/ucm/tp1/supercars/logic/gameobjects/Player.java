@@ -71,6 +71,7 @@ public class Player extends GameObject {
 		x += 1;
 		setPosition(x, y);
 		doCollision();
+		game.addCycle();
 	}
 	
 	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL PLAYER
