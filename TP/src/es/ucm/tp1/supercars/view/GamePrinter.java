@@ -22,8 +22,8 @@ public class GamePrinter {
 	private String indentedLlanesSeparator;
 	private String margin;
 
-	private static final String CRASH_MSG = "Player crashed!";
-	private static final String WIN_MSG = "Player wins!";
+	private static final String CRASH_MSG = String.format("Player crashed!%n");
+	private static final String WIN_MSG = String.format("Player wins!%n");
 	private static final String DO_EXIT_MSG = "Player leaves the game";
 	private static final String GAME_OVER_MSG = "[GAME OVER] ";
 

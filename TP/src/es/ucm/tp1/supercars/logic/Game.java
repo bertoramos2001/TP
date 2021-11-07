@@ -153,7 +153,7 @@ public class Game {
 	}
 	
 	public void toggleTest() {
-		modoTest = !modoTest;
+		modoTest = true;
 	}
 
 	public void gameOver() {
