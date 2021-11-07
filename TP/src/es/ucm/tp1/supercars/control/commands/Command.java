@@ -1,7 +1,5 @@
 package es.ucm.tp1.supercars.control.commands;
 
-import java.util.Arrays;
-
 import es.ucm.tp1.supercars.logic.Game;
 
 public abstract class Command {

@@ -131,7 +131,7 @@ public class Game {
 	}
 	
 	public boolean playerWon() {
-		return player.getX() == getRoadLength() + 1;
+		return player.getPositionX() == getRoadLength() + 1;
 	}
 	
 	public void deleteDeadObjects() {

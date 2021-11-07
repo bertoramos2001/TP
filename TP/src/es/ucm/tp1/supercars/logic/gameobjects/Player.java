@@ -22,7 +22,6 @@ public class Player extends GameObject {
 	public void initialize(int x, int y) {
 		this.x = x;
 		this.y = y;
-		setPosition(x, y);
 		actualCoins = INITIAL_COINS;
 	}
 
@@ -69,7 +68,6 @@ public class Player extends GameObject {
 	@Override
 	public void update() {
 		x += 1;
-		setPosition(x, y);
 		doCollision();
 		game.addCycle();
 	}
@@ -98,6 +96,11 @@ public class Player extends GameObject {
 			return ALIVE_PLAYER_SYMBOL;
 		}
 		return DEAD_PLAYER_SYMBOL;
+	}
+	
+	@Override
+	public boolean isInPosition(int x, int y) {
+		return this.x == x && this.y == y;
 	}
 	
 	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL PLAYER

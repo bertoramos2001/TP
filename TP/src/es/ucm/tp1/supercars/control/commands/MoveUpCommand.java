@@ -18,12 +18,4 @@ public class MoveUpCommand extends Command {
 		game.movePlayerUp();
 		return true;
 	}
-
-	@Override
-	protected Command parse(String[] commandWords) {
-		if ("".equalsIgnoreCase(commandWords[0])) {
-			commandWords[0] = SHORTCUT;
-		}
-		return super.parse(commandWords);
-	}
 }
