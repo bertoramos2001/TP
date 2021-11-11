@@ -6,7 +6,7 @@ import es.ucm.tp1.supercars.logic.Game;
 public class Player extends GameObject {
 	
 	private Game game;
-	private int x, y, actualCoins;
+	private int x, y, actualCoins; //TODO: quitar x e y
 	private final int INITIAL_COINS = 5;
 	private boolean alive = true;
 	public static final String INFO = "[Car] the racing car\n";
