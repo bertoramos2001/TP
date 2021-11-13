@@ -6,7 +6,7 @@ import es.ucm.tp1.supercars.logic.Game;
 public class Player extends GameObject {
 	
 	private Game game;
-	private int x, y, actualCoins;
+	private int actualCoins;
 	private final int INITIAL_COINS = 5;
 	private boolean alive = true;
 	public static final String INFO = "[Car] the racing car\n";
@@ -73,9 +73,6 @@ public class Player extends GameObject {
 	}
 	
 	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL PLAYER
-	public int getPositionX() {
-		return this.x;
-	}
 	
 	public int getActualCoins() {
 		return actualCoins;

@@ -22,12 +22,10 @@ public class ResetCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		if ((newLevel != null) || (newSeed != null)) {
-			game.setGameParams(newSeed, newLevel);
+			game.initialize(newSeed, newLevel);
+		} else {
+			game.initialize();
 		}
-		
-		GameObjectGenerator.reset();
-		game.initialize();
-		game.startTimer();
 		
 		return true;
 	}

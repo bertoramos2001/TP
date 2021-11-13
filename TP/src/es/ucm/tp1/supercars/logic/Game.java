@@ -19,7 +19,8 @@ public class Game {
 	private final String FINISH_LINE = "¦";
 	
 	public Game(long seed, Level level) {
-		setGameParams(seed, level);
+		this.seed = seed;
+		this.level = level;
 		player = new Player(this, 0, getRoadWidth() / 2);
 		initialize();
 	}
@@ -27,23 +28,26 @@ public class Game {
 	public void initialize() {
 		rand = new Random(seed);
 		initialTime = 0;
-		modoTest = false;
 		gameFinished = false;
+		modoTest = false;
 		cycleNum = 0;
+		GameObjectGenerator.reset();
 		player.initialize(0, level.getRoadWidth() / 2);
 		gameObjectContainer = new GameObjectContainer();
+		startTimer();
 		
 		GameObjectGenerator.generateGameObjects(this, level);
 	}
 	
-	public void setGameParams(long seed, Level level) {
+	public void initialize(long seed, Level level) {
 		this.seed = seed;
 		this.level = level;
+		initialize();
 	}
 
 	//MÉTODOS PARA OBTENER INFORMACIÓN DEL NIVEL
 	public int getPlayerPositionX() {
-		return player.getPositionX();
+		return player.getX();
 	}
 
 	public int getVisibility() {
@@ -131,7 +135,7 @@ public class Game {
 	}
 	
 	public boolean playerWon() {
-		return player.getPositionX() == getRoadLength() + 1;
+		return getPlayerPositionX() == getRoadLength() + 1;
 	}
 	
 	public void deleteDeadObjects() {
