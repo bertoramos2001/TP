@@ -31,6 +31,7 @@ public class ResetCommand extends Command {
 	}
 	
 	@Override
+	//TODO: hcer dos reset: uno con atributos y otro sin ellos, desde el que tiene atributos se llama al que si los tiene en game despues de actualizar seed y level
 	protected Command parse(String[] words) {
 		if (words.length == 3) {
 			if (matchCommandName(words[0])) {
