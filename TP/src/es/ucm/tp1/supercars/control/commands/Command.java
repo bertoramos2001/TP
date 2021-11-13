@@ -2,7 +2,7 @@ package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.logic.Game;
 
-public abstract class Command {
+public abstract class Command { 
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
