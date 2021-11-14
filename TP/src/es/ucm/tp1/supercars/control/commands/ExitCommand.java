@@ -7,6 +7,7 @@ public class ExitCommand extends Command {
 	private static final String DETAILS = "[e]xit";
 	private static final String SHORTCUT = "e";
 	private static final String HELP = "exit game";
+	private static final boolean PINTA_CARRETERA = false;
 
 	public ExitCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -15,6 +16,6 @@ public class ExitCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		game.gameOver();
-		return false;
+		return PINTA_CARRETERA;
 	}
 }

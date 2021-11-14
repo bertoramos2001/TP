@@ -4,10 +4,10 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class Coin extends GameObject {
 	
-	
 	private static int numCoins;
 	public static final String INFO = "[Coin] gives 1 coin to the player\n";
 	private final String COIN_SYMBOL = "¢";
+	private final int COINS_AWARDED = 1;
 	private boolean alive = true;
 	
 	public Coin (Game game, int x, int lane) {
@@ -16,16 +16,16 @@ public class Coin extends GameObject {
 	
 	//MÉTODOS QUE GESTIONAN LAS COLISIONES
 	@Override
-	public boolean doCollision() {
-		return false;
+	public boolean receiveCollision(Player player) {
+		player.addCoin(COINS_AWARDED);
+		alive = false;
+		
+		return true;
 	}
 	
 	@Override
-	public boolean receiveCollision(Player player) {
-		player.addCoin();
-		this.alive = false;
-		
-		return true;
+	public boolean receiveShoot() {
+		return false;
 	}
 	//MÉTODOS QUE GESTIONAN LOS EVENTOS
 	@Override
@@ -59,5 +59,10 @@ public class Coin extends GameObject {
 	public static void reset() {
 		numCoins = 0;
 		
+	}
+
+	@Override
+	public boolean receiveExplosion() {
+		return false;
 	}
 }

@@ -8,6 +8,7 @@ public class UpdateCommand extends Command {
 	private static final String DETAILS = "[n]one | []";
 	private static final String SHORTCUT = "n";
 	private static final String HELP = "update";
+	private static final boolean PINTA_CARRETERA = true;
 
 	public UpdateCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -16,7 +17,7 @@ public class UpdateCommand extends Command {
 	@Override
 	public boolean execute(Game game) {
 		game.update();
-		return true;
+		return PINTA_CARRETERA;
 	}
 
 	@Override

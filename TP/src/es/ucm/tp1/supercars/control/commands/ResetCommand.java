@@ -9,6 +9,7 @@ public class ResetCommand extends Command {
 	private static final String DETAILS = "[r]eset [<level> <seed>]";
 	private static final String SHORTCUT = "r";
 	private static final String HELP = "reset game";
+	private static final boolean PINTA_CARRETERA = true;
 	
 	private Long newSeed;
 	private Level newLevel;
@@ -27,11 +28,10 @@ public class ResetCommand extends Command {
 			game.initialize();
 		}
 		
-		return true;
+		return PINTA_CARRETERA;
 	}
 	
 	@Override
-	//TODO: hcer dos reset: uno con atributos y otro sin ellos, desde el que tiene atributos se llama al que si los tiene en game despues de actualizar seed y level
 	protected Command parse(String[] words) {
 		if (words.length == 3) {
 			if (matchCommandName(words[0])) {

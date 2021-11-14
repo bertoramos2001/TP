@@ -7,6 +7,7 @@ public class Obstacle extends GameObject {
 	private static int numObstacles;
 	public static final String INFO = "[Obstacle] hits car\n";
 	private final String OBSTACLE_SYMBOL = "░";
+	private boolean alive = true;
 	
 	public Obstacle (Game game, int x, int lane) {
 		super(game, x, lane);
@@ -14,13 +15,14 @@ public class Obstacle extends GameObject {
 	
 	//MÉTODOS QUE GESTIONAN LAS COLISIONES
 	@Override
-	public boolean doCollision() {
+	public boolean receiveCollision(Player player) {
+		player.setDead();
 		return false;
 	}
 	
 	@Override
-	public boolean receiveCollision(Player player) {
-		player.setDead();
+	public boolean receiveShoot() {
+		alive = false;
 		return false;
 	}
 	//MÉTODOS QUE GESTIONAN LOS EVENTOS
@@ -31,6 +33,7 @@ public class Obstacle extends GameObject {
 	
 	@Override
 	public void onDelete() {
+		numObstacles--;
 	}
 	//MÉTODOS QUE GESTIONAN EL MOVIMIENTO DEL JUGADOR (en este caso nada)
 	@Override
@@ -39,7 +42,7 @@ public class Obstacle extends GameObject {
 	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL OBSTACLE
 	@Override
 	public boolean isAlive() {
-		return true;
+		return alive;
 	}
 
 	public static int getTotalObstacles() {
@@ -53,5 +56,11 @@ public class Obstacle extends GameObject {
 	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL OBSTACLE
 	public static void reset() {
 		numObstacles = 0;
+	}
+
+	@Override
+	public boolean receiveExplosion() {
+		receiveShoot();
+		return false;
 	}
 }

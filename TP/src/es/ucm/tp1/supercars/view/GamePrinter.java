@@ -3,9 +3,7 @@ package es.ucm.tp1.supercars.view;
 import java.util.Locale;
 
 import es.ucm.tp1.supercars.logic.Game;
-import es.ucm.tp1.supercars.logic.gameobjects.Coin;
-import es.ucm.tp1.supercars.logic.gameobjects.Obstacle;
-import es.ucm.tp1.supercars.logic.gameobjects.Player;
+import es.ucm.tp1.supercars.logic.gameobjects.*;
 import es.ucm.tp1.supercars.utils.*;
 
 public class GamePrinter {
@@ -99,6 +97,10 @@ public class GamePrinter {
 		b.append(Player.INFO);
 		b.append(Coin.INFO);
 		b.append(Obstacle.INFO);
+		b.append(SuperCoin.INFO);
+		b.append(Turbo.INFO);
+		b.append(Grenade.INFO);
+		b.append(Truck.INFO);
 		
 		return b.toString();
 	}

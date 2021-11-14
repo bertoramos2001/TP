@@ -10,6 +10,7 @@ public class InfoCommand extends Command {
 	private static final String DETAILS = "[i]nfo";
 	private static final String SHORTCUT = "i";
 	private static final String HELP = "prints gameobject info";
+	private static final boolean PINTA_CARRETERA = false;
 
 	public InfoCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -19,7 +20,7 @@ public class InfoCommand extends Command {
 	public boolean execute(Game game) {
 		System.out.println("Available objects:");
 		System.out.print(GamePrinter.getGameObjectsInfo());
-		return false;
+		return PINTA_CARRETERA;
 	}
 
 }

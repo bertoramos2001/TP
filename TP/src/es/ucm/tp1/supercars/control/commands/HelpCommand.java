@@ -9,6 +9,7 @@ public class HelpCommand extends Command {
 	private static final String DETAILS = "[h]elp";
 	private static final String SHORTCUT = "h";
 	private static final String HELP = "show this help";
+	private static final boolean PINTA_CARRETERA = false;
 
 	public HelpCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -24,6 +25,6 @@ public class HelpCommand extends Command {
 		
 		System.out.print(buffer.toString());
 
-		return false;
+		return PINTA_CARRETERA;
 	}
 }

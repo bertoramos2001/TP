@@ -37,4 +37,11 @@ public class GameObjectContainer {
 		}
 		gameObjects = aux;
 	}
+	
+	public void deleteAll() {
+		for (GameObject o : gameObjects) {
+			o.onDelete();
+		}
+		gameObjects = new ArrayList<GameObject>();
+	}
 }

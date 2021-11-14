@@ -122,12 +122,10 @@ public class Game {
 	
 	public void movePlayerDown() {
 		player.moveDown();
-		
 	}
 	
 	public void movePlayerUp() {
 		player.moveUp();
-		
 	}
 	
 	public boolean getPlayerIsAlive() {
@@ -141,8 +139,15 @@ public class Game {
 	public void deleteDeadObjects() {
 		gameObjectContainer.deleteDead();
 	}
-
 	
+	public void shootFirstObstacle() {
+		
+	}
+	
+	public void clearGameObjects() {
+		gameObjectContainer.deleteAll();
+	}
+
 	//MÉTODOS QUE MANEJAN INFORMACIÓN DEL JUEGO
 	public boolean isFinished() {
 		return gameFinished;

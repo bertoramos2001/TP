@@ -26,7 +26,6 @@ public class Player extends GameObject {
 	}
 
 	//MÉTODOS QUE GESTIONAN LAS COLISIONES
-	@Override
 	public boolean doCollision() {
 		Collider other = game.getObjectInPosition(x, y);
 		
@@ -39,6 +38,11 @@ public class Player extends GameObject {
 	
 	@Override
 	public boolean receiveCollision(Player player) {
+		return false;
+	}
+	
+	@Override
+	public boolean receiveShoot() {
 		return false;
 	}
 	//MÉTODOS QUE GESTIONAN LOS EVENTOS
@@ -72,6 +76,11 @@ public class Player extends GameObject {
 		game.addCycle();
 	}
 	
+	public void jump() {
+		x += 3;
+		game.addCycle();
+	}
+	
 	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL PLAYER
 	
 	public int getActualCoins() {
@@ -101,11 +110,21 @@ public class Player extends GameObject {
 	}
 	
 	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL PLAYER
-	public void addCoin() {
-		actualCoins += 1;
+	public void addCoin(int c) {
+		actualCoins += c;
+	}
+	
+	public void removeCoins() {
+		actualCoins = 0;
 	}
 	
 	public void setDead() {
 		alive = false;
+	}
+
+	@Override
+	public boolean receiveExplosion() {
+		// TODO No sé si el jugador tendría que recibir la explosión
+		return false;
 	}
 }
