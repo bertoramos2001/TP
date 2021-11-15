@@ -18,9 +18,9 @@ public abstract class Command {
 			new ResetCommand(),
 			new TestCommand(),
 			new ShootCommand(),
-			new ClearCommand(),
+			new GrenadeCommand(),
 			new WaveCommand(),
-			new GrenadeCommand()
+			new ClearCommand()
 	};
 	/* @formatter:on */
 

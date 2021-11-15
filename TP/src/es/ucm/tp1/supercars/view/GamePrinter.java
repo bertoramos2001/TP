@@ -97,10 +97,12 @@ public class GamePrinter {
 		b.append(Player.INFO);
 		b.append(Coin.INFO);
 		b.append(Obstacle.INFO);
-		b.append(SuperCoin.INFO);
-		b.append(Turbo.INFO);
 		b.append(Grenade.INFO);
+		//b.append(Wall.INFO);
+		b.append(Turbo.INFO);
+		b.append(SuperCoin.INFO);
 		b.append(Truck.INFO);
+		b.append(Pedestrian.INFO);
 		
 		return b.toString();
 	}

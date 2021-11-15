@@ -31,7 +31,6 @@ public class Pedestrian extends GameObject {
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
