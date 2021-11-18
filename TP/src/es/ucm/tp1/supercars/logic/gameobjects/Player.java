@@ -20,8 +20,6 @@ public class Player extends GameObject {
 	}
 	
 	public void initialize(int x, int y) {
-		this.x = x;
-		this.y = y;
 		actualCoins = INITIAL_COINS;
 	}
 

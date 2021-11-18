@@ -7,7 +7,6 @@ import es.ucm.tp1.supercars.logic.gameobjects.Player;
 import es.ucm.tp1.supercars.control.Level;
 
 public class Game {
-	
 	private Player player;
 	private GameObjectContainer gameObjectContainer;
 	private Random rand;
@@ -93,6 +92,11 @@ public class Game {
 		}
 	}
 	
+	public void forceAddObject(GameObject o) {
+		gameObjectContainer.deleteColumn(o.getX());
+		gameObjectContainer.add(o);
+	}
+	
 	//MÉTODOS PARA OBTENER INFORMACIÓN Y MANEJAR OBJETOS
 	public String positionToString(int x, int y) {
 		GameObject obj = getObjectInPosition(x, y);
@@ -141,11 +145,15 @@ public class Game {
 	}
 	
 	public void shootFirstObstacle() {
-		
+		//TODO: implementar
 	}
 	
 	public void clearGameObjects() {
 		gameObjectContainer.deleteAll();
+	}
+	
+	public void addPlayerCoins(int c) {
+		player.addCoin(c);
 	}
 
 	//MÉTODOS QUE MANEJAN INFORMACIÓN DEL JUEGO

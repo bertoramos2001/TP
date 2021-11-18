@@ -44,4 +44,20 @@ public class GameObjectContainer {
 		}
 		gameObjects = new ArrayList<GameObject>();
 	}
+	
+	public void deleteColumn(int column) {
+		ArrayList<GameObject> aux = new ArrayList<GameObject>();
+		
+		for (GameObject o : gameObjects) {
+			if (o.getX() == column) {
+				System.out.println("se borra");
+				o.onDelete();
+			} else {
+				aux.add(o);
+			}
+		}
+		gameObjects = aux;
+	}
+	
+	
 }
