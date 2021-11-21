@@ -4,14 +4,13 @@ import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.logic.GameObjectGenerator;
 
 public class CheatCommand extends Command {
-	//TODO: cuando llamemos al forceAdvanceObject, hay que llamarle con la ultima columna visible siempre
-	// usando esto: GameObjectGenerator.forceAdvanceObject(this, 2, getPlayerPositionX() + getVisibility() - 1);
 	
-	private static final String NAME = "exit";
-	private static final String DETAILS = "[e]xit";
-	private static final String SHORTCUT = "e";
-	private static final String HELP = "exit game";
-	private static final boolean PINTA_CARRETERA = false;
+	private static final String NAME = "cheat";
+	private static final String DETAILS = "Cheat [1..5]";
+	private static final String SHORTCUT = "1 2 3 4 5";
+	private static final String HELP = "Removes all elements of last visible column, and adds an Advanced Object";
+	private static final boolean PINTA_CARRETERA = true;
+	private int idComando;
 
 	public CheatCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -19,8 +18,21 @@ public class CheatCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO Auto-generated method stub
-		return false;
+		game.forceAdvancedObjects(idComando);
+		return PINTA_CARRETERA;
 	}
-
+	
+	@Override
+	protected Command parse(String[] words) {
+		if (words.length == 1) {
+			String[] shortcutList = SHORTCUT.trim().split(" ");
+			for (String s : shortcutList) {
+				if (s.equalsIgnoreCase(words[0])) {
+					idComando = Integer.parseInt(words[0]);
+					return this;
+				}
+			}
+		}
+		return null;
+	}
 }

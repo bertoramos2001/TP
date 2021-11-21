@@ -69,14 +69,13 @@ public class Player extends GameObject {
 
 	@Override
 	public void update() {
+		doCollision();
 		x += 1;
 		doCollision();
-		game.addCycle();
 	}
 	
 	public void jump() {
 		x += 3;
-		game.addCycle();
 	}
 	
 	//MÉTODOS QUE DEVUELVEN INFORMACIÓN DEL PLAYER
@@ -123,6 +122,12 @@ public class Player extends GameObject {
 	@Override
 	public boolean receiveExplosion() {
 		// TODO No sé si el jugador tendría que recibir la explosión
+		return false;
+	}
+	
+	@Override
+	public boolean receiveWave() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }

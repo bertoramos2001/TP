@@ -2,36 +2,44 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 
 import es.ucm.tp1.supercars.logic.Game;
 
-public class Truck extends GameObject {
-	public static final String INFO = "[TRUCK] moves towards the player\n";
-	private final String TRUCK_SYMBOL = "←";
+public class Coins extends GameObject {
+	
+	private boolean alive = true;
+	protected int coinsAwarded;
+	protected String symbol;
 
-	public Truck(Game game, int x, int lane) {
+	public Coins(Game game, int x, int lane) {
 		super(game, x, lane);
 	}
 
 	@Override
 	public boolean receiveCollision(Player player) {
-		player.setDead();
-		return false;
+		player.addCoin(coinsAwarded);
+		alive = false;
+		
+		return true;
 	}
 
 	@Override
 	public boolean receiveShoot() {
-		// TODO ver si recibe disparo
 		return false;
 	}
 
 	@Override
 	public boolean receiveExplosion() {
-		// TODO ver si recibe explosion
+		//TODO: falta implementar
+		return false;
+	}
+
+	@Override
+	public boolean receiveWave() {
+		// TODO falta implementar
 		return false;
 	}
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return true;
+		return alive;
 	}
 
 	@Override
@@ -40,7 +48,6 @@ public class Truck extends GameObject {
 
 	@Override
 	public void update() {
-		x -= 1;
 	}
 
 	@Override
@@ -49,13 +56,7 @@ public class Truck extends GameObject {
 	
 	@Override
 	protected String getSymbol() {
-		return TRUCK_SYMBOL;
-	}
-	
-	@Override
-	public boolean receiveWave() {
-		// TODO Auto-generated method stub
-		return false;
+		return symbol;
 	}
 
 }

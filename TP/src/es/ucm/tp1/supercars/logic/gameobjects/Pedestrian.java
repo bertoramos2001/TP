@@ -54,5 +54,11 @@ public class Pedestrian extends GameObject {
 	protected String getSymbol() {
 		return PEDESTRIAN_SYMBOL;
 	}
+	
+	@Override
+	public boolean receiveWave() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

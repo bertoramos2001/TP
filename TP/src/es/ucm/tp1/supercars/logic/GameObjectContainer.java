@@ -50,7 +50,6 @@ public class GameObjectContainer {
 		
 		for (GameObject o : gameObjects) {
 			if (o.getX() == column) {
-				System.out.println("se borra");
 				o.onDelete();
 			} else {
 				aux.add(o);

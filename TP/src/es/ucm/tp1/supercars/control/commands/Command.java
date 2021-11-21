@@ -20,7 +20,8 @@ public abstract class Command {
 			new ShootCommand(),
 			new GrenadeCommand(),
 			new WaveCommand(),
-			new ClearCommand()
+			new ClearCommand(),
+			new CheatCommand()
 	};
 	/* @formatter:on */
 

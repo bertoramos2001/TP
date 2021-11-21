@@ -15,9 +15,7 @@ public class WaveCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO falta implementar funcionalidad
+		game.executeWave();
 		return PINTA_CARRETERA;
 	}
-	
-	
 }

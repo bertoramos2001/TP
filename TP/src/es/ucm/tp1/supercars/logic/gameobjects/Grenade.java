@@ -53,5 +53,11 @@ public class Grenade extends GameObject{
 	public boolean receiveExplosion() {
 		return false; 
 	}
+	
+	@Override
+	public boolean receiveWave() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

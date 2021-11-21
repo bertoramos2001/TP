@@ -6,6 +6,7 @@ import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 import es.ucm.tp1.supercars.logic.gameobjects.Player;
 import es.ucm.tp1.supercars.control.Level;
 
+
 public class Game {
 	private Player player;
 	private GameObjectContainer gameObjectContainer;
@@ -99,17 +100,24 @@ public class Game {
 	
 	//MÉTODOS PARA OBTENER INFORMACIÓN Y MANEJAR OBJETOS
 	public String positionToString(int x, int y) {
+		String s = "";
 		GameObject obj = getObjectInPosition(x, y);
 		
 		if (player.isInPosition(x, y)) {
-			return player.toString();
-		} else if (obj != null) {
-			return obj.toString();
-		} else if (getRoadLength() == x) {
-			return FINISH_LINE;
+			s += (player.toString());
+			s += " ";
+		}
+		if (obj != null) {
+			//TODO: que se muestren todos los objecos (que getObjectInPosition devuelva array)
+			s += (obj.toString());
+			s += " ";
+		}
+		if (getRoadLength() == x) {
+			s += (FINISH_LINE);
+			s += " ";
 		}
 		
-		return "";
+		return s;
 	}
 	
 	public int getActualCoins() {
@@ -122,6 +130,11 @@ public class Game {
 	
 	public void update() {
 		player.update();
+		//TODO: como hacer el update de los objetos?
+		//TODO: ejecutar runtime instant actions
+		addCycle();
+		//TODO: controlar el tiempo?
+		//TODO: callback onDelete aqui?
 	}
 	
 	public void movePlayerDown() {
@@ -175,5 +188,13 @@ public class Game {
 
 	public void gameOver() {
 		gameFinished = true;
+	}
+	
+	public void forceAdvancedObjects(int id) {
+		GameObjectGenerator.forceAdvanceObject(this, id, getPlayerPositionX() + getVisibility() - 1);
+	}
+	
+	public void executeWave() {
+		//execute(this);
 	}
 }

@@ -5,8 +5,9 @@ import es.ucm.tp1.supercars.logic.Game;
 public class Wall extends GameObject{
 	
 	public static final String INFO = "[WALL] hard obstacle\n";
+	private final String WALL_SYMBOL_ARR[] = {"░", "▒", "█"};
 	private static final int  NUM_COINS_GIVEN = 5;
-	private int lives = 3;
+	private int lives = 2;
 
 	public Wall(Game game, int x, int lane) {
 		super(game, x, lane);
@@ -49,6 +50,17 @@ public class Wall extends GameObject{
 	@Override
 	public void onDelete() {
 		///TODO: debe disminuir el numero de obstaculos pero tenemos que tener una clase padre
+	}
+	
+	@Override
+	protected String getSymbol() {
+		return WALL_SYMBOL_ARR[lives];
+	}
+	
+	@Override
+	public boolean receiveWave() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
