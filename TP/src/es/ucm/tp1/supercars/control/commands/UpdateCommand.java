@@ -16,7 +16,7 @@ public class UpdateCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		game.update();
+		game.movePlayerForward();//TODO: no se si esta bien
 		return PINTA_CARRETERA;
 	}
 

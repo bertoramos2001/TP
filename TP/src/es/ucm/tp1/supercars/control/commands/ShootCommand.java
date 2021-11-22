@@ -1,6 +1,7 @@
 package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.logic.instantActions.ShootAction;
 
 public class ShootCommand extends Command {
 	
@@ -16,9 +17,8 @@ public class ShootCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO falta implementar funcionalidad
-		
+		//TODO: queda llamar bien al shoot
+		game.execute(new ShootAction());
 		return PINTA_CARRETERA;
 	}
-
 }

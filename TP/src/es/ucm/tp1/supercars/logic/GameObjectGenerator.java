@@ -50,10 +50,11 @@ public class GameObjectGenerator {
 			break;
 		}
 		game.forceAddObject(o);
-}
+	}
 
 	public static void reset() {
 		Obstacle.reset();
 		Coin.reset();
 	}
+	
 }

@@ -1,5 +1,5 @@
 package es.ucm.tp1.supercars.logic;
 
-public interface instantAction {
+public interface InstantAction {
 	void execute(Game game);
 }

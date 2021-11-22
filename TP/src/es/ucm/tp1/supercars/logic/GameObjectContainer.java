@@ -58,5 +58,12 @@ public class GameObjectContainer {
 		gameObjects = aux;
 	}
 	
+	public void update() {
+		for (GameObject o : gameObjects) {
+			o.update();
+		}
+		
+	}
+	
 	
 }

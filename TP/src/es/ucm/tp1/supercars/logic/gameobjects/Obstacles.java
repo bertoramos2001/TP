@@ -6,6 +6,7 @@ public class Obstacles extends GameObject {
 	
 	protected int lives;
 	protected String symbol;
+	protected static int numObstacles;
 
 	public Obstacles(Game game, int x, int lane) {
 		super(game, x, lane);
@@ -25,8 +26,8 @@ public class Obstacles extends GameObject {
 
 	@Override
 	public boolean receiveExplosion() {
-		lives -= 1;
-		return false;
+		receiveShoot();
+		return true;
 	}
 
 	@Override
@@ -42,6 +43,7 @@ public class Obstacles extends GameObject {
 
 	@Override
 	public void onEnter() {
+		numObstacles++;
 	}
 
 	@Override
@@ -50,6 +52,20 @@ public class Obstacles extends GameObject {
 
 	@Override
 	public void onDelete() {
+		numObstacles++;
+	}
+	
+	public static int getTotalObstacles() {
+		return numObstacles;
+	}
+	
+	public static void reset() {
+		numObstacles = 0;
+	}
+	
+	@Override
+	protected String getSymbol() {
+		return symbol;
 	}
 
 }

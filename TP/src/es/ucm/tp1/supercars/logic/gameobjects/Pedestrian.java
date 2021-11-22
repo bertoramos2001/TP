@@ -2,63 +2,46 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 
 import es.ucm.tp1.supercars.logic.Game;
 
-public class Pedestrian extends GameObject {
+public class Pedestrian extends Obstacles {
 	
 	public static final String INFO = "[PEDESTRIAN] person crossing the road up and down\n";
 	private final String PEDESTRIAN_SYMBOL = "☺";
+	private boolean isDown = true;
+	private final int LIVES = 0;
 
 	public Pedestrian(Game game, int x, int lane) {
 		super(game, x, lane);
+		symbol = PEDESTRIAN_SYMBOL;
+		lives = LIVES;
 	}
 
 	@Override
 	public boolean receiveCollision(Player player) {
 		player.setDead();
 		player.removeCoins();
+		lives -= 1;
 		return false;
 	}
 
 	@Override
 	public boolean receiveShoot() {
-		// TODO no se si recibe tiro
+		// TODO matar al pedestrian y quitar monedas (creo)
 		return false;
 	}
+	//TODO: igual que con wall, ver si explosion funciona con el del padre
 
 	@Override
-	public boolean receiveExplosion() {
-		// TODO no se si recibe explosion
-		return false;
+	public void update() {	
+		
+		if(isDown) {
+			y = y + 1;
+		}
+		else {
+			y = y - 1;
+			if( y < 0)
+				y = -y;
+		}
+		if(y == 0 || y == 2)
+			isDown = !isDown;
 	}
-
-	@Override
-	public boolean isAlive() {
-		return true;
-	}
-
-	@Override
-	public void onEnter() {
-		//TODO: debe aumentar el numero de obstaculos pero tenemos que tener una clase padre
-	}
-
-	@Override
-	public void update() {
-		y = (y+1) % 3;
-	}
-
-	@Override
-	public void onDelete() {
-		///TODO: debe disminuir el numero de obstaculos pero tenemos que tener una clase padre
-	}
-	
-	@Override
-	protected String getSymbol() {
-		return PEDESTRIAN_SYMBOL;
-	}
-	
-	@Override
-	public boolean receiveWave() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

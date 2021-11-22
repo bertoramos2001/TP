@@ -49,6 +49,10 @@ public class Game {
 	public int getPlayerPositionX() {
 		return player.getX();
 	}
+	
+	public int getPlayerPositionY() {
+		return player.getY();
+	}
 
 	public int getVisibility() {
 		return level.getRoadVisibility();
@@ -128,9 +132,12 @@ public class Game {
 		return gameObjectContainer.getObjectInPosition(x, y);
 	}
 	
+	public void movePlayerForward() {
+		player.moveForward();
+	}
+	
 	public void update() {
-		player.update();
-		//TODO: como hacer el update de los objetos?
+		gameObjectContainer.update();
 		//TODO: ejecutar runtime instant actions
 		addCycle();
 		//TODO: controlar el tiempo?
@@ -192,6 +199,10 @@ public class Game {
 	
 	public void forceAdvancedObjects(int id) {
 		GameObjectGenerator.forceAdvanceObject(this, id, getPlayerPositionX() + getVisibility() - 1);
+	}
+	
+	public void execute(InstantAction instAct) {
+		
 	}
 	
 	public void executeWave() {

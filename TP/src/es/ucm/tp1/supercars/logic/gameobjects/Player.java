@@ -55,23 +55,34 @@ public class Player extends GameObject {
 	//MÉTODOS QUE GESTIONAN EL MOVIMIENTO DEL JUGADOR
 	public void moveDown() {
 		if (y < game.getRoadWidth() - 1)
-			y += 1;
+				move(1, 1);
 		
-		update();
+		game.update();
 	}
 	
 	public void moveUp() {
 		if (y > 0)
-			y -= 1;
+			move(1, -1);
 		
-		update();
+		game.update();
+	}
+	
+	private void move(int dx, int dy) {
+		doCollision();
+		if (isAlive()) {
+			x += dx;
+			y += dy;
+		}
+		doCollision();
+	}
+	
+	public void moveForward() {
+		move(1, 0);
+		game.update();
 	}
 
 	@Override
 	public void update() {
-		doCollision();
-		x += 1;
-		doCollision();
 	}
 	
 	public void jump() {
@@ -127,7 +138,6 @@ public class Player extends GameObject {
 	
 	@Override
 	public boolean receiveWave() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }
