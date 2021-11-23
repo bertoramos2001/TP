@@ -22,26 +22,22 @@ public class Grenade extends GameObject{
 
 	@Override
 	public boolean isAlive() {
-		// TODO Auto-generated method stub
-		return false;
+		// TODO falta implementar
+		return true;
 	}
 
 	@Override
 	public void onEnter() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		// TODO:falta implementar
 	}
 
 	@Override
 	public void onDelete() {
-		// TODO Auto-generated method stub
-		
+		//TODO: aquí se realiza la explosión de la granada
 	}
 	
 	@Override
@@ -56,8 +52,8 @@ public class Grenade extends GameObject{
 	
 	@Override
 	public boolean receiveWave() {
-		// TODO Auto-generated method stub
-		return false;
+		// TODO no sé si la recibe
+		return true;
 	}
 
 }

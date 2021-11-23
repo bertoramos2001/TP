@@ -6,6 +6,7 @@ public class Turbo extends GameObject {
 	
 	public static final String INFO = "[TURBO] pushes the car 3 columns\n";
 	private final String TURBO_SYMBOL = ">>>";
+	private boolean alive = true;
 
 	public Turbo(Game game, int x, int lane) {
 		super(game, x, lane);
@@ -24,7 +25,7 @@ public class Turbo extends GameObject {
 
 	@Override
 	public boolean isAlive() {
-		return true;
+		return alive;
 	}
 
 	@Override
@@ -46,12 +47,13 @@ public class Turbo extends GameObject {
 
 	@Override
 	public boolean receiveExplosion() {
-		return false;
+		alive = false;
+		return true;
 	}
 	
 	@Override
 	public boolean receiveWave() {
-		// TODO Auto-generated method stub
+		x += 1;
 		return false;
 	}
 

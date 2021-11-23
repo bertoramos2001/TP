@@ -23,7 +23,4 @@ public class Wall extends Obstacles {
 		}
 		return true;
 	}
-	//TODO: ver si el receive explosion funciona bien dejandolo en Obstacles y aqui no
-	
-
 }

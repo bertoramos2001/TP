@@ -25,12 +25,16 @@ public class CheatCommand extends Command {
 	@Override
 	protected Command parse(String[] words) {
 		if (words.length == 1) {
-			String[] shortcutList = SHORTCUT.trim().split(" ");
-			for (String s : shortcutList) {
-				if (s.equalsIgnoreCase(words[0])) {
-					idComando = Integer.parseInt(words[0]);
-					return this;
-				}
+			try {
+				idComando = Integer.parseInt(words[0]);
+			} 
+			catch (Exception e) {
+				return null;
+			}
+			if (idComando >= GameObjectGenerator.MIN_OBJECT_ID && idComando <= GameObjectGenerator.MAX_OBJECT_ID) {
+				return this;
+			} else {
+				return null;
 			}
 		}
 		return null;

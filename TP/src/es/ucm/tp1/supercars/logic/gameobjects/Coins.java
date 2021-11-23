@@ -27,14 +27,14 @@ public class Coins extends GameObject {
 
 	@Override
 	public boolean receiveExplosion() {
-		//TODO: falta implementar
+		alive = false;
 		return false;
 	}
 
 	@Override
 	public boolean receiveWave() {
-		// TODO falta implementar
-		return false;
+		x += 1;
+		return true;
 	}
 
 	@Override

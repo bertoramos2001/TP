@@ -164,10 +164,6 @@ public class Game {
 		gameObjectContainer.deleteDead();
 	}
 	
-	public void shootFirstObstacle() {
-		//TODO: implementar
-	}
-	
 	public void clearGameObjects() {
 		gameObjectContainer.deleteAll();
 	}
@@ -202,10 +198,7 @@ public class Game {
 	}
 	
 	public void execute(InstantAction instAct) {
-		
-	}
-	
-	public void executeWave() {
-		//execute(this);
+		instAct.execute(this);
+		update();
 	}
 }

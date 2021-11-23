@@ -15,25 +15,25 @@ public class Obstacles extends GameObject {
 	@Override
 	public boolean receiveCollision(Player player) {
 		player.setDead();
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean receiveShoot() {
 		lives -= 1;
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean receiveExplosion() {
-		receiveShoot();
+		lives = -1;
 		return true;
 	}
 
 	@Override
 	public boolean receiveWave() {
-		// TODO falta implementar
-		return false;
+		x += 1;
+		return true;
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class Obstacles extends GameObject {
 
 	@Override
 	public void onDelete() {
-		numObstacles++;
+		numObstacles--;
 	}
 	
 	public static int getTotalObstacles() {

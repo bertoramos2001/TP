@@ -2,7 +2,6 @@ package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.Game;
-import es.ucm.tp1.supercars.logic.GameObjectGenerator;
 
 public class ResetCommand extends Command {
 	private static final String NAME = "reset";

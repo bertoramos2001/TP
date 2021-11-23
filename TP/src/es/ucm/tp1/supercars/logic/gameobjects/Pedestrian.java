@@ -25,7 +25,8 @@ public class Pedestrian extends Obstacles {
 
 	@Override
 	public boolean receiveShoot() {
-		// TODO matar al pedestrian y quitar monedas (creo)
+		lives -= 1;
+		//TODO: creo que pierde monedas
 		return false;
 	}
 	//TODO: igual que con wall, ver si explosion funciona con el del padre

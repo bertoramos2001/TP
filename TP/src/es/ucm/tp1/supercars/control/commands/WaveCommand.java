@@ -1,6 +1,7 @@
 package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.logic.instantActions.WaveAction;
 
 public class WaveCommand extends Command {
 	private static final String NAME = "wave";
@@ -15,7 +16,7 @@ public class WaveCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		game.executeWave();
+		game.execute(new WaveAction());
 		return PINTA_CARRETERA;
 	}
 }

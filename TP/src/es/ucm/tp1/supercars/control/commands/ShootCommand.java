@@ -17,7 +17,6 @@ public class ShootCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		//TODO: queda llamar bien al shoot
 		game.execute(new ShootAction());
 		return PINTA_CARRETERA;
 	}

@@ -8,14 +8,14 @@ public class ShootAction implements InstantAction {
 	
 	private int i;
 	private boolean found;
+	private GameObject o;
 
 	@Override
 	public void execute(Game game) {
 		i = game.getPlayerPositionX();
 		found = false;
-		//TODO: ver si el limite del bucle esta bien
-		while(!found && i < (game.getVisibility() + game.getPlayerPositionX() - 1)) {
-			GameObject o = game.getObjectInPosition(i, game.getPlayerPositionY());
+		while(!found && i < (game.getVisibility() + game.getPlayerPositionX())) {
+			o = game.getObjectInPosition(i, game.getPlayerPositionY());
 			if (o != null) {
 				found = o.receiveShoot();
 			}

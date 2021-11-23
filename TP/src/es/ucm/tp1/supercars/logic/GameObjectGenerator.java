@@ -4,6 +4,9 @@ import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.gameobjects.*;
 
 public class GameObjectGenerator {
+	
+	public static final int MAX_OBJECT_ID = 5;
+	public static final int MIN_OBJECT_ID = 1;
 
 	public static void generateGameObjects(Game game, Level level) {
 

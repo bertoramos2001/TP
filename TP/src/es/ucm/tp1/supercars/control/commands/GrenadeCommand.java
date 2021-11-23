@@ -1,6 +1,5 @@
 package es.ucm.tp1.supercars.control.commands;
 
-import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class GrenadeCommand extends Command {
@@ -18,7 +17,12 @@ public class GrenadeCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		// TODO Auto-generated method stub
+		if (grenadeX <= game.getVisibility() && grenadeY <= game.getRoadWidth() && grenadeY >= 0) {
+			if (game.getObjectInPosition(grenadeX, grenadeY) != null) {
+				//TODO: si esto no pasa, indicarlo y pedir granada (creo, ver tests)
+				//TODO: hay que añadir instancia al container??
+			}
+		}
 		
 		return PINTA_CARRETERA;
 	}
@@ -30,8 +34,13 @@ public class GrenadeCommand extends Command {
 				System.out.format("[ERROR]: Command %s: %s%n%n", NAME, INCORRECT_NUMBER_OF_ARGS_MSG);
 				return null;
 			} else {
-				grenadeX = Integer.parseInt(words[1]);
-				grenadeY = Integer.parseInt(words[2]);
+				try {
+					grenadeX = Integer.parseInt(words[1]);
+					grenadeY = Integer.parseInt(words[2]);
+				} 
+				catch (NumberFormatException e) {
+					return null;
+				}
 				return this;
 			}
 		}
