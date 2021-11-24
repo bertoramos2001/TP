@@ -26,10 +26,16 @@ public class Pedestrian extends Obstacles {
 	@Override
 	public boolean receiveShoot() {
 		lives -= 1;
-		//TODO: creo que pierde monedas
-		return false;
+		game.removePlayerCoins();
+		return true;
 	}
-	//TODO: igual que con wall, ver si explosion funciona con el del padre
+	
+	@Override
+	public boolean receiveExplosion() {
+		lives = -1;
+		game.removePlayerCoins();
+		return true;
+	}
 
 	@Override
 	public void update() {	

@@ -15,7 +15,7 @@ public class GameObjectGenerator {
 			game.tryToAddObject(new Coin(game, x, game.getRandomLane()), level.coinFrequency());
 			
 			if (level.hasAdvancedObjects()) {
-				//game.tryToAddObject(new Wall(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
+				game.tryToAddObject(new Wall(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
 				game.tryToAddObject(new Turbo(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
 				if (!SuperCoin.hasSuperCoin()) {
 					game.tryToAddObject(new SuperCoin(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
@@ -58,6 +58,12 @@ public class GameObjectGenerator {
 	public static void reset() {
 		Obstacle.reset();
 		Coin.reset();
+	}
+	
+	public static void addGrenade(Game game, int grenadeX, int grenadeY) {
+		GameObject o = new Grenade(game, grenadeX, grenadeY);
+		game.tryToAddObject(o, 1);
+		
 	}
 	
 }

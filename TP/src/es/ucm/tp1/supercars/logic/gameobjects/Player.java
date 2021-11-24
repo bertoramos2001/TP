@@ -54,17 +54,15 @@ public class Player extends GameObject {
 	
 	//MÉTODOS QUE GESTIONAN EL MOVIMIENTO DEL JUGADOR
 	public void moveDown() {
-		if (y < game.getRoadWidth() - 1)
-				move(1, 1);
-		
-		game.update();
+		if (y < game.getRoadWidth() - 1) {
+			move(1, 1);
+		}
 	}
 	
 	public void moveUp() {
-		if (y > 0)
+		if (y > 0) {
 			move(1, -1);
-		
-		game.update();
+		}
 	}
 	
 	private void move(int dx, int dy) {
@@ -74,11 +72,11 @@ public class Player extends GameObject {
 			y += dy;
 		}
 		doCollision();
+		game.update();
 	}
 	
 	public void moveForward() {
 		move(1, 0);
-		game.update();
 	}
 
 	@Override
@@ -124,6 +122,10 @@ public class Player extends GameObject {
 	
 	public void removeCoins() {
 		actualCoins = 0;
+	}
+	
+	public void extractCoins(int c) {
+		actualCoins -= c;
 	}
 	
 	public void setDead() {

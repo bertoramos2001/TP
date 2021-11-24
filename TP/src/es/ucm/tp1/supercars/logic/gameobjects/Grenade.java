@@ -1,11 +1,13 @@
 package es.ucm.tp1.supercars.logic.gameobjects;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.logic.instantActions.ExplosionAction;
 
 public class Grenade extends GameObject{
 	public static final String INFO = "[GRENADE] Explodes in 3 cycles, harming everyone around\n";
 	private final String GRENADE_SYMBOL = "ð";
-
+	private int numCycles = 3;
+	
 	public Grenade(Game game, int x, int lane) {
 		super(game, x, lane);
 	}
@@ -21,9 +23,8 @@ public class Grenade extends GameObject{
 	}
 
 	@Override
-	public boolean isAlive() {
-		// TODO falta implementar
-		return true;
+	public boolean isAlive() {		
+		return numCycles > 0;
 	}
 
 	@Override
@@ -32,17 +33,17 @@ public class Grenade extends GameObject{
 
 	@Override
 	public void update() {
-		// TODO:falta implementar
+		numCycles--;
 	}
 
 	@Override
 	public void onDelete() {
-		//TODO: aquí se realiza la explosión de la granada
+		game.execute(new ExplosionAction(x, y));
 	}
 	
 	@Override
 	protected String getSymbol() {
-		return GRENADE_SYMBOL;
+		return GRENADE_SYMBOL + "[" + numCycles + "]";
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class Grenade extends GameObject{
 	
 	@Override
 	public boolean receiveWave() {
-		// TODO no sé si la recibe
+		x += 1;
 		return true;
 	}
 

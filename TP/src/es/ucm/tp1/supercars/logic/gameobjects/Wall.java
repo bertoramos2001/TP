@@ -11,8 +11,8 @@ public class Wall extends Obstacles {
 
 	public Wall(Game game, int x, int lane) {
 		super(game, x, lane);
-		symbol = WALL_SYMBOL_ARR[lives];
 		lives = LIVES;
+		symbol = WALL_SYMBOL_ARR[lives];
 	}
 
 	@Override
@@ -20,7 +20,15 @@ public class Wall extends Obstacles {
 		lives -= 1;
 		if (!isAlive()) {
 			game.addPlayerCoins(NUM_COINS_GIVEN);
+		} else {
+			symbol = WALL_SYMBOL_ARR[lives];
 		}
+		return true;
+	}
+	
+	@Override
+	public boolean receiveExplosion() {
+		lives = -1;
 		return true;
 	}
 }

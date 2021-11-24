@@ -105,17 +105,15 @@ public class Game {
 	//MÉTODOS PARA OBTENER INFORMACIÓN Y MANEJAR OBJETOS
 	public String positionToString(int x, int y) {
 		String s = "";
-		GameObject obj = getObjectInPosition(x, y);
+		//GameObject obj = getObjectInPosition(x, y);
 		
 		if (player.isInPosition(x, y)) {
 			s += (player.toString());
 			s += " ";
 		}
-		if (obj != null) {
-			//TODO: que se muestren todos los objecos (que getObjectInPosition devuelva array)
-			s += (obj.toString());
-			s += " ";
-		}
+		
+		s += gameObjectContainer.printObjectsIn(x, y);
+		
 		if (getRoadLength() == x) {
 			s += (FINISH_LINE);
 			s += " ";
@@ -171,6 +169,14 @@ public class Game {
 	public void addPlayerCoins(int c) {
 		player.addCoin(c);
 	}
+	
+	public void removePlayerCoins() {
+		player.removeCoins();
+	}
+	
+	public void extractPlayerCoins(int c) {
+		player.extractCoins(c);
+	}
 
 	//MÉTODOS QUE MANEJAN INFORMACIÓN DEL JUEGO
 	public boolean isFinished() {
@@ -200,5 +206,9 @@ public class Game {
 	public void execute(InstantAction instAct) {
 		instAct.execute(this);
 		update();
+	}
+	
+	public void addGrenade(int grenadeX, int grenadeY) {
+		GameObjectGenerator.addGrenade(this, grenadeX, grenadeY);
 	}
 }

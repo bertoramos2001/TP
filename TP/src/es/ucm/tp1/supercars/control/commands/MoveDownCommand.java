@@ -8,7 +8,7 @@ public class MoveDownCommand extends Command {
 	private static final String DETAILS = "[a]";
 	private static final String SHORTCUT = "a";
 	private static final String HELP = "go down";
-	private static final boolean PINTA_CARRETERA = true;
+	private final boolean PINTA_CARRETERA = true;
 
 	public MoveDownCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);

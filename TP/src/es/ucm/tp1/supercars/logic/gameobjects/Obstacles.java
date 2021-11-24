@@ -26,8 +26,7 @@ public class Obstacles extends GameObject {
 
 	@Override
 	public boolean receiveExplosion() {
-		lives = -1;
-		return true;
+		return receiveShoot();
 	}
 
 	@Override

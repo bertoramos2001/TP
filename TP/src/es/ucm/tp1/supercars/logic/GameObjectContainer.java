@@ -65,5 +65,16 @@ public class GameObjectContainer {
 		
 	}
 	
+	public String printObjectsIn(int x, int y) {
+		String s = "";
+		for (GameObject o : gameObjects) {
+			if (o.getX() == x && o.getY() == y) {
+				s += o.toString();
+				s += " ";
+			}
+		}
+		return s;
+	}
+	
 	
 }
