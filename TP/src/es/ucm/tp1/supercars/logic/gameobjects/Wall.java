@@ -18,9 +18,7 @@ public class Wall extends Obstacles {
 	@Override
 	public boolean receiveShoot() {
 		lives -= 1;
-		if (!isAlive()) {
-			game.addPlayerCoins(NUM_COINS_GIVEN);
-		} else {
+		if (isAlive()) {
 			symbol = WALL_SYMBOL_ARR[lives];
 		}
 		return true;
@@ -30,5 +28,10 @@ public class Wall extends Obstacles {
 	public boolean receiveExplosion() {
 		lives = -1;
 		return true;
+	}
+	
+	@Override
+	public void onDelete() {
+		game.addPlayerCoins(NUM_COINS_GIVEN);
 	}
 }

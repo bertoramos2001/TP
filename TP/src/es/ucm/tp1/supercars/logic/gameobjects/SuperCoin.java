@@ -7,7 +7,7 @@ public class SuperCoin extends Coins {
 	public static final String INFO = "[SUPERCOIN] gives 1000 coins\n";
 	private final String SUPERCOIN_SYMBOL = "$";
 	private final int COINS_AWARDED = 1000;
-	private static boolean superCoinPresent = false;
+	private static boolean superCoinPresent;
 
 	public SuperCoin(Game game, int x, int lane) {
 		super(game, x, lane);
@@ -22,7 +22,7 @@ public class SuperCoin extends Coins {
 
 	@Override
 	public void onDelete() {
-		superCoinPresent = true;
+		superCoinPresent = false;
 	}
 	
 	public static boolean hasSuperCoin() {

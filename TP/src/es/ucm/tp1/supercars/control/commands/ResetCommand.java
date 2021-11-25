@@ -9,6 +9,7 @@ public class ResetCommand extends Command {
 	private static final String SHORTCUT = "r";
 	private static final String HELP = "reset game";
 	private static final boolean PINTA_CARRETERA = true;
+	private static final String UNKNOWN_LEVEL_MSG = "Level must be one of: TEST, EASY, HARD, ADVANCED";
 	
 	private Long newSeed;
 	private Level newLevel;
@@ -37,6 +38,10 @@ public class ResetCommand extends Command {
 				newLevel = Level.valueOfIgnoreCase(words[1]);
 				newSeed = Long.parseLong(words[2]);
 				
+				if (newLevel == null) {
+					System.out.println("[ERROR]: Command r: " + UNKNOWN_LEVEL_MSG);
+					return null;
+				}
 				return this;
 			} else {
 				return null;
