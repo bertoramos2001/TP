@@ -44,8 +44,6 @@ public class Controller {
 			if (command != null) {
 				refreshDisplay = command.execute(game);
 			}
-			//TODO: si falla dead objects, poner aqui
-			//game.deleteDeadObjects();
 			if (refreshDisplay) {
 				printGame();
 			}

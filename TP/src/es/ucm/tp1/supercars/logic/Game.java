@@ -17,7 +17,6 @@ public class Game {
 	private boolean modoTest, gameFinished;
 	private int cycleNum;
 	private final String FINISH_LINE = "¦";
-	//TODO: esta bien?
 	private double currentTime;
 	
 	public Game(long seed, Level level) {

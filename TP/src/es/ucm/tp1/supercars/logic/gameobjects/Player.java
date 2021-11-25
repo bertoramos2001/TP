@@ -134,7 +134,6 @@ public class Player extends GameObject {
 
 	@Override
 	public boolean receiveExplosion() {
-		// TODO No sé si el jugador tendría que recibir la explosión
 		return false;
 	}
 	

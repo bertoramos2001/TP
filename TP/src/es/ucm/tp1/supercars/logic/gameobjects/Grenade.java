@@ -59,7 +59,6 @@ public class Grenade extends GameObject{
 
 	@Override
 	public boolean receiveThunder() {
-		//TODO: recibiria rayo??
 		return false;
 	}
 
