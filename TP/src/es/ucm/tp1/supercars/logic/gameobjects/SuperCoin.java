@@ -28,5 +28,4 @@ public class SuperCoin extends Coins {
 	public static boolean hasSuperCoin() {
 		return superCoinPresent;
 	}
-
 }

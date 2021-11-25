@@ -17,6 +17,8 @@ public class Game {
 	private boolean modoTest, gameFinished;
 	private int cycleNum;
 	private final String FINISH_LINE = "¦";
+	//TODO: esta bien?
+	private double currentTime;
 	
 	public Game(long seed, Level level) {
 		this.seed = seed;
@@ -83,6 +85,10 @@ public class Game {
 		return (int) (getRandomNumber() * getRoadWidth());
 	}
 	
+	public int getRandomVisibleColumn() {
+		return (int) (getRandomNumber() * getVisibility());
+	}
+	
 	private double getRandomNumber() {
 		return rand.nextDouble(); 
 	}
@@ -105,7 +111,6 @@ public class Game {
 	//MÉTODOS PARA OBTENER INFORMACIÓN Y MANEJAR OBJETOS
 	public String positionToString(int x, int y) {
 		String s = "";
-		//GameObject obj = getObjectInPosition(x, y);
 		
 		if (player.isInPosition(x, y)) {
 			s += (player.toString());
@@ -136,10 +141,10 @@ public class Game {
 	
 	public void update() {
 		gameObjectContainer.update();
-		//TODO: ejecutar runtime instant actions
+		GameObjectGenerator.generateRuntimeObjects(this);
 		addCycle();
-		//TODO: controlar el tiempo?
-		//TODO: callback onDelete aqui?
+		currentTime = ((double)System.currentTimeMillis() - getInitialTime()) / 1000;
+		deleteDeadObjects();
 	}
 	
 	public void movePlayerDown() {
@@ -191,6 +196,10 @@ public class Game {
 		return initialTime;
 	}
 	
+	public double getCurrentTime() {
+		return currentTime;
+	}
+	
 	public void toggleTest() {
 		modoTest = true;
 	}
@@ -205,10 +214,9 @@ public class Game {
 	
 	public void execute(InstantAction instAct) {
 		instAct.execute(this);
-		update();
 	}
 	
-	public void addGrenade(int grenadeX, int grenadeY) {
-		GameObjectGenerator.addGrenade(this, grenadeX, grenadeY);
+	public Level getLevel() {
+		return level;
 	}
 }

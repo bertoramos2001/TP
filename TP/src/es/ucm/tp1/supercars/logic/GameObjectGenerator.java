@@ -2,6 +2,7 @@ package es.ucm.tp1.supercars.logic;
 
 import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.gameobjects.*;
+import es.ucm.tp1.supercars.logic.instantActions.ThunderAction;
 
 public class GameObjectGenerator {
 	
@@ -27,10 +28,9 @@ public class GameObjectGenerator {
 	}
 	
 	public static void generateRuntimeObjects(Game game) {
-		//TODO: falta implementar 
-//		if (game.getLevel().hasAdvancedObjects()) {
-//			game.execute(new ThunderAction());
-//		}
+		if (game.getLevel().hasAdvancedObjects()) {
+			game.execute(new ThunderAction());
+		}
 	}
 	
 	public static void forceAdvanceObject(Game game, int id, int x) {
@@ -59,11 +59,4 @@ public class GameObjectGenerator {
 		Obstacle.reset();
 		Coin.reset();
 	}
-	
-	public static void addGrenade(Game game, int grenadeX, int grenadeY) {
-		GameObject o = new Grenade(game, grenadeX, grenadeY);
-		game.tryToAddObject(o, 1);
-		
-	}
-	
 }

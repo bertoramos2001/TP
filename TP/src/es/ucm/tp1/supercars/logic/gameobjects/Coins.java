@@ -58,4 +58,10 @@ public class Coins extends GameObject {
 		return symbol;
 	}
 
+	@Override
+	public boolean receiveThunder() {
+		alive = false;
+		return false;
+	}
+
 }

@@ -142,4 +142,10 @@ public class Player extends GameObject {
 	public boolean receiveWave() {
 		return false;
 	}
+
+	@Override
+	public boolean receiveThunder() {
+		alive = false;
+		return false;
+	}
 }

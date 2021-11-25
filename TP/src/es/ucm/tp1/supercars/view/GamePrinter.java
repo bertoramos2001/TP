@@ -60,7 +60,7 @@ public class GamePrinter {
 	}
 	
 	private String getTimeInfo() {
-		String info = String.format(Locale.FRANCE, "\nElapsed Time: %.2f s", ((double)System.currentTimeMillis() - game.getInitialTime()) / 1000);	
+		String info = String.format(Locale.FRANCE, "\nElapsed Time: %.2f s", game.getCurrentTime());	
 		return info;
 	}
 	

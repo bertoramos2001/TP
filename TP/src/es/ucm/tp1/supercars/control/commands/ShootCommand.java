@@ -21,6 +21,7 @@ public class ShootCommand extends Command implements Buyable{
 	public boolean execute(Game game) {
 		if (buy(game)) {
 			game.execute(new ShootAction());
+			game.update();
 		} else {
 			System.out.println("[ERROR]: Failed to shoot\n");
 		}

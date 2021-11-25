@@ -2,6 +2,7 @@ package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.control.Buyable;
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.logic.gameobjects.Grenade;
 
 public class GrenadeCommand extends Command  implements Buyable {
 	private static final String NAME = "grenade";
@@ -21,7 +22,8 @@ public class GrenadeCommand extends Command  implements Buyable {
 	public boolean execute(Game game) {	
 		if (grenadeX <= game.getVisibility() && grenadeY <= game.getRoadWidth() && grenadeY >= 0 && game.getObjectInPosition(grenadeX + game.getPlayerPositionX(), grenadeY) == null) {
 			if (buy(game)) {
-				game.addGrenade(grenadeX + game.getPlayerPositionX(), grenadeY);
+				game.tryToAddObject(new Grenade(game, grenadeX + game.getPlayerPositionX(), grenadeY), 1);
+				game.update();
 				PINTA_CARRETERA = true;
 			} else {
 				System.out.println("[ERROR]: Failed to add grenade\n");

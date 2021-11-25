@@ -57,4 +57,9 @@ public class Turbo extends GameObject {
 		return false;
 	}
 
+	@Override
+	public boolean receiveThunder() {
+		alive = false;
+		return false;
+	}
 }

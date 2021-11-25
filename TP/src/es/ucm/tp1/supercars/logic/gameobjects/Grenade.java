@@ -6,7 +6,7 @@ import es.ucm.tp1.supercars.logic.instantActions.ExplosionAction;
 public class Grenade extends GameObject{
 	public static final String INFO = "[GRENADE] Explodes in 3 cycles, harming everyone around\n";
 	private final String GRENADE_SYMBOL = "ð";
-	private int numCycles = 3;
+	private int numCycles = 4;
 	
 	public Grenade(Game game, int x, int lane) {
 		super(game, x, lane);
@@ -55,6 +55,12 @@ public class Grenade extends GameObject{
 	public boolean receiveWave() {
 		x += 1;
 		return true;
+	}
+
+	@Override
+	public boolean receiveThunder() {
+		//TODO: recibiria rayo??
+		return false;
 	}
 
 }
