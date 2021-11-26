@@ -4,7 +4,7 @@ import es.ucm.tp1.supercars.logic.Game;
 
 public class ClearCommand extends Command{
 	private static final String NAME = "clear";
-	private static final String DETAILS = "Cheat [0]";
+	private static final String DETAILS = "Clear [0]";
 	private static final String SHORTCUT = "0";
 	private static final String HELP = "Clears the road";
 	private static final boolean PINTA_CARRETERA = true;

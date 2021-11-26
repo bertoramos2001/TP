@@ -17,7 +17,7 @@ public class Game {
 	private boolean modoTest, gameFinished;
 	private int cycleNum;
 	private final String FINISH_LINE = "¦";
-	private double currentTime;
+	private final String SEED_INFO_MSG = "Random generator initialized with seed: ";
 	
 	public Game(long seed, Level level) {
 		this.seed = seed;
@@ -30,7 +30,6 @@ public class Game {
 		rand = new Random(seed);
 		initialTime = 0;
 		gameFinished = false;
-		modoTest = false;
 		cycleNum = 0;
 		GameObjectGenerator.reset();
 		player.initialize(0, level.getRoadWidth() / 2);
@@ -38,6 +37,9 @@ public class Game {
 		startTimer();
 		
 		GameObjectGenerator.generateGameObjects(this, level);
+		
+		System.out.println("Level: " + level);
+		System.out.println(SEED_INFO_MSG + seed);
 	}
 	
 	public void initialize(long seed, Level level) {
@@ -112,15 +114,13 @@ public class Game {
 		String s = "";
 		
 		if (player.isInPosition(x, y)) {
-			s += (player.toString());
-			s += " ";
+			s += (player.toString()) + " ";
 		}
 		
 		s += gameObjectContainer.printObjectsIn(x, y);
 		
 		if (getRoadLength() == x) {
-			s += (FINISH_LINE);
-			s += " ";
+			s += (FINISH_LINE) + " ";
 		}
 		
 		return s;
@@ -142,7 +142,6 @@ public class Game {
 		gameObjectContainer.update();
 		GameObjectGenerator.generateRuntimeObjects(this);
 		addCycle();
-		currentTime = ((double)System.currentTimeMillis() - getInitialTime()) / 1000;
 		deleteDeadObjects();
 	}
 	
@@ -196,7 +195,7 @@ public class Game {
 	}
 	
 	public double getCurrentTime() {
-		return currentTime;
+		return ((double)System.currentTimeMillis() - getInitialTime()) / 1000;
 	}
 	
 	public void toggleTest() {

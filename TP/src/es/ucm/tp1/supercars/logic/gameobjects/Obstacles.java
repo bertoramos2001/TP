@@ -70,7 +70,7 @@ public class Obstacles extends GameObject {
 	@Override
 	public boolean receiveThunder() {
 		lives = -1;
-		return false;
+		return true;
 	}
 
 }

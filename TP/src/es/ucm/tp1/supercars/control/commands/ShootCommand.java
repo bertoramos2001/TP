@@ -10,7 +10,7 @@ public class ShootCommand extends Command implements Buyable{
 	private static final String DETAILS = "[s]hoot";
 	private static final String SHORTCUT = "s";
 	private static final String HELP = "shoot bullet";
-	private final boolean PINTA_CARRETERA = true;
+	private boolean PINTA_CARRETERA = true;
 	private final int SHOOT_COST = 1;
 
 	public ShootCommand() {
@@ -24,6 +24,7 @@ public class ShootCommand extends Command implements Buyable{
 			game.update();
 		} else {
 			System.out.println("[ERROR]: Failed to shoot\n");
+			return false;
 		}
 		return PINTA_CARRETERA;
 	}

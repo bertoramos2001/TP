@@ -33,6 +33,5 @@ public class Coin extends Coins {
 	//MÉTODOS QUE MODIFICAN INFORMACIÓN DEL COIN
 	public static void reset() {
 		numCoins = 0;
-		
 	}
 }

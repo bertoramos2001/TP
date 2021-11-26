@@ -60,7 +60,6 @@ public class Coins extends GameObject {
 
 	@Override
 	public boolean receiveThunder() {
-		alive = false;
 		return false;
 	}
 

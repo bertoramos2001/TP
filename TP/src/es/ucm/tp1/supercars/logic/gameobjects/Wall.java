@@ -33,5 +33,6 @@ public class Wall extends Obstacles {
 	@Override
 	public void onDelete() {
 		game.addPlayerCoins(NUM_COINS_GIVEN);
+		numObstacles--;
 	}
 }

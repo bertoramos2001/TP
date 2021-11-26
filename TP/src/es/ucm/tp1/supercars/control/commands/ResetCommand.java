@@ -4,12 +4,12 @@ import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class ResetCommand extends Command {
-	private static final String NAME = "reset";
+	private static final String NAME = "r";
 	private static final String DETAILS = "[r]eset [<level> <seed>]";
 	private static final String SHORTCUT = "r";
 	private static final String HELP = "reset game";
 	private static final boolean PINTA_CARRETERA = true;
-	private static final String UNKNOWN_LEVEL_MSG = "Level must be one of: TEST, EASY, HARD, ADVANCED";
+	private static final String UNKNOWN_LEVEL_MSG = "Level must be one of: TEST, EASY, HARD, ADVANCED\n";
 	
 	private Long newSeed;
 	private Level newLevel;
@@ -22,7 +22,7 @@ public class ResetCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		if ((newLevel != null) || (newSeed != null)) {
+		if ((newLevel != null) && (newSeed != null)) {
 			game.initialize(newSeed, newLevel);
 		} else {
 			game.initialize();

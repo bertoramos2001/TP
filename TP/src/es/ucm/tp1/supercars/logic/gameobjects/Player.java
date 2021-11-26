@@ -20,6 +20,8 @@ public class Player extends GameObject {
 	}
 	
 	public void initialize(int x, int y) {
+		this.x = x;
+		this.y = y;
 		actualCoins = INITIAL_COINS;
 	}
 
@@ -56,12 +58,16 @@ public class Player extends GameObject {
 	public void moveDown() {
 		if (y < game.getRoadWidth() - 1) {
 			move(1, 1);
+		} else {
+			moveForward();
 		}
 	}
 	
 	public void moveUp() {
 		if (y > 0) {
 			move(1, -1);
+		} else {
+			moveForward();
 		}
 	}
 	

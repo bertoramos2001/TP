@@ -6,7 +6,7 @@ import es.ucm.tp1.supercars.logic.instantActions.ExplosionAction;
 public class Grenade extends GameObject{
 	public static final String INFO = "[GRENADE] Explodes in 3 cycles, harming everyone around\n";
 	private final String GRENADE_SYMBOL = "ð";
-	private int numCycles = 4;
+	private int grenadeCycles = 4;
 	
 	public Grenade(Game game, int x, int lane) {
 		super(game, x, lane);
@@ -24,7 +24,7 @@ public class Grenade extends GameObject{
 
 	@Override
 	public boolean isAlive() {		
-		return numCycles > 0;
+		return grenadeCycles > 0;
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class Grenade extends GameObject{
 
 	@Override
 	public void update() {
-		numCycles--;
+		grenadeCycles--;
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class Grenade extends GameObject{
 	
 	@Override
 	protected String getSymbol() {
-		return GRENADE_SYMBOL + "[" + numCycles + "]";
+		return GRENADE_SYMBOL + "[" + grenadeCycles + "]";
 	}
 
 	@Override

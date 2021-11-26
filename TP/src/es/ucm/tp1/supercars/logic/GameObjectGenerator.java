@@ -22,7 +22,7 @@ public class GameObjectGenerator {
 					game.tryToAddObject(new SuperCoin(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
 				}
 				game.tryToAddObject(new Truck(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
-				game.tryToAddObject(new Pedestrian(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
+				game.tryToAddObject(new Pedestrian(game, x, 0), level.advancedObjectsFrequency());
 			}
 		}
 	}
@@ -56,7 +56,7 @@ public class GameObjectGenerator {
 	}
 
 	public static void reset() {
-		Obstacle.reset();
+		Obstacles.reset();
 		Coin.reset();
 	}
 }

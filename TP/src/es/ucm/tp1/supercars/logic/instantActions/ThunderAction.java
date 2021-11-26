@@ -8,7 +8,7 @@ public class ThunderAction implements InstantAction {
 	
 	private int x, y;
 	GameObject o;
-	private String s;
+	private String s, tempSymbol;
 
 	@Override
 	public void execute(Game game) {
@@ -19,10 +19,12 @@ public class ThunderAction implements InstantAction {
 		o = game.getObjectInPosition(game.getPlayerPositionX() + x, y);
 		
 		if (o != null) {
-			s += " -> " + o.toString();
-			o.receiveThunder();
-		}
-		
+			tempSymbol = o.toString();
+			//tempSymbol es necesaria ya que receiveTunder borra el objeto, y no se podría hacer el toString después
+			if (o.receiveThunder()) {
+				s += " -> " + tempSymbol;
+			}
+		} 
 		System.out.println(s);
 	}
 
