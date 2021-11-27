@@ -104,6 +104,10 @@ public class Game {
 		}
 	}
 	
+	public void addObject (GameObject o) {
+		gameObjectContainer.add(o);
+	}
+	
 	public void forceAddObject(GameObject o) {
 		gameObjectContainer.deleteColumn(o.getX());
 		gameObjectContainer.add(o);

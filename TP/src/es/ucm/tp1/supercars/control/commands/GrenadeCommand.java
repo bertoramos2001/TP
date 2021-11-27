@@ -22,7 +22,7 @@ public class GrenadeCommand extends Command  implements Buyable {
 	public boolean execute(Game game) {	
 		if (grenadeX <= game.getVisibility() && grenadeY <= game.getRoadWidth() && grenadeY >= 0 && game.getObjectInPosition(grenadeX + game.getPlayerPositionX(), grenadeY) == null) {
 			if (buy(game)) {
-				game.tryToAddObject(new Grenade(game, grenadeX + game.getPlayerPositionX(), grenadeY), 1);
+				game.addObject(new Grenade(game, grenadeX + game.getPlayerPositionX(), grenadeY));
 				game.update();
 				PINTA_CARRETERA = true;
 			} else {
