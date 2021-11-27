@@ -23,6 +23,7 @@ public class Game {
 		this.seed = seed;
 		this.level = level;
 		player = new Player(this, 0, getRoadWidth() / 2);
+		printLevelAndSeed();
 		initialize();
 	}
 	
@@ -37,15 +38,18 @@ public class Game {
 		startTimer();
 		
 		GameObjectGenerator.generateGameObjects(this, level);
-		
-		System.out.println("Level: " + level);
-		System.out.println(SEED_INFO_MSG + seed);
 	}
 	
 	public void initialize(long seed, Level level) {
 		this.seed = seed;
 		this.level = level;
+		printLevelAndSeed();
 		initialize();
+	}
+	
+	private void printLevelAndSeed() {
+		System.out.println("Level: " + level);
+		System.out.println(SEED_INFO_MSG + seed);
 	}
 
 	//MÉTODOS PARA OBTENER INFORMACIÓN DEL NIVEL
