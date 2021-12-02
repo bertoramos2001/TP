@@ -17,6 +17,7 @@ public class WaveAction implements InstantAction {
 				o = game.getObjectInPosition(i, j);
 				if (o == null) {
 					if (game.getObjectInPosition(i - 1, j) != null) {
+						//TODO: hacerlo como en errores frecuentes, con un collider y que cada objeto mire lo que tiene detras
 						game.getObjectInPosition(i - 1, j).receiveWave();
 					}
 				}

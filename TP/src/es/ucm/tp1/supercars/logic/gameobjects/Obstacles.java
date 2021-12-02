@@ -70,6 +70,7 @@ public class Obstacles extends GameObject {
 	@Override
 	public boolean receiveThunder() {
 		lives = -1;
+		System.out.print(" -> " + symbol);
 		return true;
 	}
 

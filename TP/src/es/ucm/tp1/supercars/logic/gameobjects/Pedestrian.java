@@ -17,24 +17,22 @@ public class Pedestrian extends Obstacles {
 
 	@Override
 	public boolean receiveCollision(Player player) {
-		player.setDead();
+		super.receiveCollision(player);
 		player.removeCoins();
 		lives -= 1;
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean receiveShoot() {
-		lives -= 1;
+		super.receiveShoot();
 		game.removePlayerCoins();
 		return true;
 	}
 	
 	@Override
 	public boolean receiveExplosion() {
-		lives = -1;
-		game.removePlayerCoins();
-		return true;
+		return receiveShoot();
 	}
 
 	@Override

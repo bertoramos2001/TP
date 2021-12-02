@@ -72,6 +72,7 @@ public class GameObjectContainer {
 				s += o.toString() + " ";
 			}
 		}
+		//TODO: poner s.trim() y ver si pasa los tests de la granada
 		return s;
 	}
 	

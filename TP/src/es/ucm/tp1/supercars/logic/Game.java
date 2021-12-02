@@ -4,6 +4,7 @@ import java.util.Random;
 
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 import es.ucm.tp1.supercars.logic.gameobjects.Player;
+import es.ucm.tp1.supercars.view.GameSerializer;
 import es.ucm.tp1.supercars.control.Level;
 
 
@@ -18,6 +19,7 @@ public class Game {
 	private int cycleNum;
 	private final String FINISH_LINE = "¦";
 	private final String SEED_INFO_MSG = "Random generator initialized with seed: ";
+	private GameSerializer gameSerializer; //TODO: serializer igual no va aqui
 	
 	public Game(long seed, Level level) {
 		this.seed = seed;
@@ -36,6 +38,7 @@ public class Game {
 		player.initialize(0, level.getRoadWidth() / 2);
 		gameObjectContainer = new GameObjectContainer();
 		startTimer();
+		gameSerializer = new GameSerializer(this);
 		
 		GameObjectGenerator.generateGameObjects(this, level);
 	}
@@ -113,7 +116,6 @@ public class Game {
 	}
 	
 	public void forceAddObject(GameObject o) {
-		gameObjectContainer.deleteColumn(o.getX());
 		gameObjectContainer.add(o);
 	}
 	
@@ -214,8 +216,12 @@ public class Game {
 		gameFinished = true;
 	}
 	
-	public void forceAdvancedObjects(int id) {
-		GameObjectGenerator.forceAdvanceObject(this, id, getPlayerPositionX() + getVisibility() - 1);
+	public int getLastVisibleColumn() {
+		return getPlayerPositionX() + getVisibility() - 1;
+	}
+	
+	public void clearColumn(int column) {
+		gameObjectContainer.deleteColumn(column);
 	}
 	
 	public void execute(InstantAction instAct) {
@@ -224,5 +230,13 @@ public class Game {
 	
 	public Level getLevel() {
 		return level;
+	}
+
+	public Collider getColliderInPosition(int x, int y) {
+		return gameObjectContainer.getObjectInPosition(x, y);
+	}
+	
+	public void serializeGame() {
+		System.out.println(gameSerializer.toString()); //TODO: puede estar muy mal
 	}
 }

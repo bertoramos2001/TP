@@ -18,7 +18,9 @@ public class CheatCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		game.forceAdvancedObjects(idComando);
+		int lastColumn = game.getLastVisibleColumn();
+		game.clearColumn(lastColumn);
+		GameObjectGenerator.forceAdvanceObject(game, idComando, lastColumn);
 		return PINTA_CARRETERA;
 	}
 	

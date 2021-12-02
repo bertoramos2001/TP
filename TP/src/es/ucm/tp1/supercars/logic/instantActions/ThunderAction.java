@@ -1,12 +1,14 @@
 package es.ucm.tp1.supercars.logic.instantActions;
 
+import es.ucm.tp1.supercars.logic.Collider;
 import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.logic.InstantAction;
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
+import es.ucm.tp1.supercars.utils.StringUtils;
 
 public class ThunderAction implements InstantAction {
 	
-	private int x, y;
+	private int x, y, relativeX;
 	GameObject o;
 	private String s, tempSymbol;
 
@@ -14,18 +16,17 @@ public class ThunderAction implements InstantAction {
 	public void execute(Game game) {
 		x = game.getRandomVisibleColumn();
 		y = game.getRandomLane();
-		s = "Thunder hit position: (" + x + " , " + y + ")";
+		System.out.print(String.format("Thunder hit position: (%d , %d)", x, y));
 		
-		o = game.getObjectInPosition(game.getPlayerPositionX() + x, y);
+		//o = game.getObjectInPosition(game.getPlayerPositionX() + x, y);
 		
-		if (o != null) {
-			tempSymbol = o.toString();
-			//tempSymbol es necesaria ya que receiveTunder borra el objeto, y no se podría hacer el toString después
-			if (o.receiveThunder()) {
-				s += " -> " + tempSymbol;
-			}
+		relativeX = game.getPlayerPositionX() + x;
+		Collider c = game.getColliderInPosition(relativeX, y);
+		
+		if (c != null) {
+			c.receiveThunder();
 		} 
-		System.out.println(s);
+		System.out.print(StringUtils.LINE_SEPARATOR);
 	}
 
 }
