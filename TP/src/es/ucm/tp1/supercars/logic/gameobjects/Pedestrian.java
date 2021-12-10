@@ -49,4 +49,13 @@ public class Pedestrian extends Obstacles {
 		if(y == 0 || y == 2)
 			isDown = !isDown;
 	}
+	
+	@Override
+	public String serialize() { 
+		if (isDown) {
+			return (super.serialize() + " down");
+		} else {
+			return (super.serialize() + " up");
+		}
+	}
 }

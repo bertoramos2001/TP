@@ -19,7 +19,6 @@ public class Game {
 	private int cycleNum;
 	private final String FINISH_LINE = "¦";
 	private final String SEED_INFO_MSG = "Random generator initialized with seed: ";
-	private GameSerializer gameSerializer; //TODO: serializer igual no va aqui
 	
 	public Game(long seed, Level level) {
 		this.seed = seed;
@@ -38,7 +37,6 @@ public class Game {
 		player.initialize(0, level.getRoadWidth() / 2);
 		gameObjectContainer = new GameObjectContainer();
 		startTimer();
-		gameSerializer = new GameSerializer(this);
 		
 		GameObjectGenerator.generateGameObjects(this, level);
 	}
@@ -236,7 +234,9 @@ public class Game {
 		return gameObjectContainer.getObjectInPosition(x, y);
 	}
 	
-	public void serializeGame() {
-		System.out.println(gameSerializer.toString()); //TODO: puede estar muy mal
+	public String serialize() {
+		Level level = getLevel();
+		
+		return gameObjectContainer.serialize(level.getRoadLength(), level.getRoadWidth());
 	}
 }

@@ -1,6 +1,7 @@
 package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.view.GameSerializer;
 
 public class SerializeCommand extends Command {
 	
@@ -16,7 +17,9 @@ public class SerializeCommand extends Command {
 
 	@Override
 	public boolean execute(Game game) {
-		game.serializeGame();
-		return false;
+		GameSerializer gameSerializer = new GameSerializer(game);
+
+		System.out.println(gameSerializer.toString());
+		return PINTA_CARRETERA;
 	}
 }

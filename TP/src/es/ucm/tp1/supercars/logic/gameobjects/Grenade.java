@@ -61,5 +61,10 @@ public class Grenade extends GameObject{
 	public boolean receiveThunder() {
 		return false;
 	}
+	
+	@Override
+	public String serialize() { 
+		return (super.serialize() + " " + grenadeCycles);
+	}
 
 }

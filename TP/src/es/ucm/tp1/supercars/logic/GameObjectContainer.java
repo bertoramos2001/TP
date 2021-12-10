@@ -76,5 +76,19 @@ public class GameObjectContainer {
 		return s;
 	}
 	
+	public String serialize(int levelLength, int levelWidth) {
+		String s = "";
+		
+		for (int i = 0; i < levelLength; i++) {
+			for (int j = 0; j < levelWidth; j++) {
+				GameObject obj = getObjectInPosition(i, j);
+				if (obj != null) {
+					s += obj.serialize() + "\n";
+				}
+			}
+		}
+		return s;
+	}
+	
 	
 }

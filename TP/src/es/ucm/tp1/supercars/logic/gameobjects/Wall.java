@@ -35,4 +35,9 @@ public class Wall extends Obstacles {
 		super.onDelete();
 		game.addPlayerCoins(NUM_COINS_GIVEN);
 	}
+	
+	@Override
+	public String serialize() { 
+		return (symbol + " (" + x + ", " + y + ")" + " " + (lives + 1));
+	}
 }
