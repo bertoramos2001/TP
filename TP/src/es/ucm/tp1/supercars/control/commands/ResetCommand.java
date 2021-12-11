@@ -37,22 +37,18 @@ public class ResetCommand extends Command {
 	protected Command parse(String[] words) throws CommandParseException {
 		if (words.length == 3) {
 			if (matchCommandName(words[0])) {
-				
-				newLevel = Level.valueOfIgnoreCase(words[1]);
-				newSeed = Long.parseLong(words[2]);
-				
-				if (newLevel == null) {
-					throw new CommandParseException(String.format("[ERROR]: %s", UNKNOWN_LEVEL_MSG));
-					//System.out.println("[ERROR]: Command r: " + UNKNOWN_LEVEL_MSG);
-					//return null;
-				}
-				if(newSeed == null) {
-					//TODO no tengo ni idea de como se hace esto
+				try {
+					newLevel = Level.valueOfIgnoreCase(words[1]);
+					
+					if (newLevel != null) {
+						newSeed = Long.parseLong(words[2]);	
+						return this;
+					} else {
+						throw new CommandParseException(String.format("[ERROR]: %s", UNKNOWN_LEVEL_MSG));
+					}
+				} catch (NumberFormatException e){
 					throw new CommandParseException(String.format("[ERROR]: %s", "the seed is not a proper long number"));
-					//System.out.println("[ERROR]: Command r: " + "the seed is not a proper long number" + "");
-					//return null;
 				}
-				return this;
 			} else {
 				return null;
 			}
