@@ -4,8 +4,10 @@ import java.util.Random;
 
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 import es.ucm.tp1.supercars.logic.gameobjects.Player;
-import es.ucm.tp1.supercars.view.GameSerializer;
 import es.ucm.tp1.supercars.control.Level;
+import es.ucm.tp1.supercars.control.exceptions.InvalidPositionException;
+import es.ucm.tp1.supercars.control.exceptions.NotEnoughCoinsException;
+
 
 
 public class Game {
@@ -19,6 +21,7 @@ public class Game {
 	private int cycleNum;
 	private final String FINISH_LINE = "¦";
 	private final String SEED_INFO_MSG = "Random generator initialized with seed: ";
+	private static final String INVALID_POSITION = "Invalid position.";
 	
 	public Game(long seed, Level level) {
 		this.seed = seed;
@@ -239,4 +242,10 @@ public class Game {
 		
 		return gameObjectContainer.serialize(level.getRoadLength(), level.getRoadWidth());
 	}
+	
+	public void inValidPosition(int posX, int posY) throws InvalidPositionException{
+		if (posX <= getVisibility() && posY <= getRoadWidth() && posY >= 0 && getObjectInPosition(posX + getPlayerPositionX(), posY) == null) {} 
+		//TODO comprobar si esta bien
+		else throw new InvalidPositionException(INVALID_POSITION);		
+}
 }

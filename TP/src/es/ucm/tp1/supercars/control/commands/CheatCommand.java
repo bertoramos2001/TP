@@ -30,7 +30,7 @@ public class CheatCommand extends Command {
 			try {
 				idComando = Integer.parseInt(words[0]);
 			} 
-			catch (Exception e) {
+			catch (NumberFormatException e) {
 				return null;
 			}
 			if (idComando >= GameObjectGenerator.MIN_OBJECT_ID && idComando <= GameObjectGenerator.MAX_OBJECT_ID) {

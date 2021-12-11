@@ -1,6 +1,8 @@
 package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.supercars.control.exceptions.CommandParseException;
 
 public abstract class Command { 
 
@@ -41,7 +43,7 @@ public abstract class Command {
 		this.help = help;
 	}
 	
-	public static Command getCommand(String[] commandWords) {
+	public static Command getCommand(String[] commandWords) throws CommandParseException {
 		Command command = null;
 		int i = 0;
 		boolean encontrado = false;
@@ -54,18 +56,18 @@ public abstract class Command {
 		}
 		
 		if (!encontrado) {
-			System.out.println("[ERROR]: " + UNKNOWN_COMMAND_MSG + "\n");
+			throw new CommandParseException(String.format("[ERROR]: %s", UNKNOWN_COMMAND_MSG));
 		}
 		return command;
 	}
 
-	public abstract boolean execute(Game game);
+	public abstract boolean execute(Game game) throws CommandExecuteException;
 
 	protected boolean matchCommandName(String name) {
 		return this.shortcut.equalsIgnoreCase(name) || this.name.equalsIgnoreCase(name);
 	}
 
-	protected Command parse(String[] words) {
+	protected Command parse(String[] words) throws CommandParseException {
 		if (matchCommandName(words[0])) {
 			if (words.length != 1) {
 				System.out.format("[ERROR]: Command %s: %s%n%n", name, INCORRECT_NUMBER_OF_ARGS_MSG);

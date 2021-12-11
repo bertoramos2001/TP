@@ -5,6 +5,7 @@ import java.util.Scanner;
 import es.ucm.tp1.supercars.control.commands.Command;
 import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.view.GamePrinter;
+import es.ucm.tp1.supercars.control.exceptions.GameException;
 
 public class Controller {
 	
@@ -33,20 +34,26 @@ public class Controller {
 	public void run() {
 		game.startTimer();
 		printGame();
-		while (!game.isFinished()){
+		
+		while (!game.isFinished()) {
 			refreshDisplay = false;
 			System.out.println(PROMPT);
 			String s = scanner.nextLine();
 			String[] parameters = s.toLowerCase().trim().split(" ");
 			System.out.println("[DEBUG] Executing: " + s);
-			Command command = Command.getCommand(parameters);
 			
-			if (command != null) {
+			try {
+				Command command = Command.getCommand(parameters);
 				refreshDisplay = command.execute(game);
+				
+			} catch (GameException ex) {
+				System.out.format(ex.getMessage() + " %n %n");
 			}
+			
 			if (refreshDisplay) {
 				printGame();
 			}
+			
 			if (!game.getPlayerIsAlive() || game.playerWon()) {
 				game.gameOver();
 			}

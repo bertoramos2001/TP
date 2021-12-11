@@ -3,6 +3,10 @@ package es.ucm.tp1.supercars.control.commands;
 import es.ucm.tp1.supercars.control.Buyable;
 import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.logic.gameobjects.Grenade;
+import es.ucm.tp1.supercars.control.exceptions.CommandExecuteException;
+import es.ucm.tp1.supercars.control.exceptions.CommandParseException;
+import es.ucm.tp1.supercars.control.exceptions.InvalidPositionException;
+import es.ucm.tp1.supercars.control.exceptions.NotEnoughCoinsException;
 
 public class GrenadeCommand extends Command  implements Buyable {
 	private static final String NAME = "grenade";
@@ -11,6 +15,7 @@ public class GrenadeCommand extends Command  implements Buyable {
 	private static final String HELP = "add a grenade in position x, y";
 	private boolean PINTA_CARRETERA = true;
 	private final int GRENADE_COST = 3;
+	private static final String FAILED_MSG = "Failed to add grenade";
 	
 	private Integer grenadeX, grenadeY;
 
@@ -19,27 +24,29 @@ public class GrenadeCommand extends Command  implements Buyable {
 	}
 
 	@Override
-	public boolean execute(Game game) {	
-		if (grenadeX <= game.getVisibility() && grenadeY <= game.getRoadWidth() && grenadeY >= 0 && game.getObjectInPosition(grenadeX + game.getPlayerPositionX(), grenadeY) == null) {
-			if (buy(game)) {
-				game.addObject(new Grenade(game, grenadeX + game.getPlayerPositionX(), grenadeY));
-				game.update();
-				PINTA_CARRETERA = true;
-			} else {
-				System.out.println("[ERROR]: Failed to add grenade\n");
-				PINTA_CARRETERA = false;
-			}
-		} else {			
-			System.out.println("Invalid position.");
-			System.out.println("[ERROR]: Failed to add grenade\n");
-			PINTA_CARRETERA = false;
+	public boolean execute(Game game) throws CommandExecuteException {	
+	try {
+		//Comprueban excepciones
+		game.inValidPosition(grenadeX, grenadeY);
+		buy(game);
+		//ejectuta grenade
+		game.addObject(new Grenade(game, grenadeX + game.getPlayerPositionX(), grenadeY));
+		game.update();
+		PINTA_CARRETERA = true;
+				
+		}catch (NotEnoughCoinsException e) {
+			System.out.println(e.getMessage());
+			throw new CommandExecuteException(String.format("[ERROR]: %s", FAILED_MSG));
+		} catch (InvalidPositionException e) {	
+			System.out.println(e.getMessage());
+			throw new CommandExecuteException(String.format("[ERROR]: %s", FAILED_MSG));	
 		}
-		
+
 		return PINTA_CARRETERA;
 	}
 	
 	@Override
-	protected Command parse(String[] words) {
+	protected Command parse(String[] words) throws CommandParseException {
 		if (matchCommandName(words[0])) {
 			if (words.length != 3) {
 				System.out.format("[ERROR]: Command %s: %s%n%n", NAME, INCORRECT_NUMBER_OF_ARGS_MSG);
@@ -50,7 +57,8 @@ public class GrenadeCommand extends Command  implements Buyable {
 					grenadeY = Integer.parseInt(words[2]);
 				} 
 				catch (NumberFormatException e) {
-					return null;
+					throw new CommandParseException("[ERROR]:");
+					
 				}
 				return this;
 			}

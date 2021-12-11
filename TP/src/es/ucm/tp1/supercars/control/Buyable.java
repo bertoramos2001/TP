@@ -1,19 +1,22 @@
 package es.ucm.tp1.supercars.control;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.control.exceptions.NotEnoughCoinsException;
 
 public interface Buyable {
 	public int cost();
+	static final String NOT_ENOUGTH_COINS = "Not enough coins";
 	
-	public default boolean buy(Game game) {
+	public default void buy(Game game) throws NotEnoughCoinsException{
 		int cost = cost();
 		
 		if (cost <= game.getActualCoins()) {
 			game.extractPlayerCoins(cost);
-			return true;
-		} else {
-			System.out.println("Not enough coins");
+		} else { 
+			//TODO Este texto no hace nada
+			throw new NotEnoughCoinsException(NOT_ENOUGTH_COINS);
+			//System.out.println("Not enough coins");
 		}
-		return false;
+		
 	}
 }
