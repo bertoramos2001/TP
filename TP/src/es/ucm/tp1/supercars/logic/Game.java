@@ -243,8 +243,10 @@ public class Game {
 		return gameObjectContainer.serialize(level.getRoadLength(), level.getRoadWidth());
 	}
 	
-	public void inValidPosition(int posX, int posY) throws InvalidPositionException{
-		if (posX <= getVisibility() && posY <= getRoadWidth() && posY >= 0 && getObjectInPosition(posX + getPlayerPositionX(), posY) == null) {} 
+	public void inValidPosition(int posX, int posY) throws InvalidPositionException {
+		if (posX <= getVisibility() && posY <= getRoadWidth() && posY >= 0 && getObjectInPosition(posX + getPlayerPositionX(), posY) == null) {
+			
+		} 
 		//TODO comprobar si esta bien
 		else throw new InvalidPositionException(INVALID_POSITION);		
 }
