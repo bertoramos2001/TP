@@ -39,6 +39,12 @@ public class Game {
 		player.initialize(0, level.getRoadWidth() / 2);
 		gameObjectContainer = new GameObjectContainer();
 		startTimer();
+		//para que al iniciar cada juego, se active o desactive el tiempo según convenga
+		if (Level.TEST.equals(level)) {
+			toggleTest();
+		} else {
+			untoggleTest();
+		}
 		
 		GameObjectGenerator.generateGameObjects(this, level);
 	}
@@ -210,6 +216,10 @@ public class Game {
 	
 	public void toggleTest() {
 		modoTest = true;
+	}
+	
+	public void untoggleTest() {
+		modoTest = false;
 	}
 
 	public void gameOver() {

@@ -33,11 +33,8 @@ public class Controller {
 	
 	public void run() {
 		game.startTimer();
-		//TODO: antes el primer printgame estaba aqui, ahora esta dentro del bucle
-		//printGame();
 		
 		while (!game.isFinished()) {
-			//TODO: printgame va aqui bien?
 			if (refreshDisplay) {
 				printGame();
 			}
@@ -55,10 +52,6 @@ public class Controller {
 			} catch (GameException ex) {
 				System.out.format(ex.getMessage() + " %n %n");
 			}
-		    //TODO: antes teniamos aqui el printgame
-//			if (refreshDisplay) {
-//				printGame();
-//			}
 			
 			if (!game.getPlayerIsAlive() || game.playerWon()) {
 				game.gameOver();

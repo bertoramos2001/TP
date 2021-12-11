@@ -29,15 +29,15 @@ public class ShowRecordCommand extends Command {
 			String line = reader.readLine();
 			String levelName = game.getLevel().name();
 			boolean found = false;
-			long currentRecordInMs;
+			double currentRecordInMs;
 			
 			while(line != null && !found) {
 				String[] parts = line.split(":");
 				
-				if (parts[0] == levelName) {
+				if (parts[0].equals(levelName)) {
 					found = true;
-					currentRecordInMs = Integer.parseInt(parts[1]);
-					System.out.println(levelName + " record is " + String.format("\nElapsed Time: %.2f s", currentRecordInMs) + " s");
+					currentRecordInMs = Double.parseDouble(parts[1]);
+					System.out.println(levelName + " record is " + String.format("%.2f s", (currentRecordInMs / 1000)));
 				}
 				line = reader.readLine();
 			}
