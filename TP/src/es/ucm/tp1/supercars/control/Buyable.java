@@ -13,9 +13,7 @@ public interface Buyable {
 		if (cost <= game.getActualCoins()) {
 			game.extractPlayerCoins(cost);
 		} else { 
-			//TODO Este texto no hace nada
 			throw new NotEnoughCoinsException(NOT_ENOUGTH_COINS);
-			//System.out.println("Not enough coins");
 		}
 		
 	}

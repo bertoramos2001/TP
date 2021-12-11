@@ -6,7 +6,6 @@ import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 import es.ucm.tp1.supercars.logic.gameobjects.Player;
 import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.control.exceptions.InvalidPositionException;
-import es.ucm.tp1.supercars.control.exceptions.NotEnoughCoinsException;
 
 
 
@@ -244,10 +243,8 @@ public class Game {
 	}
 	
 	public void inValidPosition(int posX, int posY) throws InvalidPositionException {
-		if (posX <= getVisibility() && posY <= getRoadWidth() && posY >= 0 && getObjectInPosition(posX + getPlayerPositionX(), posY) == null) {
-			
-		} 
-		//TODO comprobar si esta bien
-		else throw new InvalidPositionException(INVALID_POSITION);		
+		if (!(posX <= getVisibility() && posY <= getRoadWidth() && posY >= 0 && getColliderInPosition(posX + getPlayerPositionX(), posY) == null)) {
+			throw new InvalidPositionException(INVALID_POSITION);
+		} 	
 }
 }

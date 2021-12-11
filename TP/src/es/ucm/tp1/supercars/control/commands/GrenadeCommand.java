@@ -16,6 +16,7 @@ public class GrenadeCommand extends Command  implements Buyable {
 	private boolean PINTA_CARRETERA = true;
 	private final int GRENADE_COST = 3;
 	private static final String FAILED_MSG = "Failed to add grenade";
+	private static final String FAIL_COOORDINATES_MSG = "The coordinates of the position must be integers";
 	
 	private Integer grenadeX, grenadeY;
 
@@ -57,7 +58,7 @@ public class GrenadeCommand extends Command  implements Buyable {
 					grenadeY = Integer.parseInt(words[2]);
 				} 
 				catch (NumberFormatException e) {
-					throw new CommandParseException("[ERROR]:");
+					throw new CommandParseException(String.format("[ERROR]: %s", FAIL_COOORDINATES_MSG));
 					
 				}
 				return this;

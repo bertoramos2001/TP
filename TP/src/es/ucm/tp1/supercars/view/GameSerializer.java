@@ -1,8 +1,6 @@
 package es.ucm.tp1.supercars.view;
 
 import es.ucm.tp1.supercars.logic.Game;
-import es.ucm.tp1.supercars.logic.gameobjects.Coin;
-import es.ucm.tp1.supercars.logic.gameobjects.Obstacle;
 
 public class GameSerializer {
 	
