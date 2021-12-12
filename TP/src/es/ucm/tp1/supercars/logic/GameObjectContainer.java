@@ -90,5 +90,16 @@ public class GameObjectContainer {
 		return s;
 	}
 	
+	public String serializeAllObjectsIn(int x, int y) {
+		StringBuilder sb = new StringBuilder();
+		
+		for (GameObject o : gameObjects) {
+			if (o.isInPosition(x, y)) {
+				sb.append(o.serialize() + "\n");
+			}
+		}
+		return sb.toString();
+	}
+	
 	
 }

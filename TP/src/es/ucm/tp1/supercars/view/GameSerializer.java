@@ -1,6 +1,7 @@
 package es.ucm.tp1.supercars.view;
 
 import es.ucm.tp1.supercars.logic.Game;
+import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 
 public class GameSerializer {
 	
@@ -21,18 +22,23 @@ public class GameSerializer {
 		
 		if(!game.testMode()) {
 			//TODO: aqui no se si poner ms, s o que
-			s.append("EllapsedTime: " + (int)(game.getCurrentTime() * 1000) + " ms\n");
+			s.append("EllapsedTime: " + (int)(game.getCurrentTime() * 1000) + "\n");
 		}
 		
 		s.append("Game Objects: \n");
-		s.append(game.serialize());
+		
+		for (int i = 0; i < game.getRoadLength(); i++) {
+			for (int j = 0; j < game.getRoadWidth(); j++) {
+				s.append(game.serialize(i,  j));
+			}
+		}
 		
 		return s.toString();
 	}
 	
 	private String getGameInfo() {
 			
-		String info = String.format("Level: %s\nCycles: %o\nCoins: %o\n",
+		String info = String.format("Level: %s\nCycles: %d\nCoins: %d\n",
 				game.getLevel().toString(), game.getCycle(), game.getActualCoins());
 			
 		return info;

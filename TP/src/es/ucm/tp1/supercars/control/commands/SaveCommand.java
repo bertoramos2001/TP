@@ -17,6 +17,7 @@ public class SaveCommand extends Command {
 	private static final String HELP = "Save the state of the game to a file.";
 	private static final boolean PINTA_CARRETERA = false;
 	private final String IO_FAIL_MSG = "Error with Input";
+	private final String SUCCESSFUL_SAVE_MSG = "Game successfully saved to file ";
 	private String filename;
 
 	public SaveCommand() {
@@ -44,6 +45,8 @@ public class SaveCommand extends Command {
 			
 			GameSerializer gameSerializer = new GameSerializer(game);
 			writer.write(gameSerializer.toString());
+			
+			System.out.println(SUCCESSFUL_SAVE_MSG + filename);
 			
 		} catch (IOException e) {
 			throw new CommandExecuteException(String.format("[ERROR]: %s", IO_FAIL_MSG));

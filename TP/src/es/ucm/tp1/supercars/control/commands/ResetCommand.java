@@ -12,6 +12,7 @@ public class ResetCommand extends Command {
 	private static final String HELP = "reset game";
 	private static final boolean PINTA_CARRETERA = true;
 	private static final String UNKNOWN_LEVEL_MSG = "Level must be one of: TEST, EASY, HARD, ADVANCED";
+	private static final String SEED_TYPE_MSG = "the seed is not a proper long number";
 	
 	private Long newSeed;
 	private Level newLevel;
@@ -44,10 +45,10 @@ public class ResetCommand extends Command {
 						newSeed = Long.parseLong(words[2]);	
 						return this;
 					} else {
-						throw new CommandParseException(String.format("[ERROR]: %s", UNKNOWN_LEVEL_MSG));
+						throw new CommandParseException(String.format("[ERROR]: Command %s: %s", NAME, UNKNOWN_LEVEL_MSG));
 					}
 				} catch (NumberFormatException e){
-					throw new CommandParseException(String.format("[ERROR]: %s", "the seed is not a proper long number"));
+					throw new CommandParseException(String.format("[ERROR]: Command %s: %s", NAME, SEED_TYPE_MSG));
 				}
 			} else {
 				return null;

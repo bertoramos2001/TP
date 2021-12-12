@@ -14,8 +14,10 @@ public class DumpCommand extends Command {
 	private static final String SHORTCUT = "d";
 	private static final String HELP = "Shows the content of a saved file";
 	private static final boolean PINTA_CARRETERA = false;
-	private final String IO_FAIL_MSG = "Error with Output";
+	private final String IO_FAIL_MSG = "An error ocurred on reading a file";
 	private String filename;
+	private final String VERSION = "3.0";
+	private final String WELCOME_MSG = String.format("Super cars %s\n\n", VERSION);
 
 	public DumpCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
@@ -42,6 +44,8 @@ public class DumpCommand extends Command {
 			StringBuilder sb = new StringBuilder();
 			String line = reader.readLine();
 			
+			sb.append(WELCOME_MSG);
+			
 			while(line != null) {
 				sb.append(line);
 				sb.append(System.lineSeparator());
@@ -51,7 +55,7 @@ public class DumpCommand extends Command {
 			System.out.print(sb.toString());
 			
 		} catch (IOException e) {
-			throw new CommandExecuteException(String.format("[ERROR]: %s", IO_FAIL_MSG));
+			throw new CommandExecuteException(IO_FAIL_MSG);
 		}
 		return PINTA_CARRETERA;
 	}

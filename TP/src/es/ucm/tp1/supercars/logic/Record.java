@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import es.ucm.tp1.supercars.control.Level;
-import es.ucm.tp1.supercars.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.supercars.control.exceptions.InputOutputRecordException;
 
 public class Record {
@@ -44,14 +43,14 @@ public class Record {
 			
 			if (!found) {
 				bestTimeInMs = Long.MAX_VALUE;
-				String.format("Creating default record for level '%s'", level.name().toUpperCase());
+				System.out.println(String.format("Creating default record for level '%s'", level.name().toUpperCase()));
 				setNewRecord(bestTimeInMs);
 			}
 			
 		} catch (IOException e) {
 			throw new InputOutputRecordException(String.format("[ERROR]: %s", FAIL_RECORD_MSG));
 		} catch (NumberFormatException e) {
-			//throw new CommandExecuteException(String.format("[ERROR]: %s", FAIL_CURRENT_RECORD_MSG));
+			throw new InputOutputRecordException(String.format("[ERROR]: %s", FAIL_CURRENT_RECORD_MSG));
 		}
 	}
 	
@@ -59,7 +58,7 @@ public class Record {
 		StringBuilder sb = new StringBuilder();
 		bestTimeInMs = newRecord;
 		
-		sb.append(String.format("%s:%d", level.name().toUpperCase(), bestTimeInMs));
+		sb.append(String.format("%s:%f\n", level.name().toUpperCase(), bestTimeInMs));
 		
 		try (BufferedReader reader = new BufferedReader(new FileReader(RECORD_NAME))) {
 			String line = reader.readLine();

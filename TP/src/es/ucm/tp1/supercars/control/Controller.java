@@ -33,11 +33,9 @@ public class Controller {
 	
 	public void run() {
 		game.startTimer();
+		printGame();
 		
 		while (!game.isFinished()) {
-			if (refreshDisplay) {
-				printGame();
-			}
 			
 			refreshDisplay = false;
 			System.out.println(PROMPT);
@@ -50,7 +48,11 @@ public class Controller {
 				refreshDisplay = command.execute(game);
 				
 			} catch (GameException ex) {
-				System.out.format(ex.getMessage() + " %n %n");
+				System.out.format(ex.getMessage() + "%n%n");
+			}
+			
+			if (refreshDisplay) {
+				printGame();
 			}
 			
 			if (!game.getPlayerIsAlive()) {

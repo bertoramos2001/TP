@@ -4,6 +4,7 @@ import java.util.Random;
 
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 import es.ucm.tp1.supercars.logic.gameobjects.Player;
+import es.ucm.tp1.supercars.logic.gameobjects.SuperCoin;
 import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.control.exceptions.InputOutputRecordException;
 import es.ucm.tp1.supercars.control.exceptions.InvalidPositionException;
@@ -16,7 +17,7 @@ public class Game {
 	private Random rand;
 	private Level level;
 	private long seed;
-	private double initialTime;
+	private double initialTime, elapsedTime;
 	private boolean modoTest, gameFinished;
 	private int cycleNum;
 	private final String FINISH_LINE = "¦";
@@ -42,15 +43,11 @@ public class Game {
 			GameObjectGenerator.reset();
 			player.initialize(0, level.getRoadWidth() / 2);
 			gameObjectContainer = new GameObjectContainer();
+			SuperCoin.resetSuperCoinBool();
+			elapsedTime = 0;
 			startTimer();
-
-			if (Level.TEST.equals(level)) {
-				toggleTest();
-			} else {
-				untoggleTest();
-			}
-			
 			GameObjectGenerator.generateGameObjects(this, level);
+
 		} catch (InputOutputRecordException e) {
 			gameFinished = true;
 		}
@@ -162,6 +159,7 @@ public class Game {
 	}
 	
 	public void update() {
+		elapsedTime = ((double)System.currentTimeMillis() - getInitialTime()) / 1000;
 		gameObjectContainer.update();
 		GameObjectGenerator.generateRuntimeObjects(this);
 		addCycle();
@@ -218,15 +216,11 @@ public class Game {
 	}
 	
 	public double getCurrentTime() {
-		return ((double)System.currentTimeMillis() - getInitialTime()) / 1000;
+		return elapsedTime;
 	}
 	
 	public void toggleTest() {
 		modoTest = true;
-	}
-	
-	public void untoggleTest() {
-		modoTest = false;
 	}
 
 	public void gameOver() {
@@ -253,10 +247,15 @@ public class Game {
 		return gameObjectContainer.getObjectInPosition(x, y);
 	}
 	
-	public String serialize() {
-		Level level = getLevel();
+	public String serialize(int x, int y) {
+		String serializedPlayer;
 		
-		return gameObjectContainer.serialize(level.getRoadLength(), level.getRoadWidth());
+		if ((getPlayerPositionX() == x) && (getPlayerPositionY() == y)) {
+			serializedPlayer = (player.serialize() + "\n");
+			return (serializedPlayer + gameObjectContainer.serializeAllObjectsIn(x, y));
+		}
+		
+		return (gameObjectContainer.serializeAllObjectsIn(x, y));
 	}
 	
 	public void inValidPosition(int posX, int posY) throws InvalidPositionException {

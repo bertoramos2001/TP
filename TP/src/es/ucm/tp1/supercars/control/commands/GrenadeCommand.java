@@ -17,6 +17,7 @@ public class GrenadeCommand extends Command  implements Buyable {
 	private final int GRENADE_COST = 3;
 	private static final String FAILED_MSG = "Failed to add grenade";
 	private static final String FAIL_COOORDINATES_MSG = "The coordinates of the position must be integers";
+	private static final String COMPLEM_MSG_GRENADE = " for grenade command: ";
 	
 	private Integer grenadeX, grenadeY;
 
@@ -27,10 +28,9 @@ public class GrenadeCommand extends Command  implements Buyable {
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {	
 	try {
-		//Comprueban excepciones
 		game.inValidPosition(grenadeX, grenadeY);
 		buy(game);
-		//ejectuta grenade
+
 		game.addObject(new Grenade(game, grenadeX + game.getPlayerPositionX(), grenadeY));
 		game.update();
 		PINTA_CARRETERA = true;
@@ -50,8 +50,7 @@ public class GrenadeCommand extends Command  implements Buyable {
 	protected Command parse(String[] words) throws CommandParseException {
 		if (matchCommandName(words[0])) {
 			if (words.length != 3) {
-				System.out.format("[ERROR]: Command %s: %s%n%n", NAME, INCORRECT_NUMBER_OF_ARGS_MSG);
-				return null;
+				throw new CommandParseException(String.format("[ERROR]: %s", INCORRECT_NUMBER_OF_ARGS_MSG + COMPLEM_MSG_GRENADE + DETAILS));
 			} else {
 				try {
 					grenadeX = Integer.parseInt(words[1]);
