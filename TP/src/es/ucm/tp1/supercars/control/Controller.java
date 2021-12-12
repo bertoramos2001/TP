@@ -53,7 +53,14 @@ public class Controller {
 				System.out.format(ex.getMessage() + " %n %n");
 			}
 			
-			if (!game.getPlayerIsAlive() || game.playerWon()) {
+			if (!game.getPlayerIsAlive()) {
+				game.gameOver();
+			}
+			
+			if (game.playerWon()) {
+				if ((game.getCurrentTime() * 1000) < game.showRecord()) {
+					game.setNewRecord(game.getCurrentTime());
+				}
 				game.gameOver();
 			}
 		}

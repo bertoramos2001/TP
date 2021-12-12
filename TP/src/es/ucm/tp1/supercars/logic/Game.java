@@ -5,6 +5,7 @@ import java.util.Random;
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 import es.ucm.tp1.supercars.logic.gameobjects.Player;
 import es.ucm.tp1.supercars.control.Level;
+import es.ucm.tp1.supercars.control.exceptions.InputOutputRecordException;
 import es.ucm.tp1.supercars.control.exceptions.InvalidPositionException;
 
 
@@ -21,8 +22,9 @@ public class Game {
 	private final String FINISH_LINE = "¦";
 	private final String SEED_INFO_MSG = "Random generator initialized with seed: ";
 	private static final String INVALID_POSITION = "Invalid position.";
+	private Record record;
 	
-	public Game(long seed, Level level) {
+	public Game(long seed, Level level) throws InputOutputRecordException {
 		this.seed = seed;
 		this.level = level;
 		player = new Player(this, 0, getRoadWidth() / 2);
@@ -30,26 +32,31 @@ public class Game {
 		initialize();
 	}
 	
-	public void initialize() {
-		rand = new Random(seed);
-		initialTime = 0;
-		gameFinished = false;
-		cycleNum = 0;
-		GameObjectGenerator.reset();
-		player.initialize(0, level.getRoadWidth() / 2);
-		gameObjectContainer = new GameObjectContainer();
-		startTimer();
-		//para que al iniciar cada juego, se active o desactive el tiempo según convenga
-		if (Level.TEST.equals(level)) {
-			toggleTest();
-		} else {
-			untoggleTest();
+	public void initialize() throws InputOutputRecordException {
+		try {
+			rand = new Random(seed);
+			record = new Record(level);
+			initialTime = 0;
+			gameFinished = false;
+			cycleNum = 0;
+			GameObjectGenerator.reset();
+			player.initialize(0, level.getRoadWidth() / 2);
+			gameObjectContainer = new GameObjectContainer();
+			startTimer();
+
+			if (Level.TEST.equals(level)) {
+				toggleTest();
+			} else {
+				untoggleTest();
+			}
+			
+			GameObjectGenerator.generateGameObjects(this, level);
+		} catch (InputOutputRecordException e) {
+			gameFinished = true;
 		}
-		
-		GameObjectGenerator.generateGameObjects(this, level);
 	}
 	
-	public void initialize(long seed, Level level) {
+	public void initialize(long seed, Level level) throws InputOutputRecordException {
 		this.seed = seed;
 		this.level = level;
 		printLevelAndSeed();
@@ -256,5 +263,13 @@ public class Game {
 		if (!(posX <= getVisibility() && posY <= getRoadWidth() && posY >= 0 && getColliderInPosition(posX + getPlayerPositionX(), posY) == null)) {
 			throw new InvalidPositionException(INVALID_POSITION);
 		} 	
-}
+	}
+	
+	public void setNewRecord (double newRecordTime) {
+		record.setNewRecord(newRecordTime);
+	}
+	
+	public double showRecord () {
+		return record.getRecord();
+	}
 }

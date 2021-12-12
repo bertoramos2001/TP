@@ -2,8 +2,8 @@ package es.ucm.tp1.supercars.control.commands;
 
 import es.ucm.tp1.supercars.control.Level;
 import es.ucm.tp1.supercars.logic.Game;
-import es.ucm.tp1.supercars.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.supercars.control.exceptions.CommandParseException;
+import es.ucm.tp1.supercars.control.exceptions.InputOutputRecordException;
 
 public class ResetCommand extends Command {
 	private static final String NAME = "r";
@@ -23,7 +23,7 @@ public class ResetCommand extends Command {
 	}
 
 	@Override
-	public boolean execute(Game game) {
+	public boolean execute(Game game) throws InputOutputRecordException {
 		if ((newLevel != null) && (newSeed != null)) {
 			game.initialize(newSeed, newLevel);
 		} else {

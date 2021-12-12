@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import es.ucm.tp1.supercars.control.Controller;
 import es.ucm.tp1.supercars.control.Level;
+import es.ucm.tp1.supercars.control.exceptions.InputOutputRecordException;
 import es.ucm.tp1.supercars.logic.Game;
 
 
@@ -21,7 +22,7 @@ public class SuperCars {
 		System.out.println("\t<seed>: " + SEED_IS_NUMBER_MSNG);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InputOutputRecordException {
 		if (args.length < 1 || args.length > 2) {
 			usage();
 		} else {
