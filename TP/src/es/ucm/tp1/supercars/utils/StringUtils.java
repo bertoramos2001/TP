@@ -1,9 +1,9 @@
 package es.ucm.tp1.supercars.utils;
 
 public class StringUtils {
-	
+
 	public static final String LINE_SEPARATOR = "\n";
-	
+
 	public static String repeat(char c, int length) {
 		StringBuilder buffer = new StringBuilder();
 		for (int i = 0; i < length; i++) {

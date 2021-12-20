@@ -39,8 +39,8 @@ public abstract class GameObject implements Collider {
 	public int getY() {
 		return y;
 	}
-	
-	public String serialize() { 
+
+	public String serialize() {
 		return (getSymbol() + " (" + x + ", " + y + ")");
 	}
 

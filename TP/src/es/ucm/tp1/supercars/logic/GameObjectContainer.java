@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 
 public class GameObjectContainer {
-	
+
 	private ArrayList<GameObject> gameObjects;
-	
+
 	public GameObjectContainer() {
 		gameObjects = new ArrayList<GameObject>();
 	}
@@ -24,10 +24,10 @@ public class GameObjectContainer {
 		gameObjects.add(o);
 		o.onEnter();
 	}
-	
+
 	public void deleteDead() {
 		ArrayList<GameObject> aux = new ArrayList<GameObject>();
-		
+
 		for (GameObject o : gameObjects) {
 			if (o.isAlive()) {
 				aux.add(o);
@@ -37,17 +37,17 @@ public class GameObjectContainer {
 		}
 		gameObjects = aux;
 	}
-	
+
 	public void deleteAll() {
 		for (GameObject o : gameObjects) {
 			o.onDelete();
 		}
 		gameObjects = new ArrayList<GameObject>();
 	}
-	
+
 	public void deleteColumn(int column) {
 		ArrayList<GameObject> aux = new ArrayList<GameObject>();
-		
+
 		for (GameObject o : gameObjects) {
 			if (o.getX() == column) {
 				o.onDelete();
@@ -57,14 +57,14 @@ public class GameObjectContainer {
 		}
 		gameObjects = aux;
 	}
-	
+
 	public void update() {
 		for (GameObject o : gameObjects) {
 			o.update();
 		}
-		
+
 	}
-	
+
 	public String printObjectsIn(int x, int y) {
 		String s = "";
 		for (GameObject o : gameObjects) {
@@ -72,13 +72,13 @@ public class GameObjectContainer {
 				s += o.toString() + " ";
 			}
 		}
-		//TODO: poner s.trim() y ver si pasa los tests de la granada
+		// TODO: poner s.trim() y ver si pasa los tests de la granada
 		return s;
 	}
-	
+
 	public String serialize(int levelLength, int levelWidth) {
 		String s = "";
-		
+
 		for (int i = 0; i < levelLength; i++) {
 			for (int j = 0; j < levelWidth; j++) {
 				GameObject obj = getObjectInPosition(i, j);
@@ -89,10 +89,10 @@ public class GameObjectContainer {
 		}
 		return s;
 	}
-	
+
 	public String serializeAllObjectsIn(int x, int y) {
 		StringBuilder sb = new StringBuilder();
-		
+
 		for (GameObject o : gameObjects) {
 			if (o.isInPosition(x, y)) {
 				sb.append(o.serialize() + "\n");
@@ -100,6 +100,5 @@ public class GameObjectContainer {
 		}
 		return sb.toString();
 	}
-	
-	
+
 }

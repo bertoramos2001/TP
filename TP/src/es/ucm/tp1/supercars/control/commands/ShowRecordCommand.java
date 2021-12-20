@@ -14,7 +14,7 @@ public class ShowRecordCommand extends Command {
 	private static final String DETAILS = "rec[o]rd";
 	private static final String SHORTCUT = "o";
 	private static final String HELP = "show level record";
-	private static final boolean PINTA_CARRETERA = false; 
+	private static final boolean PINTA_CARRETERA = false;
 	private final String RECORD_NAME = "record.txt";
 	private final String FAIL_RECORD_MSG = "Failed to open record file";
 	private final String FAIL_CURRENT_RECORD_MSG = "Record in milliseconds must be a double";
@@ -30,22 +30,23 @@ public class ShowRecordCommand extends Command {
 			String levelName = game.getLevel().name();
 			boolean found = false;
 			double currentRecordInMs;
-			
-			while(line != null && !found) {
+
+			while (line != null && !found) {
 				String[] parts = line.split(":");
-				
+
 				if (parts[0].equalsIgnoreCase(levelName)) {
 					found = true;
 					currentRecordInMs = Double.parseDouble(parts[1]);
-					System.out.println(levelName + " record is " + String.format(Locale.FRANCE, "%.2f s", (currentRecordInMs / 1000)));
+					System.out.println(levelName + " record is "
+							+ String.format(Locale.FRANCE, "%.2f s", (currentRecordInMs / 1000)));
 				}
 				line = reader.readLine();
 			}
-			
+
 			if (!found) {
 				System.out.println("There is still no record saved for level " + levelName);
 			}
-			
+
 		} catch (IOException e) {
 			throw new InputOutputRecordException(String.format("[ERROR]: %s", FAIL_RECORD_MSG));
 		} catch (NumberFormatException e) {

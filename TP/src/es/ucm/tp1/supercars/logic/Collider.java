@@ -4,13 +4,13 @@ import es.ucm.tp1.supercars.logic.gameobjects.Player;
 
 public interface Collider {
 	boolean receiveCollision(Player player);
-	
+
 	boolean receiveShoot();
-	
+
 	boolean receiveExplosion();
-	
+
 	boolean receiveWave();
-	
+
 	boolean receiveThunder();
 
 }

@@ -3,7 +3,7 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class Obstacles extends GameObject {
-	
+
 	protected int lives;
 	protected String symbol;
 	protected static int numObstacles;
@@ -53,15 +53,15 @@ public class Obstacles extends GameObject {
 	public void onDelete() {
 		numObstacles--;
 	}
-	
+
 	public static int getTotalObstacles() {
 		return numObstacles;
 	}
-	
+
 	public static void reset() {
 		numObstacles = 0;
 	}
-	
+
 	@Override
 	protected String getSymbol() {
 		return symbol;

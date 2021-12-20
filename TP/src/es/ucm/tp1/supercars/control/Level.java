@@ -2,7 +2,8 @@ package es.ucm.tp1.supercars.control;
 
 public enum Level {
 
-	TEST(10, 3, 8, 0.5, 0, 0), EASY(30, 3, 8, 0.5, 0.5, 0), HARD(100, 5, 6, 0.7, 0.3, 0), ADVANCED(100, 3, 8, 0.3, 0.3, 0.1);
+	TEST(10, 3, 8, 0.5, 0, 0), EASY(30, 3, 8, 0.5, 0.5, 0), HARD(100, 5, 6, 0.7, 0.3, 0),
+	ADVANCED(100, 3, 8, 0.3, 0.3, 0.1);
 
 	private int length;
 	private int width;
@@ -11,7 +12,8 @@ public enum Level {
 	private double obstacleFrequency;
 	private double advancedObjectsFrequency;
 
-	private Level(int length, int width, int visibility, double obstacleFrequency, double coinFrequency, double advancedObjectsFrequency) {
+	private Level(int length, int width, int visibility, double obstacleFrequency, double coinFrequency,
+			double advancedObjectsFrequency) {
 		this.length = length;
 		this.width = width;
 		this.visibility = visibility;
@@ -27,7 +29,7 @@ public enum Level {
 	public double obstacleFrequency() {
 		return obstacleFrequency;
 	}
-	
+
 	public double advancedObjectsFrequency() {
 		return advancedObjectsFrequency;
 	}
@@ -53,19 +55,19 @@ public enum Level {
 		}
 		return buffer.toString();
 	}
-	
+
 	public int getRoadWidth() {
 		return width;
 	}
-	
+
 	public int getRoadLength() {
 		return length;
 	}
-	
+
 	public int getRoadVisibility() {
 		return visibility;
 	}
-	
+
 	public boolean hasAdvancedObjects() {
 		return advancedObjectsFrequency > 0;
 	}

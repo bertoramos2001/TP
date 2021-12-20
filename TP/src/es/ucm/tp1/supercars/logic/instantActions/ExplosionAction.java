@@ -5,10 +5,10 @@ import es.ucm.tp1.supercars.logic.InstantAction;
 import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 
 public class ExplosionAction implements InstantAction {
-	
+
 	private int x, y;
 	private GameObject o;
-	
+
 	public ExplosionAction(int x, int y) {
 		this.x = x;
 		this.y = y;

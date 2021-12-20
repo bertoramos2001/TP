@@ -22,12 +22,13 @@ public class DumpCommand extends Command {
 	public DumpCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
-	
+
 	@Override
 	protected Command parse(String[] words) throws CommandParseException {
 		if (matchCommandName(words[0])) {
 			if (words.length != 2) {
-				throw new CommandParseException(String.format("[ERROR]: Command %s: %s", NAME, INCORRECT_NUMBER_OF_ARGS_MSG));
+				throw new CommandParseException(
+						String.format("[ERROR]: Command %s: %s", NAME, INCORRECT_NUMBER_OF_ARGS_MSG));
 			} else {
 				filename = words[1];
 				return this;
@@ -39,21 +40,21 @@ public class DumpCommand extends Command {
 	@Override
 	public boolean execute(Game game) throws CommandExecuteException {
 		filename += ".txt";
-		
+
 		try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
 			StringBuilder sb = new StringBuilder();
 			String line = reader.readLine();
-			
+
 			sb.append(WELCOME_MSG);
-			
-			while(line != null) {
+
+			while (line != null) {
 				sb.append(line);
 				sb.append(System.lineSeparator());
 				line = reader.readLine();
 			}
-			
+
 			System.out.print(sb.toString());
-			
+
 		} catch (IOException e) {
 			throw new CommandExecuteException(IO_FAIL_MSG);
 		}

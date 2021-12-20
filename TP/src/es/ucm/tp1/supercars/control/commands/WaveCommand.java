@@ -14,15 +14,14 @@ public class WaveCommand extends Command implements Buyable {
 	private static final boolean PINTA_CARRETERA = true;
 	private final int WAVE_COST = 5;
 	private static final String FAILED_MSG = "[ERROR]: Failed to add wave";
-	
-	
+
 	public WaveCommand() {
 		super(NAME, SHORTCUT, DETAILS, HELP);
 	}
 
 	@Override
-	public boolean execute(Game game) throws CommandExecuteException{
-		try{
+	public boolean execute(Game game) throws CommandExecuteException {
+		try {
 			buy(game);
 			game.execute(new WaveAction());
 			game.update();
@@ -32,7 +31,6 @@ public class WaveCommand extends Command implements Buyable {
 		}
 		return PINTA_CARRETERA;
 	}
-
 
 	@Override
 	public int cost() {

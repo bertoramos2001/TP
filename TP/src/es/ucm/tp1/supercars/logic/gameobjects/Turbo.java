@@ -3,7 +3,7 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class Turbo extends GameObject {
-	
+
 	public static final String INFO = "[TURBO] pushes the car: 3 columns\n";
 	private final String TURBO_SYMBOL = ">>>";
 	private boolean alive = true;
@@ -39,7 +39,7 @@ public class Turbo extends GameObject {
 	@Override
 	public void onDelete() {
 	}
-	
+
 	@Override
 	protected String getSymbol() {
 		return TURBO_SYMBOL;
@@ -50,7 +50,7 @@ public class Turbo extends GameObject {
 		alive = false;
 		return true;
 	}
-	
+
 	@Override
 	public boolean receiveWave() {
 		x += 1;

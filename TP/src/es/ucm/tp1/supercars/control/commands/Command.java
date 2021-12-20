@@ -4,7 +4,7 @@ import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.supercars.control.exceptions.CommandParseException;
 
-public abstract class Command { 
+public abstract class Command {
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";
 	protected static final String INCORRECT_NUMBER_OF_ARGS_MSG = "Incorrect number of arguments";
@@ -42,19 +42,19 @@ public abstract class Command {
 		this.details = details;
 		this.help = help;
 	}
-	
+
 	public static Command getCommand(String[] commandWords) throws CommandParseException {
 		Command command = null;
 		int i = 0;
 		boolean encontrado = false;
-		while(!encontrado && i < AVAILABLE_COMMANDS.length) {
-			if(AVAILABLE_COMMANDS[i].parse(commandWords) != null) {
+		while (!encontrado && i < AVAILABLE_COMMANDS.length) {
+			if (AVAILABLE_COMMANDS[i].parse(commandWords) != null) {
 				encontrado = true;
 				command = AVAILABLE_COMMANDS[i].parse(commandWords);
 			}
 			i++;
 		}
-		
+
 		if (!encontrado) {
 			throw new CommandParseException(String.format("[ERROR]: %s", UNKNOWN_COMMAND_MSG));
 		}
@@ -70,7 +70,8 @@ public abstract class Command {
 	protected Command parse(String[] words) throws CommandParseException {
 		if (matchCommandName(words[0])) {
 			if (words.length != 1) {
-				throw new CommandParseException(String.format("[ERROR]: Command %s: %s", name, INCORRECT_NUMBER_OF_ARGS_MSG));
+				throw new CommandParseException(
+						String.format("[ERROR]: Command %s: %s", name, INCORRECT_NUMBER_OF_ARGS_MSG));
 			} else {
 				return this;
 			}
@@ -78,8 +79,8 @@ public abstract class Command {
 		return null;
 	}
 
-	public String helpText(){
-		return details +": "+ help +"\n";
+	public String helpText() {
+		return details + ": " + help + "\n";
 	}
 
 }

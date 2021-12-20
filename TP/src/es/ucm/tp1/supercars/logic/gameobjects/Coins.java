@@ -3,7 +3,7 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class Coins extends GameObject {
-	
+
 	private boolean alive = true;
 	protected int coinsAwarded;
 	protected String symbol;
@@ -16,7 +16,7 @@ public class Coins extends GameObject {
 	public boolean receiveCollision(Player player) {
 		player.addCoin(coinsAwarded);
 		alive = false;
-		
+
 		return true;
 	}
 
@@ -52,7 +52,7 @@ public class Coins extends GameObject {
 	@Override
 	public void onDelete() {
 	}
-	
+
 	@Override
 	protected String getSymbol() {
 		return symbol;

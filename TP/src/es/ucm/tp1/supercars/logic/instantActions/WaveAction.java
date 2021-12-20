@@ -6,11 +6,11 @@ import es.ucm.tp1.supercars.logic.InstantAction;
 
 public class WaveAction implements InstantAction {
 	private int actPos;
-	
+
 	@Override
 	public void execute(Game game) {
 		actPos = game.getPlayerPositionX();
-		
+
 		for (int i = game.getPlayerPositionX() + game.getVisibility(); i > actPos; i--) {
 			for (int j = 0; j < game.getRoadWidth(); j++) {
 				Collider c = game.getColliderInPosition(i, j);

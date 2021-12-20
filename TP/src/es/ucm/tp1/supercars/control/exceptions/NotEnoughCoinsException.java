@@ -3,7 +3,7 @@ package es.ucm.tp1.supercars.control.exceptions;
 public class NotEnoughCoinsException extends CommandExecuteException {
 	private static final long serialVersionUID = 1L;
 
-	public NotEnoughCoinsException(String msg) {	
+	public NotEnoughCoinsException(String msg) {
 		super(msg);
 	}
 }

@@ -3,7 +3,7 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class Pedestrian extends Obstacles {
-	
+
 	public static final String INFO = "[PEDESTRIAN] person crossing the road up and down\n";
 	private final String PEDESTRIAN_SYMBOL = "☺";
 	private boolean isDown = true;
@@ -29,29 +29,28 @@ public class Pedestrian extends Obstacles {
 		game.removePlayerCoins();
 		return true;
 	}
-	
+
 	@Override
 	public boolean receiveExplosion() {
 		return receiveShoot();
 	}
 
 	@Override
-	public void update() {	
-		
-		if(isDown) {
+	public void update() {
+
+		if (isDown) {
 			y = y + 1;
-		}
-		else {
+		} else {
 			y = y - 1;
-			if( y < 0)
+			if (y < 0)
 				y = -y;
 		}
-		if(y == 0 || y == 2)
+		if (y == 0 || y == 2)
 			isDown = !isDown;
 	}
-	
+
 	@Override
-	public String serialize() { 
+	public String serialize() {
 		if (isDown) {
 			return (super.serialize() + " down");
 		} else {

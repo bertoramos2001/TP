@@ -5,7 +5,7 @@ import es.ucm.tp1.supercars.logic.gameobjects.*;
 import es.ucm.tp1.supercars.logic.instantActions.ThunderAction;
 
 public class GameObjectGenerator {
-	
+
 	public static final int MAX_OBJECT_ID = 5;
 	public static final int MIN_OBJECT_ID = 1;
 
@@ -14,7 +14,7 @@ public class GameObjectGenerator {
 		for (int x = game.getVisibility() / 2; x < game.getRoadLength(); x++) {
 			game.tryToAddObject(new Obstacle(game, x, game.getRandomLane()), level.obstacleFrequency());
 			game.tryToAddObject(new Coin(game, x, game.getRandomLane()), level.coinFrequency());
-			
+
 			if (level.hasAdvancedObjects()) {
 				game.tryToAddObject(new Wall(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
 				game.tryToAddObject(new Turbo(game, x, game.getRandomLane()), level.advancedObjectsFrequency());
@@ -26,13 +26,13 @@ public class GameObjectGenerator {
 			}
 		}
 	}
-	
+
 	public static void generateRuntimeObjects(Game game) {
 		if (game.getLevel().hasAdvancedObjects()) {
 			game.execute(new ThunderAction());
 		}
 	}
-	
+
 	public static void forceAdvanceObject(Game game, int id, int x) {
 		GameObject o = null;
 		switch (id) {

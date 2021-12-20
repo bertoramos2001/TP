@@ -3,10 +3,10 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 import es.ucm.tp1.supercars.logic.Game;
 
 public class Wall extends Obstacles {
-	
+
 	public static final String INFO = "[WALL] hard obstacle\n";
-	private final String WALL_SYMBOL_ARR[] = {"░", "▒", "█"};
-	private final int  NUM_COINS_GIVEN = 5;
+	private final String WALL_SYMBOL_ARR[] = { "░", "▒", "█" };
+	private final int NUM_COINS_GIVEN = 5;
 	private final int LIVES = 2;
 
 	public Wall(Game game, int x, int lane) {
@@ -23,21 +23,21 @@ public class Wall extends Obstacles {
 		}
 		return true;
 	}
-	
+
 	@Override
 	public boolean receiveExplosion() {
 		lives = -1;
 		return true;
 	}
-	
+
 	@Override
 	public void onDelete() {
 		super.onDelete();
 		game.addPlayerCoins(NUM_COINS_GIVEN);
 	}
-	
+
 	@Override
-	public String serialize() { 
+	public String serialize() {
 		return (symbol + " (" + x + ", " + y + ")" + " " + (lives + 1));
 	}
 }

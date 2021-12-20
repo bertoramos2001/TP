@@ -7,7 +7,7 @@ import es.ucm.tp1.supercars.logic.gameobjects.GameObject;
 import es.ucm.tp1.supercars.utils.StringUtils;
 
 public class ThunderAction implements InstantAction {
-	
+
 	private int x, y, relativeX;
 	GameObject o;
 	private String s, tempSymbol;
@@ -17,15 +17,15 @@ public class ThunderAction implements InstantAction {
 		x = game.getRandomVisibleColumn();
 		y = game.getRandomLane();
 		System.out.print(String.format("Thunder hit position: (%d , %d)", x, y));
-		
-		//o = game.getObjectInPosition(game.getPlayerPositionX() + x, y);
-		
+
+		// o = game.getObjectInPosition(game.getPlayerPositionX() + x, y);
+
 		relativeX = game.getPlayerPositionX() + x;
 		Collider c = game.getColliderInPosition(relativeX, y);
-		
+
 		if (c != null) {
 			c.receiveThunder();
-		} 
+		}
 		System.out.print(StringUtils.LINE_SEPARATOR);
 	}
 

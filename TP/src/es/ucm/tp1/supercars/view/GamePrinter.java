@@ -7,11 +7,11 @@ import es.ucm.tp1.supercars.logic.gameobjects.*;
 import es.ucm.tp1.supercars.utils.*;
 
 public class GamePrinter {
-	
+
 	private static final String SPACE = " ";
 	private static final String ROAD_BORDER_PATTERN = "═";
 	private static final String LANE_DELIMITER_PATTERN = "─";
-	
+
 	private static final int CELL_SIZE = 7;
 	private static final int MARGIN_SIZE = 2;
 
@@ -32,7 +32,7 @@ public class GamePrinter {
 		this.game = game;
 		setRoad(game);
 	}
-	
+
 	private void setRoad(Game game) {
 		margin = StringUtils.repeat(SPACE, MARGIN_SIZE);
 
@@ -49,35 +49,36 @@ public class GamePrinter {
 
 		newLine = System.getProperty("line.separator");
 	}
-	
+
 	private String getGameInfo() {
-		
+
 		String info = String.format("Distance: %d\nCoins: %d\nCycle: %d\nTotal obstacles: %d\nTotal coins: %d",
-				game.getDistanceToEnd(), game.getActualCoins(), game.getCycle(), Obstacle.getTotalObstacles(),Coin.getTotalCoins());
-		
+				game.getDistanceToEnd(), game.getActualCoins(), game.getCycle(), Obstacle.getTotalObstacles(),
+				Coin.getTotalCoins());
+
 		return info;
 	}
-	
+
 	private String getTimeInfo() {
-		String info = String.format(Locale.FRANCE, "\nElapsed Time: %.2f s", game.getCurrentTime());	
+		String info = String.format(Locale.FRANCE, "\nElapsed Time: %.2f s", game.getCurrentTime());
 		return info;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		String verticalDelimiter = SPACE;
-		
+
 		setRoad(game);
-		
+
 		str.append(getGameInfo());
 		if (SuperCoin.hasSuperCoin()) {
 			str.append("\nSupercoin is present");
 		}
-		
-		if(!game.testMode())
+
+		if (!game.testMode())
 			str.append(getTimeInfo());
-		
+
 		str.append(indentedRoadBorder);
 
 		for (int y = 0; y < game.getRoadWidth(); y++) {
@@ -93,7 +94,7 @@ public class GamePrinter {
 
 		return str.toString();
 	}
-	
+
 	public static String getGameObjectsInfo() {
 		StringBuilder b = new StringBuilder();
 		b.append(Player.INFO);
@@ -105,14 +106,14 @@ public class GamePrinter {
 		b.append(SuperCoin.INFO);
 		b.append(Truck.INFO);
 		b.append(Pedestrian.INFO);
-		
+
 		return b.toString();
 	}
-	
+
 	public String endMessage() {
 		StringBuilder s = new StringBuilder();
 		s.append(GAME_OVER_MSG);
-		
+
 		if (game.playerWon()) {
 			s.append(WIN_MSG);
 		} else if (!game.getPlayerIsAlive()) {
