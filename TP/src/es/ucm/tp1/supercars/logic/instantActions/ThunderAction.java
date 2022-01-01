@@ -10,7 +10,6 @@ public class ThunderAction implements InstantAction {
 
 	private int x, y, relativeX;
 	GameObject o;
-	private String s, tempSymbol;
 
 	@Override
 	public void execute(Game game) {

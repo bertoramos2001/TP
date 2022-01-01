@@ -3,6 +3,15 @@ package es.ucm.tp1.supercars.logic.gameobjects;
 import es.ucm.tp1.supercars.logic.Collider;
 import es.ucm.tp1.supercars.logic.Game;
 
+/* (comentarios para el examen)
+ * PASOS PARA AÑADIR GAME OBJECTS:
+ * 		1. crear la clase dentro de gameobjects y que extienda gameobject
+ * 		2. hacer override de las funciones que fuera necesario y crear tambien nuevas si hacen falta
+ * 		3. añadirlo en el help e info
+ * 		4. depende de lo que me digan en el enunciado, meterlo en el juego de una u otra manera (forzado como los avanzados, aleatorio como los normales...)
+ * 
+ */
+
 public abstract class GameObject implements Collider {
 
 	protected int x, y;

@@ -1,6 +1,12 @@
 package es.ucm.tp1.supercars.logic.gameobjects;
 
 import es.ucm.tp1.supercars.logic.Game;
+
+/*
+ * Si quisieramos que las granadas explotasen en cadena, solo tendriamos que:
+ * 		1. Poner en receive explosion que ciclos = 0 y que devuelva true
+ * 		2. en el explosion action, que la explosion no afecte a la propia granada (añadiendo i != j) al if
+ */
 import es.ucm.tp1.supercars.logic.instantActions.ExplosionAction;
 
 public class Grenade extends GameObject {

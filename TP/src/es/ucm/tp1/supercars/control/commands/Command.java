@@ -9,6 +9,9 @@ import es.ucm.tp1.supercars.control.exceptions.CommandParseException;
  * 		1. crear la clase dentro de commands y que herede de Command. Arreglar los errores que de inicialmente
  * 		2. hacer override de execute y parse si fuera necesario
  * 		3. añadirlo a la lista de comandos aqui abajo
+ * 		4. añadirlo en el help e info
+ * 
+ *  para var como añadir instant actions, ver el fichero de InstantAction
  */
 
 public abstract class Command {
