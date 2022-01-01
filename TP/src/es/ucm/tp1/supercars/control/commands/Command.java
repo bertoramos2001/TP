@@ -4,6 +4,13 @@ import es.ucm.tp1.supercars.logic.Game;
 import es.ucm.tp1.supercars.control.exceptions.CommandExecuteException;
 import es.ucm.tp1.supercars.control.exceptions.CommandParseException;
 
+/* (comentarios para el examen)
+ * PASOS PARA AÑADIR COMANDOS:
+ * 		1. crear la clase dentro de commands y que herede de Command. Arreglar los errores que de inicialmente
+ * 		2. hacer override de execute y parse si fuera necesario
+ * 		3. añadirlo a la lista de comandos aqui abajo
+ */
+
 public abstract class Command {
 
 	private static final String UNKNOWN_COMMAND_MSG = "Unknown command";

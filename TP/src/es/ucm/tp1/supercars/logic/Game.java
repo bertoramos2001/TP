@@ -40,7 +40,9 @@ public class Game {
 			cycleNum = 0;
 			GameObjectGenerator.reset();
 			player.initialize(0, level.getRoadWidth() / 2);
+			System.out.println("creando el object container");
 			gameObjectContainer = new GameObjectContainer();
+			System.out.println("despues de crear el object container");
 			SuperCoin.resetSuperCoinBool();
 			elapsedTime = 0;
 			startTimer();
@@ -48,6 +50,7 @@ public class Game {
 
 		} catch (InputOutputRecordException e) {
 			gameFinished = true;
+			throw new InputOutputRecordException(e.getMessage());
 		}
 	}
 

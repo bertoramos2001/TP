@@ -21,7 +21,7 @@ public class SuperCars {
 		System.out.println("\t<seed>: " + SEED_IS_NUMBER_MSNG);
 	}
 
-	public static void main(String[] args) throws InputOutputRecordException {
+	public static void main(String[] args) {
 		if (args.length < 1 || args.length > 2) {
 			usage();
 		} else {
@@ -49,6 +49,8 @@ public class SuperCars {
 				} catch (NumberFormatException nfe) {
 					System.out.println(SEED_IS_NUMBER_MSNG);
 					usage();
+				} catch (InputOutputRecordException e) {
+					System.out.println(e.getMessage());
 				}
 			}
 		}
