@@ -29,7 +29,6 @@ public class Game {
 		player = new Player(this, 0, getRoadWidth() / 2);
 		printLevelAndSeed();
 		initialize();
-		System.out.println("FUNCIONAAAAAA");
 	}
 
 	public void initialize() throws InputOutputRecordException {
