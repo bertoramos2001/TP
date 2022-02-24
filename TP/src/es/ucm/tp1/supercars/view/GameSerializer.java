@@ -21,7 +21,6 @@ public class GameSerializer {
 		s.append(getGameInfo());
 
 		if (!game.testMode()) {
-			// TODO: aqui no se si poner ms, s o que
 			s.append("EllapsedTime: " + (int) (game.getCurrentTime() * 1000) + "\n");
 		}
 
